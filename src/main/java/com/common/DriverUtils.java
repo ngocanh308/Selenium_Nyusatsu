@@ -12,6 +12,7 @@ public class DriverUtils {
 	}
 
 	public static void setUpDriver() {
+		WebDriverManager.chromedriver().clearDriverCache().setup();
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.navigate().refresh();
