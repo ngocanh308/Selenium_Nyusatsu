@@ -15,23 +15,23 @@ public class TestHelper {
 	@BeforeClass
 	public void BeforeClass(){
 		DriverUtils.setUpDriver();
-		DriverUtils.getDriver().get(Constant.RAILWAYURL);
+		DriverUtils.getDriver().get(Constant.URLHOME);
 		DriverUtils.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
 	@AfterClass
 	public void afterClass() {
-		//DriverUtils.getDriver().quit();
+		DriverUtils.getDriver().quit();
 	}
 	
-	public int randomNum(){
-		Random r = new Random();
-		return r.nextInt(100000) + 1;
-	}
-	
-	public void scrollPage() {
-		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
-		js.executeScript("window.scrollBy(0,1000)");
-	}
+//	public int randomNum(){
+//		Random r = new Random();
+//		return r.nextInt(100000) + 1;
+//	}
+//	
+//	public void scrollPage() {
+//		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
+//		js.executeScript("window.scrollBy(0,1000)");
+//	}
 
 }
