@@ -2,6 +2,7 @@ package com.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.interactions.Actions;
 
 import com.common.Button;
 import com.common.Constant;
@@ -18,8 +19,6 @@ public class Login_Page {
 	Textbox txtPassWord = new Textbox(By.id("USER_PASSWORD"));
 	Button btnLogin = new Button(By.id("button_login"));
 	Message msErrorLogin = new Message(By.cssSelector(".text-muted.mb-0.login_fail"));
-	LinkText lblIconUser = new LinkText(By.cssSelector(".nav-link--site a[href ='/usermenu/both_item_search/"));
-	LinkText lblLogout = new LinkText(By.id("btn_logout"));
 	
 	
 	public void login(String username, String password) throws InterruptedException
@@ -31,6 +30,7 @@ public class Login_Page {
 			btnLogin.click();
 	}
 	
+
 
 	
 	public String getErrorMessageLogin()
