@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Budget_Page">
+	<test name="Budget_page">
+		<classes>
+			<class name="com.testcase.BudgetSearch.TestCase_01_UI_Page" ></class>
+		</classes>
+	</test>
+</suite>

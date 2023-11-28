@@ -12,20 +12,21 @@ import com.page.Logout;
 import com.testcase.TestHelper;
 
 public class Testcase_03_Login_List_Account extends TestHelper {
-	
-	Login_Page  login = new Login_Page();
+
+	Login_Page login = new Login_Page();
 	Logout logout = new Logout();
 
 	@Test
 	public void TC_01_Login_Sucess() throws InterruptedException {
-		for(int i = 0; i< Constant.LIST_USERNAME.length ; i++)
-		{
-			login.login(Constant.USERNAME,Constant.PASSWORD);
+
+		for (int i = 0; i < Constant.LIST_USERNAME.length; i++) {
+			login.login(Constant.LIST_USERNAME[i], Constant.LIST_PASSWORD[i]);
 			Thread.sleep(2000);
-			Assert.assertEquals( DriverUtils.getDriver().getCurrentUrl(), Constant.URLBOTH);
+			Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLBOTH);
 			logout.logout();
-			Assert.assertEquals( DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME);
-			
+			Thread.sleep(2000);
+			Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME);
+
 		}
 	}
 }
