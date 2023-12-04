@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Yotei_Page">
+	<test name="Yotei_page">
+		<classes>
+			<class name="com.testcase.BothSearch.TestCase_01_Popup" ></class>
+		</classes>
+	</test>
+</suite>

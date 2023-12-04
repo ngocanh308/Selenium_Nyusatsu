@@ -17,11 +17,13 @@ public class Constant {
 	
 	//Tab menu
 	public static final String URLBOTH = "https://www.nyusatsu-king.com/usermenu/both_item_search/";
+	public static final String URLYOTEI = "https://www.nyusatsu-king.com/usermenu/yotei_search/";
 	public static final String URLBUDGET = "usermenu/budget_search/";
 	
 	//Budget Search page
 
 	public static final String TITLE_BUDGET = "予算書情報検索 | ［入札王］官公庁・自治体の入札・落札情報提供サービス";
 	public static final String[] LIST_BUDGET_YEAR_FULL = {"2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"};
+	public static final String[] LIST_LEFT_AREA = {"内閣府外郭団体","防衛省外郭団体","総務省外郭団体","法務省外郭団体","外務省外郭団体","財務省外郭団体","文部科学省外郭団体","厚生労働省外郭団体","農林水産省外郭団体","経済産業省外郭団体","国土交通省外郭団体","環境省外郭団体","警察庁外郭団体","_都道府県庁","市区町村","その他"};
 	
 }	
