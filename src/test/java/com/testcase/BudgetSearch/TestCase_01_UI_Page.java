@@ -47,8 +47,25 @@ public class TestCase_01_UI_Page extends TestHelper {
 				Assert.fail();
 			}
 	}
-//	@Test 
-//	public void TC_03_Select_Droplist() throws InterruptedException {
-//			budget.selectType("DATE_S.year", "2014");			
-//	}
+	
+	@Test 
+	public void TC_05_List_Value_Droplist_Start_Year() throws InterruptedException {
+		try {
+			Assert.assertTrue(budget.validateValueListDropDown("DATE_S.year", Constant.LIST_BUDGET_YEAR_FULL));	
+		}catch (AssertionError e) {
+			Assert.fail();}
+	}
+	@Test 
+	public void TC_06_List_Value_Droplist_End_Year() throws InterruptedException {
+		try {
+			Assert.assertTrue(budget.validateValueListDropDown("DATE_E.year", Constant.LIST_BUDGET_YEAR_FULL));	
+		}catch (AssertionError e) {
+			Assert.fail();}
+	}
+	
+	
+		
 }
+			
+
+

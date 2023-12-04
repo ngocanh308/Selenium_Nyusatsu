@@ -25,4 +25,8 @@ public class Listbox extends PageObject {
 		list.selectByIndex(index);
 	}
 
+	public String getTextOption() {
+		return this.getRuntimeElement().getText();
+
+	}
 }
