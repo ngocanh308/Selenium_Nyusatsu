@@ -43,13 +43,13 @@ public class BudgetSearch_Page {
 		Select sel = new Select(dropdown);
 		List<WebElement> option = sel.getOptions();
 		for (int i = 0; i < option.size(); i++) {
-			System.out.println("List_actual______________"+option.get(i).getText());
-			System.out.println("Lisst_expect______________"+expectList[i]);
 			if(option.get(i).getText().equals(expectList[i])) {
 				return true;
 			}
 		}
 		return false;
 	}
+	
+	
 
 }

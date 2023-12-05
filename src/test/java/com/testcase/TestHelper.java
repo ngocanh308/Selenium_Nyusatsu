@@ -1,9 +1,6 @@
 package com.testcase;
-
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
