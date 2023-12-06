@@ -33,9 +33,36 @@ public class TestCase_01_Popup extends TestHelper {
 	}
 
 	@Test
-	public void TC_03_Check_Text_Right_Popup() throws InterruptedException {
+	public void TC_03_Check_Text_Right3_Popup() throws InterruptedException {
 		try {
 			Assert.assertTrue(both.checkRightItemPopup(3, Constant.LIST_RIGHT_3_AREA));
+		} catch (AssertionError e) {
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void TC_04_Check_Text_Right5_Popup() throws InterruptedException {
+		try {
+			Assert.assertTrue(both.checkRightItemPopup(5, Constant.LIST_RIGHT_5_AREA));
+		} catch (AssertionError e) {
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void TC_05_Check_Selected_All_Checboxs() throws InterruptedException {
+		try {
+			Assert.assertTrue(both.checkAllChecbox());
+		} catch (AssertionError e) {
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void TC_06_Check_Unselected_All_Checboxs() throws InterruptedException {
+		try {
+			Assert.assertTrue(both.uncheckAllChecbox());
 		} catch (AssertionError e) {
 			Assert.fail();
 		}
