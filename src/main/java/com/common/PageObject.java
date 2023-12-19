@@ -36,4 +36,7 @@ public class PageObject {
 		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
 		js.executeScript("window.scrollBy(0,1000)");
 	}
+	
+	
+
 }

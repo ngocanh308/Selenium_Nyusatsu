@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="List_Account">
+	<test name="List_Account">
+		<classes>
+			<class name="com.testcase.ListAccount.TestCase_01_Check_Account_01" ></class>
+			<class name="com.testcase.ListAccount.TestCase_02_Check_Account_02" ></class>
+		</classes>
+	</test>
+</suite>

@@ -9,7 +9,7 @@ public class Label extends PageObject {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getTextMessage() {
+	public String getTextLabel() {
 		return this.getRuntimeElement().getText();
 
 	}

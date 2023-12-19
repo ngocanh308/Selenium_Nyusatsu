@@ -1,12 +1,9 @@
 package com.testcase.LoginPage;
-
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.common.Constant;
 import com.common.DriverUtils;
-import com.github.dockerjava.api.model.Driver;
 import com.page.Login_Page;
 import com.page.Logout;
 import com.testcase.TestHelper;

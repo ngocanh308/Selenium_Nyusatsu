@@ -31,6 +31,18 @@ public class TestCase_01_UI_Page extends TestHelper {
 	
 	
 	@Test 
+	public void TC_03_Text_Header() throws InterruptedException {
+				try {
+					String text1 = String.join(",", budget.getTextLabelSearch());  // Change List array to List 1 string to compare
+					String text2 = String.join(",", Constant.TEXT_LABEL_SEARCH);   // Change  array to  1 string to compare
+					Assert.assertTrue(text1.equals(text2));
+				} catch (AssertionError e) {
+					Assert.fail();
+				}
+	}
+	
+	
+	@Test 
 	public void TC_03_List_Item_Start_Year() throws InterruptedException {
 			try {
 				Assert.assertTrue(budget.sizeYear("DATE_S.year") == 11);				
@@ -63,6 +75,10 @@ public class TestCase_01_UI_Page extends TestHelper {
 			Assert.fail();}
 	}
 	
+	@Test 
+	public void TC_07_Check_All_Text_Label() throws InterruptedException {
+		
+	}
 	
 		
 }

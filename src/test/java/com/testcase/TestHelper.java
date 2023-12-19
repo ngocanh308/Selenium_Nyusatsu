@@ -21,14 +21,6 @@ public class TestHelper {
 		DriverUtils.getDriver().quit();
 	}
 	
-//	public int randomNum(){
-//		Random r = new Random();
-//		return r.nextInt(100000) + 1;
-//	}
-//	
-//	public void scrollPage() {
-//		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
-//		js.executeScript("window.scrollBy(0,1000)");
-//	}
+
 
 }

@@ -1,8 +1,6 @@
 package com.common;
 import org.openqa.selenium.By;
 
-import com.common.PageObject;
-
 public class LinkText extends PageObject{
 
 	public LinkText(By locator) {

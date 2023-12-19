@@ -1,4 +1,5 @@
 package com.page;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -27,6 +28,26 @@ public class BudgetSearch_Page {
 	String listYear = "//select[@name='%s']";
 	String listOptionYear = "//select[@name='%s']/option";
 	String actual[];
+	
+	//List text label
+	Label lblHearderBudget = new Label(By.cssSelector(".ttl-type_003 a"));
+	String listLabelSearch = ".search__f-box-l h3";
+//	Label lblHearderBudget = new Label(By.cssSelector(".ttl-type_003 a"));
+//	Label lblHearderBudget = new Label(By.cssSelector(".ttl-type_003 a"));
+//	Label lblHearderBudget = new Label(By.cssSelector(".ttl-type_003 a"));
+//	Label lblHearderBudget = new Label(By.cssSelector(".ttl-type_003 a"));
+//	Label lblHearderBudget = new Label(By.cssSelector(".ttl-type_003 a"));
+//	Label lblHearderBudget = new Label(By.cssSelector(".ttl-type_003 a"));
+	
+	public List<String> getTextLabelSearch(){
+		List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.cssSelector(String.format(listLabelSearch)));
+		List<String> text = new ArrayList<String>();
+		for(WebElement item:allOptions)
+		{
+			text.add(item.getText());
+		}
+		return text;
+	}
 
 	public void selectType(String name, String value) throws InterruptedException {
 		Select list = new Select(DriverUtils.getDriver().findElement(By.xpath(String.format(listYear, name))));

@@ -44,7 +44,6 @@ public class Login_Page {
 	
 	public void clickTabMenu(String text) {
 		DriverUtils.getDriver().findElement(By.cssSelector(String.format(tabMenu, text))).click();
-		System.out.print("Link tab menu------------------"+DriverUtils.getDriver().findElement(By.cssSelector(String.format(tabMenu, text))));
 	}
 	
 }
