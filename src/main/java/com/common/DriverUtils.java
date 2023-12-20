@@ -21,12 +21,10 @@ public class DriverUtils {
 	public static void setUpDriver() {
 		WebDriverManager.chromedriver().clearDriverCache().setup();
 		WebDriverManager.chromedriver().setup();
-		
+
 		ChromeOptions option = new ChromeOptions();
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-		chromePrefs.put("profile.default_content_settings.popups", 0); // by pass popup ask
-		// String folderName = System.getProperty("user.dir") + File.separator +
-		// "Downloads"; // save in project đang run với folder Dơnloads
+		chromePrefs.put("profile.default_content_settings.popups", 0);
 		Constant.folderName = System.getProperty("user.dir") + File.separator + "Downloads"; // save in project đang run với folder Dơnloads
 		chromePrefs.put("download.default_directory", Constant.folderName);
 		option.setExperimentalOption("prefs", chromePrefs);

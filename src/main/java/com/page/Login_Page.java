@@ -1,6 +1,7 @@
 package com.page;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import com.common.Button;
 import com.common.DriverUtils;

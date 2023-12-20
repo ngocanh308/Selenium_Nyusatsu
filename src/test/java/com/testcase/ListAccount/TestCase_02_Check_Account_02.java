@@ -1,8 +1,7 @@
 package com.testcase.ListAccount;
-
-import java.awt.Window;
 import java.io.IOException;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,10 +9,10 @@ import com.common.Constant;
 import com.common.DriverUtils;
 import com.page.BothSearch_Page;
 import com.page.BudgetSearch_Page;
-import com.page.Common_Page;
 import com.page.Login_Page;
 import com.page.Yotei_Page;
 import com.testcase.TestHelper;
+import com.page.Anken_Page;
 
 public class TestCase_02_Check_Account_02 extends TestHelper {
 
@@ -21,6 +20,7 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	BudgetSearch_Page budget = new BudgetSearch_Page();
 	Yotei_Page yotei = new Yotei_Page();
 	BothSearch_Page both = new BothSearch_Page();
+	Anken_Page anken = new Anken_Page();
 
 	@Test
 	public void TC_01_Login_Sucess() throws InterruptedException {
@@ -71,35 +71,64 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 		}
 	}
 
+	@Test // Check page Anken
+	public void TC_07_Open_Success_Anken_Page() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
+		js.executeScript("window.scrollBy(0,250)");
+		login.clickTabMenu("5");
+		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME + Constant.URLANKEN);
+	}
+	
+	@Test // 
+	public void TC_08_Open_Anken_Yotei() throws InterruptedException {
+		anken.clickTabMenuAnken("1");
+		try {
+			Assert.assertTrue(anken.isTabSelect("1"));
+		} catch (AbstractMethodError e) {
+			Assert.fail();
+		}
+		
+	}
+	
+	@Test // 
+	public void TC_09_Delete_Anken_Success() throws InterruptedException {
+		anken.deleteAnken("2024-2022");
+		try {
+			Assert.assertTrue(!anken.isVisibleResult());
+		} catch (AbstractMethodError e) {
+			Assert.fail();
+		}
+	}
+	
 	@Test // Check page Yotei
-	public void TC_07_Open_Success_Yotei_Page() throws InterruptedException {
+	public void TC_10_Open_Success_Yotei_Page() throws InterruptedException {
 		login.clickTabMenu("2");
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME + Constant.URLYOTEI);
 	}
 
 	@Test
-	public void TC_08_Show_Popup_Download_Faile() throws InterruptedException {
-		yotei.inputTextOR("o");
+	public void TC_11_Show_Popup_Download_Faile() throws InterruptedException {
+		yotei.downloadCSV("o");
 		Assert.assertEquals(yotei.getErrorMessagePopup(), Constant.ERROR_DOWNLOAD_CSV);
 
 	}
 
 	@Test
-	public void TC_09_Close_Popup_Download_Faile() throws InterruptedException {
+	public void TC_12_Close_Popup_Download_Faile() throws InterruptedException {
 		yotei.closePopup();
 
 	}
 
 	@Test // Check page Both
-	public void TC_10_Open_Success_Both_Page() throws InterruptedException {
+	public void TC_13_Open_Success_Both_Page() throws InterruptedException {
 		login.clickTabMenu("3");
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME + Constant.URLBOTH);
 
 	}
 
 	@Test 
-	public void TC_11_Download_File_CSV_Success() throws InterruptedException, IOException {
-		both.inputTextOR("o");
+	public void TC_14_Download_File_CSV_Success() throws InterruptedException, IOException {
+		both.downloadCSV("o");
 		Thread.sleep(6000);
 		try {
 			Assert.assertTrue(both.isFileDownloaded("nyusatsu_king_2023", "csv", 5000));
@@ -109,11 +138,11 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 
 	}
 	
-	@Test // Check page Anken
-	public void TC_12_Open_Success_Anken_Page() throws InterruptedException {
-		login.clickTabMenu("4");
-		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME + Constant.URLANKEN);
+	@Test 
+	public void TC_15_Bookmark_Item_Success() throws InterruptedException, IOException {
+		both.boomarkItem(1);
 	}
+
 
 
 }
