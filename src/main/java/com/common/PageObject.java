@@ -26,6 +26,15 @@ public class PageObject {
 	public boolean isDisplay() {
 		return this.getRuntimeElement().isDisplayed();
 	}
+	
+	public boolean isElementPresent(By locator) {
+	    try {
+	    	DriverUtils.getDriver().findElement(locator);
+	        return true;
+	    } catch (org.openqa.selenium.NoSuchElementException e) {
+	        return false;
+	    }
+	}
 
 	public void waitToElementVisible(int second, By locator) {
 		WebDriverWait waitExplicit = new WebDriverWait(DriverUtils.getDriver(), Duration.ofSeconds(second));

@@ -13,4 +13,5 @@ public class Label extends PageObject {
 		return this.getRuntimeElement().getText();
 
 	}
+	
 }

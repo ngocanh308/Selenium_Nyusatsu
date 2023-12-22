@@ -3,14 +3,19 @@ package com.page;
 import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.lang.model.element.Element;
+
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.common.Button;
 import com.common.Constant;
 import com.common.DriverUtils;
+import com.common.Label;
 import com.common.Listbox;
 import com.common.Message;
 import com.common.Textbox;
@@ -21,12 +26,16 @@ public class Common_Page {
 	Button downloadCSV = new Button(By.cssSelector("#export_csv"));
 	Message msPopupError = new Message(By.cssSelector(".condition__text-result.flex-warn span"));
 	Button closePopupError = new Button(By.xpath("//p[@class=\"condition__text-result flex-warn\"]/preceding::label[@for=\"js-message\"]"));
-
 	Listbox numPage = new Listbox(By.cssSelector("#frmPagesize"));
+	Label listResult = new Label(By.xpath("//*[@id=\"searchResult\"]"));
 
 	private final String tabMenu = "//*[@id=\\\"searchResult\\\"]/div[1]//span[@class=\\\"bookmark-text\\\"]"; // Tab menu
 	private final String bookmarkItem = "div#searchResult>div:nth-child(%s) span.bookmark-text";
 
+	// Variable public
+	
+	
+	
 	public void inputOR(String inputText) throws InterruptedException {
 		txtOR.type(inputText);
 		search.click();
@@ -113,34 +122,59 @@ public class Common_Page {
 
 	}
 
-	public boolean isVisibleResult() throws InterruptedException {
-		List<WebElement> listResult = DriverUtils.getDriver().findElements(By.xpath("//*[@id=\"searchResult\"]/div"));
-		if (listResult.size() > 0) {
-			return true;
-		}
-		return false;
+	public boolean isDisplayResult() throws InterruptedException {
+	WebElement result = DriverUtils.getDriver().findElement(By.xpath("//*[@id=\"searchResult\"]"));
+			if (StringUtils.isNoneBlank(result.getText()))
+			{
+				System.out.println("Tim thay___________________");
+				return true;
+			}
+	        else
+	        {
+
+	        	System.out.println("KHONG___________________");
+	        	return false;
+	        }
+	}
+	
+	public boolean isElementPresent(By locatorKey) {
+	    try {
+	    	DriverUtils.getDriver().findElement(locatorKey);
+	        return true;
+	    } catch (org.openqa.selenium.NoSuchElementException e) {
+	        return false;
+	    }
 	}
 
 	public void selectPaging(String value) throws InterruptedException {
 		numPage.selectValue(value);
 	}
+	
+	public void isBookmarkSuccess(int numItem)
+	{
+		boomarkItem(numItem);
+		List<WebElement> listItems = DriverUtils.getDriver().findElements(By.xpath("//*[@id=\"searchResult\"]/div"));
+		if(listItems.size() == numItem)
+		{
+			
+		}
+	}
+	
 
 	public void boomarkItem(int numberItem) {
 		int tmp = 0;
 		List<WebElement> listItems = DriverUtils.getDriver().findElements(By.xpath("//*[@id=\"searchResult\"]/div"));
-		// List<WebElement> listItem =
-		// DriverUtils.getDriver().findElements(By.cssSelector("div#searchResult>div:nth-child(%s)
-		// div.nk-item__title-favorite"));
+		List<String> listID = new ArrayList<String>();
 		for (int i = 1; i <= listItems.size(); i++) {
 			if (tmp == numberItem) {
 				break;
 			}
 			WebElement item = DriverUtils.getDriver().findElement(By.cssSelector("div#searchResult>div:nth-child(" + i + ") div.nk-item__title-favorite"));
 			String isBookmark = item.getAttribute("class"); 
-			// bookmarked -> no_bookmark
-			if (isBookmark.contains("no_bookmark")) {
+			if (isBookmark.contains("no_bookmark")) {	// bookmarked -> no_bookmark
 				item.click();
 				tmp++;
+				//listID.add(DriverUtils.getDriver().findElement(By.xpath("//span[@class=\"nk-item__status-no item_id\"]")).getText());
 			}
 		}
 
