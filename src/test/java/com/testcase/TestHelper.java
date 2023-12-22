@@ -1,4 +1,5 @@
 package com.testcase;
+
 import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.AfterClass;
@@ -10,17 +11,15 @@ import com.common.DriverUtils;
 public class TestHelper {
 
 	@BeforeClass
-	public void BeforeClass(){
+	public void BeforeClass() {
 		DriverUtils.setUpDriver();
 		DriverUtils.getDriver().get(Constant.URLHOME);
 		DriverUtils.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
-	
+
 	@AfterClass
 	public void afterClass() {
 		DriverUtils.getDriver().quit();
 	}
-	
-
 
 }

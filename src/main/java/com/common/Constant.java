@@ -1,5 +1,7 @@
 package com.common;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 
 public class Constant {
@@ -50,5 +52,8 @@ public class Constant {
 	//Yotei Search
 	public static final String ERROR_DOWNLOAD_CSV = "トライアル会員のお客様はダウンロード（CSV保存）できません。サンプルを作成してお渡しができますので、ご希望の方はご連絡をください。※正会員にお申し込みいただければダウンロード可能となります。";
 	
+	
+	// Anken
+	public static List<String> listIDBookMark;
 	
 }

@@ -40,7 +40,7 @@ public class TestCase_01_Popup extends TestHelper {
 			Assert.fail();
 		}
 	}
-	
+
 	@Test
 	public void TC_04_Check_Text_Right5_Popup() throws InterruptedException {
 		try {
@@ -49,7 +49,7 @@ public class TestCase_01_Popup extends TestHelper {
 			Assert.fail();
 		}
 	}
-	
+
 	@Test
 	public void TC_05_Check_Selected_All_Checboxs() throws InterruptedException {
 		try {
@@ -58,7 +58,7 @@ public class TestCase_01_Popup extends TestHelper {
 			Assert.fail();
 		}
 	}
-	
+
 	@Test
 	public void TC_06_Check_Unselected_All_Checboxs() throws InterruptedException {
 		try {
@@ -67,6 +67,5 @@ public class TestCase_01_Popup extends TestHelper {
 			Assert.fail();
 		}
 	}
-	
 
 }

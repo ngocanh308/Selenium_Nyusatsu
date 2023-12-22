@@ -17,34 +17,27 @@ public class Login_Page {
 	Message msErrorLogin = new Message(By.cssSelector(".text-muted.mb-0.login_fail"));
 
 	private final String tabMenu = "#gnav li.authed-gnav__item:nth-child(%s) a"; // Tab menu
-	
-	LinkText  lblBudget_Tab = new LinkText(By.cssSelector("#gnav li.authed-gnav__item:nth-child(1) a "));
-	LinkText  lblYotei_Tab = new LinkText(By.cssSelector("#gnav li.authed-gnav__item:nth-child(2) a "));
-	LinkText  lblBoth_Tab = new LinkText(By.cssSelector("#gnav li.authed-gnav__item:nth-child(3) a "));
-	LinkText  lblMail_Tab = new LinkText(By.cssSelector("#gnav li.authed-gnav__item:nth-child(4) a "));
-	LinkText  lblAnken_Tab = new LinkText(By.cssSelector("#gnav li.authed-gnav__item:nth-child(5) a "));
-	
-	
-	public void login(String username, String password) throws InterruptedException
-	{
-		
-			lblIconLogin.clickLinkText();
-			txtUserName.type(username);
-			txtPassWord.type(password);
-			btnLogin.click();
+
+	LinkText lblBudget_Tab = new LinkText(By.cssSelector("#gnav li.authed-gnav__item:nth-child(1) a "));
+	LinkText lblYotei_Tab = new LinkText(By.cssSelector("#gnav li.authed-gnav__item:nth-child(2) a "));
+	LinkText lblBoth_Tab = new LinkText(By.cssSelector("#gnav li.authed-gnav__item:nth-child(3) a "));
+	LinkText lblMail_Tab = new LinkText(By.cssSelector("#gnav li.authed-gnav__item:nth-child(4) a "));
+	LinkText lblAnken_Tab = new LinkText(By.cssSelector("#gnav li.authed-gnav__item:nth-child(5) a "));
+
+	public void login(String username, String password) throws InterruptedException {
+
+		lblIconLogin.clickLinkText();
+		txtUserName.type(username);
+		txtPassWord.type(password);
+		btnLogin.click();
 	}
-	
 
-
-	
-	public String getErrorMessageLogin()
-	{
+	public String getErrorMessageLogin() {
 		return msErrorLogin.getTextMessage();
 	}
-	
-	
+
 	public void clickTabMenu(String text) {
 		DriverUtils.getDriver().findElement(By.cssSelector(String.format(tabMenu, text))).click();
 	}
-	
+
 }

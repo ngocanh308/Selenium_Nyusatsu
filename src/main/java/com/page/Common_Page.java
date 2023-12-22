@@ -10,6 +10,7 @@ import javax.lang.model.element.Element;
 
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import com.common.Button;
@@ -33,9 +34,7 @@ public class Common_Page {
 	private final String bookmarkItem = "div#searchResult>div:nth-child(%s) span.bookmark-text";
 
 	// Variable public
-	
-	
-	
+
 	public void inputOR(String inputText) throws InterruptedException {
 		txtOR.type(inputText);
 		search.click();
@@ -76,7 +75,6 @@ public class Common_Page {
 			for (File file : listOfFiles) {
 				// get the name of the current file
 				fileName = file.getName().toLowerCase();
-				System.out.print("File name______________" + fileName);
 
 				// condition 1 - Last Modified Time > Start Time ( + 10000 vì lastModified luon
 				// luon be hơn start time - Cheat)
@@ -106,7 +104,6 @@ public class Common_Page {
 		boolean isFileAvailabel = false;
 		for (File listofFile : listofFiles) {
 			String filename = listofFile.getName();
-			System.out.print("File name______________" + filename);
 			if (filename.matches(expectedFileName))
 				isFileAvailabel = true;
 		}
@@ -123,60 +120,98 @@ public class Common_Page {
 	}
 
 	public boolean isDisplayResult() throws InterruptedException {
-	WebElement result = DriverUtils.getDriver().findElement(By.xpath("//*[@id=\"searchResult\"]"));
-			if (StringUtils.isNoneBlank(result.getText()))
-			{
-				System.out.println("Tim thay___________________");
-				return true;
-			}
-	        else
-	        {
-
-	        	System.out.println("KHONG___________________");
-	        	return false;
-	        }
+		WebElement result = DriverUtils.getDriver().findElement(By.xpath("//*[@id=\"searchResult\"]"));
+		if (StringUtils.isNoneBlank(result.getText())) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-	
+
 	public boolean isElementPresent(By locatorKey) {
-	    try {
-	    	DriverUtils.getDriver().findElement(locatorKey);
-	        return true;
-	    } catch (org.openqa.selenium.NoSuchElementException e) {
-	        return false;
-	    }
+		try {
+			DriverUtils.getDriver().findElement(locatorKey);
+			return true;
+		} catch (org.openqa.selenium.NoSuchElementException e) {
+			return false;
+		}
 	}
 
 	public void selectPaging(String value) throws InterruptedException {
 		numPage.selectValue(value);
 	}
-	
-	public void isBookmarkSuccess(int numItem)
-	{
-		boomarkItem(numItem);
-		List<WebElement> listItems = DriverUtils.getDriver().findElements(By.xpath("//*[@id=\"searchResult\"]/div"));
-		if(listItems.size() == numItem)
-		{
-			
+
+	public boolean isBookmarkSuccess(String tab) {
+		// boomarkItemBoth(numItem);
+		boolean isValid = false;
+		List<String> listIDAnkenBoth = new ArrayList<String>();
+		List<WebElement> listItems = DriverUtils.getDriver().findElements(By.cssSelector("div#searchResult>div"));
+		for (int i = 1; i <= listItems.size(); i++) {
+			if (tab.equals("BOTH")) {
+				listIDAnkenBoth.add(DriverUtils.getDriver().findElement(By.cssSelector("div#searchResult>div:nth-child(" + i + ") span.item_id")).getText());
+			} else if (tab.equals("YOTEI")) {
+				listIDAnkenBoth.add(DriverUtils.getDriver().findElement(By.cssSelector("div#searchResult>div:nth-child(" + i + ") span.nk-item__status-no")).getText());
+			}
 		}
+		for (int j = 0; j < listIDAnkenBoth.size(); j++) {
+			// if (listIDAnkenBoth.get(j).equals(listIDBookMark.get(j))) {
+			if (listIDAnkenBoth.get(j).contains(Constant.listIDBookMark.get(j))) {
+				isValid = true;
+			} else {
+				isValid = false;
+			}
+		}
+		return isValid;
 	}
-	
+
+	public void boomarkItem(String tab, int numberItem) { // ONLY USE FOR FUNCTION isBookmarBothkSuccess()
+		int tmp = 0;
+		List<String> temnpListIDBookMark = new ArrayList<String>();
+		List<WebElement> listItems = DriverUtils.getDriver().findElements(By.xpath("//*[@id=\"searchResult\"]/div"));
+		for (int i = 1; i <= listItems.size(); i++) {
+			if (numberItem != 0 && tmp == numberItem) {
+				break;
+			}
+			WebElement item = DriverUtils.getDriver().findElement(By.cssSelector("div#searchResult>div:nth-child(" + i + ") div.nk-item__title-favorite"));
+			String isBookmark = item.getAttribute("class");
+			if (isBookmark.contains("no_bookmark")) { // bookmarked -> no_bookmark
+				item.click();
+				tmp++;
+				if (tab.equals("BOTH")) {
+					WebElement itemID = DriverUtils.getDriver().findElement(By.cssSelector("div#searchResult>div:nth-child(" + i + ") div.nk-item__status-area span.item_id"));
+					temnpListIDBookMark.add(itemID.getText());
+				} else if (tab.equals("YOTEI")) {
+					WebElement itemID = DriverUtils.getDriver().findElement(By.cssSelector("div#searchResult>div:nth-child(" + i + ") div.nk-item__status-area span.nk-item__status-no"));
+					temnpListIDBookMark.add(itemID.getText());
+				}
+
+			}
+		}
+		if (!temnpListIDBookMark.isEmpty()) {
+			Constant.listIDBookMark = temnpListIDBookMark;
+		}
+
+	}
 
 	public void boomarkItem(int numberItem) {
 		int tmp = 0;
 		List<WebElement> listItems = DriverUtils.getDriver().findElements(By.xpath("//*[@id=\"searchResult\"]/div"));
-		List<String> listID = new ArrayList<String>();
 		for (int i = 1; i <= listItems.size(); i++) {
-			if (tmp == numberItem) {
+			if (numberItem != 0 && tmp == numberItem) {
 				break;
 			}
 			WebElement item = DriverUtils.getDriver().findElement(By.cssSelector("div#searchResult>div:nth-child(" + i + ") div.nk-item__title-favorite"));
-			String isBookmark = item.getAttribute("class"); 
-			if (isBookmark.contains("no_bookmark")) {	// bookmarked -> no_bookmark
+			String isBookmark = item.getAttribute("class");
+			if (isBookmark.contains("no_bookmark")) { // bookmarked -> no_bookmark
 				item.click();
 				tmp++;
-				//listID.add(DriverUtils.getDriver().findElement(By.xpath("//span[@class=\"nk-item__status-no item_id\"]")).getText());
 			}
 		}
 
+	}
+
+	public void scrollToTop(int x, int y) {
+		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
+		js.executeScript("window.scrollBy(" + x + "," + y + ")");
 	}
 }

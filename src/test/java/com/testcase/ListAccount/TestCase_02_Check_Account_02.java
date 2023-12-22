@@ -144,7 +144,15 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	
 	@Test
 	public void TC_15_Bookmark_Item_Yotei_Success() throws InterruptedException, IOException {
-		both.boomarkItem(3);
+		yotei.boomarkItem("YOTEI",5);
+		yotei.scrollToTop(0, 250);
+		login.clickTabMenu("5");
+		anken.clickTabMenuAnken("1");
+		try {
+			Assert.assertTrue(anken.isBookmarkSuccess("YOTEI"));
+		} catch (AbstractMethodError e) {
+			Assert.fail();
+		}
 	}
 
 
@@ -157,9 +165,9 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	}
 
 	@Test
-	public void TC_17_Download_File_CSV_Success() throws InterruptedException, IOException {
+	public void TC_17_Download_File_CSV_Both_Success() throws InterruptedException, IOException {
 		both.downloadCSV("o");
-		Thread.sleep(6000);
+		Thread.sleep(2000);
 		try {
 			Assert.assertTrue(both.isFileDownloaded("nyusatsu_king_2023", "csv", 5000));
 		} catch (AbstractMethodError e) {
@@ -169,14 +177,22 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	}
 
 	@Test
-	public void TC_18_Bookmark_Item_Success() throws InterruptedException, IOException {
-		both.boomarkItem(3);
+	public void TC_18_Bookmark_Item_Both_Success() throws InterruptedException, IOException {
+		both.boomarkItem("BOTH",3);
+		both.scrollToTop(0, 250);
+		login.clickTabMenu("5");
+		anken.clickTabMenuAnken("2");
+		try {
+			Assert.assertTrue(anken.isBookmarkSuccess("BOTH"));
+		} catch (AbstractMethodError e) {
+			Assert.fail();
+		}
 	}
+	
 	
 	@Test // Check download CSV Anken Yotei
 	public void TC_19_Download_File_CSV_Anken_Yotei_Success() throws InterruptedException, IOException {
-		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
-		js.executeScript("window.scrollBy(0,250)");
+		both.scrollToTop(0, 250);
 		login.clickTabMenu("5");
 		anken.clickTabMenuAnken("1");
 		anken.selectValueYearYotei("2024-2022");

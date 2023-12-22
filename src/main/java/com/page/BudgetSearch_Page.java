@@ -1,4 +1,5 @@
 package com.page;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +29,8 @@ public class BudgetSearch_Page {
 	String listYear = "//select[@name='%s']";
 	String listOptionYear = "//select[@name='%s']/option";
 	String actual[];
-	
-	//List text label
+
+	// List text label
 	Label lblHearderBudget = new Label(By.cssSelector(".ttl-type_003 a"));
 	String listLabelSearch = ".search__f-box-l h3";
 //	Label lblHearderBudget = new Label(By.cssSelector(".ttl-type_003 a"));
@@ -38,12 +39,11 @@ public class BudgetSearch_Page {
 //	Label lblHearderBudget = new Label(By.cssSelector(".ttl-type_003 a"));
 //	Label lblHearderBudget = new Label(By.cssSelector(".ttl-type_003 a"));
 //	Label lblHearderBudget = new Label(By.cssSelector(".ttl-type_003 a"));
-	
-	public List<String> getTextLabelSearch(){
+
+	public List<String> getTextLabelSearch() {
 		List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.cssSelector(String.format(listLabelSearch)));
 		List<String> text = new ArrayList<String>();
-		for(WebElement item:allOptions)
-		{
+		for (WebElement item : allOptions) {
 			text.add(item.getText());
 		}
 		return text;
@@ -58,19 +58,17 @@ public class BudgetSearch_Page {
 		List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.xpath(String.format(listOptionYear, name)));
 		return allOptions.size();
 	}
-	
-	public boolean validateValueListDropDown(String name,String[] expectList) {
+
+	public boolean validateValueListDropDown(String name, String[] expectList) {
 		WebElement dropdown = DriverUtils.getDriver().findElement(By.xpath(String.format(listYear, name)));
 		Select sel = new Select(dropdown);
 		List<WebElement> option = sel.getOptions();
 		for (int i = 0; i < option.size(); i++) {
-			if(option.get(i).getText().equals(expectList[i])) {
+			if (option.get(i).getText().equals(expectList[i])) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	
 
 }
