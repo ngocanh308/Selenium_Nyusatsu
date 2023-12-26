@@ -9,19 +9,19 @@ public class Listbox extends PageObject {
 		super(locator);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public void selectVisibleText(String text) {
-		Select list = new Select (this.getRuntimeElement());
+		Select list = new Select(this.getRuntimeElement());
 		list.selectByVisibleText(text);
 	}
-	
+
 	public void selectValue(String value) {
-		Select list = new Select (this.getRuntimeElement());
+		Select list = new Select(this.getRuntimeElement());
 		list.selectByValue(value);
 	}
-	
+
 	public void selectIndex(int index) {
-		Select list = new Select (this.getRuntimeElement());
+		Select list = new Select(this.getRuntimeElement());
 		list.selectByIndex(index);
 	}
 
@@ -29,5 +29,5 @@ public class Listbox extends PageObject {
 		return this.getRuntimeElement().getText();
 
 	}
-	
+
 }

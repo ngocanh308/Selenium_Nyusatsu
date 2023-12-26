@@ -19,7 +19,7 @@ public class TestCase_01_Popup extends TestHelper {
 		login.login(Constant.USERNAME, Constant.PASSWORD);
 		Thread.sleep(3000);
 		login.clickTabMenu("2");
-		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLYOTEI);
+		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_YOTEI);
 	}
 
 	@Test

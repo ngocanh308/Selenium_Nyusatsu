@@ -13,7 +13,7 @@ public class TestHelper {
 	@BeforeClass
 	public void BeforeClass() {
 		DriverUtils.setUpDriver();
-		DriverUtils.getDriver().get(Constant.URLHOME);
+		DriverUtils.getDriver().get(Constant.URL_HOME);
 		DriverUtils.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 

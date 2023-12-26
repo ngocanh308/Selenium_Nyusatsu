@@ -18,7 +18,7 @@ public class PageObject {
 	}
 
 	public WebElement getRuntimeElement() {
-		waitToElementVisible(30, this.locator);
+		waitToElementVisible(10, this.locator);
 		this.runtimeElement = DriverUtils.getDriver().findElement(this.locator);
 		return this.runtimeElement;
 	}

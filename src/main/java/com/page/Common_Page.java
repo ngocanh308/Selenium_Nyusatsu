@@ -214,4 +214,15 @@ public class Common_Page {
 		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
 		js.executeScript("window.scrollBy(" + x + "," + y + ")");
 	}
+	
+	public boolean is_Visible_IMG( WebElement img) {
+		boolean foo = false;
+		Boolean is_visibleIMG = (Boolean) ((JavascriptExecutor)DriverUtils.getDriver()) .executeScript("return arguments[0].complete " + "&& typeof arguments[0].naturalWidth != \"undefined\" " + "&& arguments[0].naturalWidth > 0", img);
+		if (is_visibleIMG){
+			foo = true;
+		} else {
+			foo = false;
+		}
+		return foo;			
+	}
 }

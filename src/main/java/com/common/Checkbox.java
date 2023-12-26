@@ -1,4 +1,5 @@
 package com.common;
+
 import org.openqa.selenium.By;
 
 public class Checkbox extends PageObject {
@@ -8,14 +9,12 @@ public class Checkbox extends PageObject {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	public void click() {
 		this.getRuntimeElement().click();
 	}
-	
+
 	public boolean isSelectCheckBox() {
 		return this.getRuntimeElement().isSelected();
 	}
-	
-}
 
+}

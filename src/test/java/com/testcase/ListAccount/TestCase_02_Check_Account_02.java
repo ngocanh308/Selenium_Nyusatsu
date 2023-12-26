@@ -27,13 +27,13 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	public void TC_01_Login_Sucess() throws InterruptedException {
 		login.login(Constant.LIST_USERNAME[1], Constant.LIST_PASSWORD[1]);
 		Thread.sleep(3000);
-		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME + Constant.URLBOTH);
+		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BOTH);
 	}
 
 	@Test // 1. Check Page Budget
 	public void TC_02_Lock_Page_Budget() throws InterruptedException {
 		login.clickTabMenu("1");
-		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME + Constant.URLBUDGET);
+		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BUDGET);
 	}
 
 	@Test
@@ -77,11 +77,11 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
 		js.executeScript("window.scrollBy(0,250)");
 		login.clickTabMenu("5");
-		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME + Constant.URLANKEN);
+		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_ANKEN);
 	}
 
 	@Test 
-	public void TC_08_Open_Anken_Yotei() throws InterruptedException {
+	public void TC_08_Open_Anken_Yotei_Success() throws InterruptedException {
 		anken.clickTabMenuAnken("1");
 		try {
 			Assert.assertTrue(anken.isTabSelect("1"));
@@ -126,7 +126,7 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	@Test // Check page Yotei
 	public void TC_12_Open_Success_Yotei_Page() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME + Constant.URLYOTEI);
+		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_YOTEI);
 	}
 
 	@Test
@@ -160,7 +160,7 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	@Test // Check page Both
 	public void TC_16_Open_Success_Both_Page() throws InterruptedException {
 		login.clickTabMenu("3");
-		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME + Constant.URLBOTH);
+		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BOTH);
 
 	}
 

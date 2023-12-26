@@ -1,4 +1,5 @@
 package com.testcase.LoginPage;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,10 +20,10 @@ public class Testcase_03_Login_List_Account extends TestHelper {
 		for (int i = 0; i < Constant.LIST_USERNAME.length; i++) {
 			login.login(Constant.LIST_USERNAME[i], Constant.LIST_PASSWORD[i]);
 			Thread.sleep(2000);
-			Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLBOTH);
+			Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BOTH);
 			logout.logout();
 			Thread.sleep(2000);
-			Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME);
+			Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_HOME);
 
 		}
 	}

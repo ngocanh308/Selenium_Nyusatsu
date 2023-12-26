@@ -19,7 +19,7 @@ public class TestCase_01_UI_Page extends TestHelper {
 		login.login(Constant.USERNAME, Constant.PASSWORD);
 		Thread.sleep(3000);
 		login.clickTabMenu("1");
-		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URLHOME + Constant.URLBUDGET);
+		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BUDGET);
 	}
 
 	@Test
