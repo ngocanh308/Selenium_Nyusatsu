@@ -11,6 +11,7 @@ import javax.lang.model.element.Element;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -271,10 +272,16 @@ public class Common_Page {
     
   //II. UI DEFINE
     
-//    public void getColorText(WebElement element)
-//    {
-//    	Actions actions = new Actions(driver);
-//    	String text_color = element.getCssValue("color");
-//    	
-//    }
+    public boolean isAlertPresent() 
+    { 
+        try 
+        { 
+        	DriverUtils.getDriver().switchTo().alert(); 
+            return true; 
+        }   // try 
+        catch (NoAlertPresentException Ex) 
+        { 
+            return false; 
+        }   // catch 
+    }   // isAlertPresent()
 }

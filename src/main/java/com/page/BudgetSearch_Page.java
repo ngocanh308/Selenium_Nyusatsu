@@ -133,16 +133,23 @@ public class BudgetSearch_Page extends Common_Page {
 		return isValid;
 	}
 
-	public void unFavorite()
+	public void unFavorite() throws InterruptedException
 	{
 		btnfavorite.click();
-		List<WebElement> listItems = DriverUtils.getDriver().findElements(By.cssSelector("#searchResult > div"));
-		for(int i = 1;  i<= listItems.size(); i++)
+		Thread.sleep(3000);
+		if(!isAlertPresent())		
 		{
-			WebElement itemFavorite = DriverUtils.getDriver().findElement(By.cssSelector("#searchResult > div:nth-child(" + i + ") > div.nk-item__title-favorite.bookmarked"));
-			itemFavorite.click();
+			List<WebElement> listItems = DriverUtils.getDriver().findElements(By.cssSelector("#searchResult > div"));
+			for(int i = 1;  i<= listItems.size(); i++)
+			{
+				WebElement itemFavorite = DriverUtils.getDriver().findElement(By.cssSelector("#searchResult > div:nth-child(" + i + ") > div.nk-item__title-favorite.bookmarked"));
+				itemFavorite.click();
+			}
 		}
-		
+		else
+		{
+			DriverUtils.getDriver().switchTo().alert().accept();
+		}
 
 	}
 
