@@ -2,7 +2,6 @@ package com.testcase.LoginPage;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.common.Constant;
 import com.common.DriverUtils;
 import com.page.Login_Page;
@@ -23,8 +22,8 @@ public class Testcase_03_Login_List_Account extends TestHelper {
 			Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BOTH);
 			logout.logout();
 			Thread.sleep(2000);
-			Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_HOME);
-
+			Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME );
+			
 		}
 	}
 }

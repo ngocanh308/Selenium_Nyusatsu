@@ -2,9 +2,7 @@ package com.testcase.ListAccount;
 
 import java.io.IOException;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,7 +15,7 @@ import com.page.Yotei_Page;
 import com.testcase.TestHelper;
 import com.page.Anken_Page;
 
-public class TestCase_02_Check_Account_02 extends TestHelper {
+public class TestCase_03_Check_Account_03 extends TestHelper {
 
 	Login_Page login = new Login_Page();
 	BudgetSearch_Page budget = new BudgetSearch_Page();
@@ -26,7 +24,7 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	Anken_Page anken = new Anken_Page();
 
 	@Test
-	public void TC_01_Login_Sucess() throws Exception {
+	public void TC_01_Login_Sucess() throws InterruptedException {
 		login.login(Constant.LIST_USERNAME[1], Constant.LIST_PASSWORD[1]);
 		Thread.sleep(3000);
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BOTH);
@@ -73,35 +71,9 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 			Assert.fail();
 		}
 	}
-	
-	@Test 
-	public void TC_071_Un_Favorite_Success() throws InterruptedException {
-		budget.unFavorite();
-	}
-	
-	@Test 
-	public void TC_07_Show_Result_Success() throws InterruptedException {
-		budget.searchKWBudget("anken", "2021", "2023");
-		try {
-			Assert.assertTrue(budget.isDisplayResultBudget());
-		} catch (AbstractMethodError e) {
-			Assert.fail();
-		}
-	}
-	
-	@Test 
-	public void TC_08_Favorite_Success() throws InterruptedException {
-		budget.favoriteBudget(5);
-		budget.scrollToTop(0, 250);
-		try {
-			Assert.assertTrue(budget.isFavoriteSucess());
-		} catch (AbstractMethodError e) {
-			Assert.fail();
-		}
-	}
 
 	@Test // Check page Anken
-	public void TC_09_Open_Success_Anken_Page() throws InterruptedException {
+	public void TC_07_Open_Success_Anken_Page() throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
 		js.executeScript("window.scrollBy(0,250)");
 		login.clickTabMenu("5");
@@ -109,7 +81,7 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	}
 
 	@Test 
-	public void TC_10_Open_Anken_Yotei_Success() throws InterruptedException {
+	public void TC_08_Open_Anken_Yotei_Success() throws InterruptedException {
 		anken.clickTabMenuAnken("1");
 		try {
 			Assert.assertTrue(anken.isTabSelect("1"));
@@ -120,9 +92,9 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	}
 
 	@Test
-	public void TC_11_Delete_Anken_Yotei_Success() throws InterruptedException {
-		anken.selectValueYearYotei("2025-2023");
-		anken.deleteAnken("2025-2023");
+	public void TC_09_Delete_Anken_Yotei_Success() throws InterruptedException {
+		anken.selectValueYearYotei("2024-2022");
+		anken.deleteAnken("2024-2022");
 		try {
 			Assert.assertTrue(!anken.isDisplayResult());
 		} catch (AbstractMethodError e) {
@@ -131,7 +103,7 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	}
 
 	@Test
-	public void TC_12_Open_Anken_Both() throws InterruptedException {
+	public void TC_10_Open_Anken_Both() throws InterruptedException {
 		anken.clickTabMenuAnken("2");
 		try {
 			Assert.assertTrue(anken.isTabSelect("2"));
@@ -142,9 +114,9 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	}
 
 	@Test //
-	public void TC_13_Delete_Anken_Both_Success() throws InterruptedException {
-		anken.selectValueYearBoth("2024-2021");
-		anken.deleteAnken("2024-2021");
+	public void TC_11_Delete_Anken_Both_Success() throws InterruptedException {
+		anken.selectValueYearBoth("2023-2020");
+		anken.deleteAnken("2023-2020");
 		try {
 			Assert.assertTrue(!anken.isDisplayResult());
 		} catch (AbstractMethodError e) {
@@ -152,26 +124,26 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 		}
 	}
 	@Test // Check page Yotei
-	public void TC_14_Open_Success_Yotei_Page() throws InterruptedException {
+	public void TC_12_Open_Success_Yotei_Page() throws InterruptedException {
 		login.clickTabMenu("2");
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_YOTEI);
 	}
 
 	@Test
-	public void TC_15_Show_Popup_Download_Faile() throws InterruptedException {
+	public void TC_13_Show_Popup_Download_Faile() throws InterruptedException {
 		yotei.downloadCSV("o");
 		Assert.assertEquals(yotei.getErrorMessagePopup(), Constant.ERROR_DOWNLOAD_CSV);
 
 	}
 	
 	@Test
-	public void TC_16_Close_Popup_Download_Faile() throws InterruptedException {
+	public void TC_14_Close_Popup_Download_Faile() throws InterruptedException {
 		yotei.closePopup();
 
 	}
 	
 	@Test
-	public void TC_17_Bookmark_Item_Yotei_Success() throws InterruptedException, IOException {
+	public void TC_15_Bookmark_Item_Yotei_Success() throws InterruptedException, IOException {
 		yotei.boomarkItem("YOTEI",5);
 		yotei.scrollToTop(0, 250);
 		login.clickTabMenu("5");
@@ -186,19 +158,18 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 
 
 	@Test // Check page Both
-	public void TC_18_Open_Success_Both_Page() throws InterruptedException {
+	public void TC_16_Open_Success_Both_Page() throws InterruptedException {
 		login.clickTabMenu("3");
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BOTH);
 
 	}
 
 	@Test
-	public void TC_19_Download_File_CSV_Both_Success() throws InterruptedException, IOException {
-		both.delete_File();
+	public void TC_17_Download_File_CSV_Both_Success() throws InterruptedException, IOException {
 		both.downloadCSV("o");
 		Thread.sleep(2000);
 		try {
-			Assert.assertTrue(both.isFileDownloaded("nyusatsu_king_2024", "csv", 5000));
+			Assert.assertTrue(both.isFileDownloaded("nyusatsu_king_2023", "csv", 5000));
 		} catch (AbstractMethodError e) {
 			Assert.fail();
 		}
@@ -206,7 +177,7 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	}
 
 	@Test
-	public void TC_20_Bookmark_Item_Both_Success() throws InterruptedException, IOException {
+	public void TC_18_Bookmark_Item_Both_Success() throws InterruptedException, IOException {
 		both.boomarkItem("BOTH",3);
 		both.scrollToTop(0, 250);
 		login.clickTabMenu("5");
@@ -220,14 +191,14 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	
 	
 	@Test // Check download CSV Anken Yotei
-	public void TC_21_Download_File_CSV_Anken_Yotei_Success() throws InterruptedException, IOException {
+	public void TC_19_Download_File_CSV_Anken_Yotei_Success() throws InterruptedException, IOException {
 		both.scrollToTop(0, 250);
 		login.clickTabMenu("5");
 		anken.clickTabMenuAnken("1");
-		anken.selectValueYearYotei("2025-2023");
+		anken.selectValueYearYotei("2024-2022");
 		anken.downloadAnken();
 		try {
-			Assert.assertTrue(anken.isFileDownloaded("nyusatsu_king_yotei_2024","csv",5000));
+			Assert.assertTrue(anken.isFileDownloaded("nyusatsu_king_yotei_2023","csv",5000));
 		} catch (AbstractMethodError e) {
 			Assert.fail();
 		}
@@ -235,12 +206,12 @@ public class TestCase_02_Check_Account_02 extends TestHelper {
 	}
 	
 	@Test // Check download CSV Anken Both
-	public void TC_22_Download_File_CSV_Anken_Both_Success() throws InterruptedException, IOException {
+	public void TC_20_Download_File_CSV_Anken_Both_Success() throws InterruptedException, IOException {
 		anken.clickTabMenuAnken("2");
-		anken.selectValueYearBoth("2024-2021");
+		anken.selectValueYearBoth("2023-2020");
 		anken.downloadAnken();
 		try {
-			Assert.assertTrue(anken.isFileDownloaded("nyusatsu_king_2024","csv",5000));
+			Assert.assertTrue(anken.isFileDownloaded("nyusatsu_king_2023","csv",5000));
 		} catch (AbstractMethodError e) {
 			Assert.fail();
 		}

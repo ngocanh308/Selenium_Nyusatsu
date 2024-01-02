@@ -1,8 +1,11 @@
 package com.page;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import com.common.Button;
 import com.common.DriverUtils;
 import com.common.LinkText;
@@ -26,6 +29,20 @@ public class Login_Page {
 
 	public void login(String username, String password) throws InterruptedException {
 
+		lblIconLogin.clickLinkText();
+		txtUserName.type(username);
+		txtPassWord.type(password);
+		btnLogin.click();
+	}
+	
+	public void login_authen(String username, String password) throws InterruptedException, Exception {
+		String url = DriverUtils.getDriver().getCurrentUrl().replaceAll("https://", "");
+		String username1 = "zuno";
+		String password1 = "g1";
+		String URL = "https://" + username  + ":" + password + "@" + url;
+		DriverUtils.getDriver().get(URL); // Basically operation done here itself still if not work use further Alert code as well
+		Alert alert = DriverUtils.getDriver().switchTo().alert();
+		alert.accept(); 
 		lblIconLogin.clickLinkText();
 		txtUserName.type(username);
 		txtPassWord.type(password);

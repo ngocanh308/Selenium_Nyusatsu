@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import com.common.Button;
 import com.common.Constant;
@@ -24,17 +25,19 @@ import com.common.Textbox;
 public class Common_Page {
 	Textbox txtOR = new Textbox(By.cssSelector("#subjectORTable input.subjectOR:nth-child(1)"));
 	Button search = new Button(By.cssSelector("a#btn_form_submit>span.nk-btn-inner"));
-	Button downloadCSV = new Button(By.cssSelector("#export_csv"));
+	Button downloadCSV = new Button(By.id("export_csv"));
 	Message msPopupError = new Message(By.cssSelector(".condition__text-result.flex-warn span"));
 	Button closePopupError = new Button(By.xpath("//p[@class=\"condition__text-result flex-warn\"]/preceding::label[@for=\"js-message\"]"));
 	Listbox numPage = new Listbox(By.cssSelector("#frmPagesize"));
 	Label listResult = new Label(By.xpath("//*[@id=\"searchResult\"]"));
 
-	private final String tabMenu = "//*[@id=\\\"searchResult\\\"]/div[1]//span[@class=\\\"bookmark-text\\\"]"; // Tab menu
-	private final String bookmarkItem = "div#searchResult>div:nth-child(%s) span.bookmark-text";
+
 
 	// Variable public
+	String defaultWindow = "";
 
+	
+	//I. FUNCTION DEFINE
 	public void inputOR(String inputText) throws InterruptedException {
 		txtOR.type(inputText);
 		search.click();
@@ -45,7 +48,19 @@ public class Common_Page {
 		search.click();
 		Thread.sleep(2000);
 		downloadCSV.click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
+	}
+	
+	public void delete_File()
+	{
+		File[] listOfFiles =  new File(Constant.folderName).listFiles();
+		if(listOfFiles.length > 0)
+		{
+			for(int  i = 0; i< listOfFiles.length; i++)
+			{
+				listOfFiles[i].delete();
+			}
+		}
 	}
 
 	public boolean isFileDownloaded(String expectedFileName, String fileExtension, int timeOut) throws IOException {
@@ -225,4 +240,41 @@ public class Common_Page {
 		}
 		return foo;			
 	}
+
+
+	public static Boolean isVisibleInViewport(WebElement element) {
+
+		  return (Boolean)((JavascriptExecutor)DriverUtils.getDriver()).executeScript(
+		      "var elem = arguments[0],                 " +
+		      "  box = elem.getBoundingClientRect(),    " +
+		      "  cx = box.left + box.width / 2,         " +
+		      "  cy = box.top + box.height / 2,         " +
+		      "  e = document.elementFromPoint(cx, cy); " +
+		      "for (; e; e = e.parentElement) {         " +
+		      "  if (e === elem)                        " +
+		      "    return true;                         " +
+		      "}                                        " +
+		      "return false;                            "
+		      , element);
+		}
+	
+    public void openDialog(WebElement element) {
+    	element.click();
+        defaultWindow = DriverUtils.getDriver().getWindowHandle();
+        ArrayList<String> tabs = new ArrayList<String> (DriverUtils.getDriver().getWindowHandles());
+        tabs.remove(defaultWindow);
+        DriverUtils.getDriver().switchTo().window( tabs.get(0));
+
+    }
+    
+    
+    
+  //II. UI DEFINE
+    
+//    public void getColorText(WebElement element)
+//    {
+//    	Actions actions = new Actions(driver);
+//    	String text_color = element.getCssValue("color");
+//    	
+//    }
 }

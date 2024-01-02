@@ -1,10 +1,12 @@
 package com.common;
 
+import java.awt.Desktop.Action;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,7 +15,7 @@ public class PageObject {
 	private WebElement runtimeElement;
 	private By locator;
 
-	public PageObject(By locator) {
+	public PageObject(By locator) { 
 		this.locator = locator;
 	}
 
@@ -46,6 +48,11 @@ public class PageObject {
 		js.executeScript("window.scrollBy(0,1000)");
 	}
 	
-	
+    public void moveMouseToElement(WebElement element) {
+    	Actions ac = new Actions(DriverUtils.getDriver());
+    	ac.moveToElement(element).build().perform();
+    }
+
+
 
 }
