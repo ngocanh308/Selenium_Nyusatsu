@@ -5,6 +5,14 @@
 		<classes>
 			<class name="com.testcase.ListAccount.TestCase_01_Check_Account_01" ></class>
 			<class name="com.testcase.ListAccount.TestCase_02_Check_Account_02" ></class>
+			<class name="com.testcase.ListAccount.TestCase_03_Check_Account_03" ></class>
+			<class name="com.testcase.ListAccount.TestCase_04_Check_Account_04" ></class>
+			<class name="com.testcase.ListAccount.TestCase_05_Check_Account_05" ></class>
+			<class name="com.testcase.ListAccount.TestCase_06_Check_Account_06" ></class>
+			<class name="com.testcase.ListAccount.TestCase_07_Check_Account_07" ></class>
+			<class name="com.testcase.ListAccount.TestCase_08_Check_Account_08" ></class>
+			<class name="com.testcase.ListAccount.TestCase_09_Check_Account_09" ></class>
+			<class name="com.testcase.ListAccount.TestCase_10_Check_Account_10" ></class>
 		</classes>
 	</test>
 </suite>

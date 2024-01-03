@@ -47,6 +47,7 @@ public class Constant {
 	// Anken
 	public static List<String> listIDBookMark;
 	public static List<String> listIDFavorite;
+	public static String errorDownlaodAnken = "トライアル会員のお客様はダウンロード（CSV保存）できません。サンプルを作成してお渡しができますので、ご希望の方はご連絡をください。※正会員にお申し込みいただければダウンロード可能となります。";
 	
 	
 	//URL_ALL_Page
@@ -91,6 +92,9 @@ public class Constant {
 	public static final String URL_CHANGE_MAIL = "usermenu/mail_change/";
 	public static final String URL_INFOR_CHANGE = "usermenu/info_change/";
 	
-	// Text Page
-	
+	// Text PagE
+	public static final String SELECT_YEAR_ANKEN_YOTEI = "2025-2023";
+	public static final String SELECT_YEAR_ANKEN_BOTH = "2024-2021";
+	public static final String FILE_NAME_BOTH = "nyusatsu_king_2024";
+	public static final String FILE_NAME_YOTEI = "nyusatsu_king_yotei_2024";
 }

@@ -1,11 +1,16 @@
 package com.page;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.common.Listbox;
 import com.common.Button;
 import com.common.Checkbox;
 import com.common.DriverUtils;
+import com.common.Label;
 
 public class Anken_Page extends Common_Page {
 	private final String tabMenuAnken = ".nk-tab-menu__item:nth-child(%s)"; // Tab menu Anken 1=yotei, 2= both_item, 3 = nyusatsu ,4 = raku,
@@ -15,6 +20,7 @@ public class Anken_Page extends Common_Page {
 	Checkbox checkAll = new Checkbox(By.xpath("//div[@class=\"bookmark-anken__action\"]/div/div/label[@class=\"all-bookmark\"]"));
 	Button delete = new Button(By.cssSelector(".nk-btn.nk-btn--del.bookmark-anken__action-btn.btn_delete_bookmark"));
 	Button downloadCSV = new Button(By.xpath("//a[@class=\"nk-btn nk-btn--csv bookmark-anken__action-btn export_csv\"]"));
+	Label errorDownloadAnken = new Label(By.xpath("//*[@id=\"shadow1\"]/table[1]/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td"));
 
 	public void clickTabMenuAnken(String text) { // Click tab Anken 1=Yotei, 2=Both, 3=Nyu, 4=Raku
 		DriverUtils.getDriver().findElement(By.cssSelector(String.format(tabMenuAnken, text))).click();
@@ -59,5 +65,21 @@ public class Anken_Page extends Common_Page {
 			downloadCSV.click();
 		}
 	}
+	
+	 public String getErrorAnken() throws InterruptedException {
+		 String mainHandle = DriverUtils.getDriver().getWindowHandle();
+		 System.out.println("Main Windown ID "+mainHandle+"\n");
+		 downloadAnken();
+		 Set <String> allHandle = DriverUtils.getDriver().getWindowHandles();
+		 System.out.println("Windown Open after click "+allHandle.size()+"\n");
+		 Iterator it = allHandle.iterator();
+		 String parentId = (String) it.next();
+		 String childId = (String) it.next();
+		 Thread.sleep(2000);
+		 DriverUtils.getDriver().switchTo().window(childId);
+		 String errorMessage =  errorDownloadAnken.getTextLabel().replace("\n", "");
+		 return errorMessage;
+		 
+	 }
 
 }

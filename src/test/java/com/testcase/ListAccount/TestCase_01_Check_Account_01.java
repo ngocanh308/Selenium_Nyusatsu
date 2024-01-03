@@ -20,7 +20,7 @@ public class TestCase_01_Check_Account_01 extends TestHelper {
 	}
 
 	@Test
-	public void TC_02_Open_Success_Budget_Page() throws InterruptedException {
+	public void TC_02_Open_Success_Budget_Trial_Page() throws InterruptedException {
 		login.clickTabMenu("1");
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BUDGET_TRIAL);
 	}
