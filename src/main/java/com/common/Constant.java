@@ -39,6 +39,11 @@ public class Constant {
 	public static final String TEXT_FAVORITE = "お気に入りを表示";
 	public static final String TEXT_BUTTON = "機関選択";
 	
+	public static final String[] LEFT_ITEM ={"中央省庁","都道府県庁","区市町村"};
+	public static final String TEXT_LIST_1 = "設定あり (51機関)";
+	public static final String TEXT_LIST_2 = "設定あり (47機関)";
+	public static final String TEXT_LIST_3 = "設定あり (1710機関)";
+	
 	
 	//Yotei Search
 	public static final String ERROR_DOWNLOAD_CSV = "トライアル会員のお客様はダウンロード（CSV保存）できません。サンプルを作成してお渡しができますので、ご希望の方はご連絡をください。※正会員にお申し込みいただければダウンロード可能となります。";

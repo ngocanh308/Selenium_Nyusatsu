@@ -41,29 +41,17 @@ public class TestCase_01_UI_Page extends TestHelper {
 
 	@Test
 	public void TC_03_List_Item_Start_Year() throws InterruptedException {
-		try {
-			Assert.assertTrue(budget.sizeYear("DATE_S.year") == 11);
-		} catch (AssertionError e) {
-			Assert.fail();
-		}
+		Assert.assertEquals(budget.sizeYear("DATE_S.year") == 11, true);
 	}
 
 	@Test
 	public void TC_04_List_Item_End_Year() throws InterruptedException {
-		try {
-			Assert.assertTrue(budget.sizeYear("DATE_E.year") == 11);
-		} catch (AssertionError e) {
-			Assert.fail();
-		}
+		Assert.assertEquals(budget.sizeYear("DATE_E.year") == 11, true);
 	}
 
 	@Test
 	public void TC_05_List_Value_Droplist_Start_Year() throws InterruptedException {
-		try {
-			Assert.assertTrue(budget.validateValueListDropDown("DATE_S.year", Constant.LIST_BUDGET_YEAR_FULL));
-		} catch (AssertionError e) {
-			Assert.fail();
-		}
+		Assert.assertEquals(budget.validateValueListDropDown("DATE_S.year", Constant.LIST_BUDGET_YEAR_FULL), true);
 	}
 
 	@Test
@@ -75,9 +63,55 @@ public class TestCase_01_UI_Page extends TestHelper {
 		}
 	}
 
-	@Test
+	//@Test
 	public void TC_07_Check_All_Text_Label() throws InterruptedException {
 
 	}
+	
+	@Test
+	public void TC_08_Check_Popup() throws InterruptedException {
+		Assert.assertEquals(budget.getLeftItem(), Constant.LEFT_ITEM);
+	}
+	
+	
+	@Test
+	public void TC_09_UncheckAll_Success() throws InterruptedException {
+		Assert.assertEquals(budget.uncheckAllChecbox(), true);
+	}
+	
+	@Test
+	public void TC_10_CheckAll_Success() throws InterruptedException {
+		Assert.assertEquals(budget.checkAllChecbox(), true);
+	}
+	
+	@Test
+	public void TC_11_Check_Scroll_LeftMenu1() throws InterruptedException {
+		Assert.assertEquals(budget.checkScroll_1(), true);
+	}
 
+	
+	@Test
+	public void TC_12_Check_Scroll_LeftMenu2() throws InterruptedException {
+		Assert.assertEquals(budget.checkScroll_2(), true);
+	}
+	
+	@Test
+	public void TC_13_Check_Scroll_LeftMenu3() throws InterruptedException {
+		Assert.assertEquals(budget.checkScroll_3(), true);
+	}
+	
+	@Test
+	public void TC_14_Check_Text_List_1() throws InterruptedException {
+		Assert.assertEquals(budget.getTextList1(), Constant.TEXT_LIST_1);
+	}
+	
+	@Test
+	public void TC_15_Check_Text_List_2() throws InterruptedException {
+		Assert.assertEquals(budget.getTextList2(), Constant.TEXT_LIST_2);
+	}
+	
+	@Test
+	public void TC_16_Check_Text_List_3() throws InterruptedException {
+		Assert.assertEquals(budget.getTextList3(), Constant.TEXT_LIST_3);
+	}
 }

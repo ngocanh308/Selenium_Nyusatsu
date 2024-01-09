@@ -61,6 +61,7 @@ public class TestCase_01_List_URL_Web_Page extends TestHelper {
 	
 	@Test
 	public void TC_04_Open_URL_Price_Addid_Success() throws InterruptedException {
+		DriverUtils.getDriver().get(Constant.URL_HOME + Constant.URL_PRICE_ADDDID);
 		try {
 			Assert.assertTrue(linkPage.is_Visible_URL(Constant.URL_HOME + Constant.URL_PRICE_ADDDID));
 		} catch (AbstractMethodError e) {

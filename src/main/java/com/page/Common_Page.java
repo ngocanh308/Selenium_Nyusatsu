@@ -231,6 +231,11 @@ public class Common_Page {
 		js.executeScript("window.scrollBy(" + x + "," + y + ")");
 	}
 	
+	public void scrollToElement(WebElement element) {
+		JavascriptExecutor executor = (JavascriptExecutor)DriverUtils.getDriver();		
+		executor.executeScript("arguments[0].scrollIntoView(false);", element);
+	}
+	
 	public boolean is_Visible_IMG( WebElement img) {
 		boolean foo = false;
 		Boolean is_visibleIMG = (Boolean) ((JavascriptExecutor)DriverUtils.getDriver()) .executeScript("return arguments[0].complete " + "&& typeof arguments[0].naturalWidth != \"undefined\" " + "&& arguments[0].naturalWidth > 0", img);
@@ -243,7 +248,7 @@ public class Common_Page {
 	}
 
 
-	public static Boolean isVisibleInViewport(WebElement element) {
+	public static boolean isVisibleInViewport(WebElement element) {
 
 		  return (Boolean)((JavascriptExecutor)DriverUtils.getDriver()).executeScript(
 		      "var elem = arguments[0],                 " +
@@ -266,6 +271,12 @@ public class Common_Page {
         tabs.remove(defaultWindow);
         DriverUtils.getDriver().switchTo().window( tabs.get(0));
 
+    }
+    
+    public String[] convertListToArray( List<String> names)
+    {
+    	 String[] namesArray = names.toArray(new String[0]);  
+    	 return namesArray;
     }
     
     

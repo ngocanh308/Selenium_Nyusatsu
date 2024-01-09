@@ -17,5 +17,12 @@ public class Textbox extends PageObject {
 	public void click() {
 		this.getRuntimeElement().click();
 	}
-
+	
+	public String getText() {
+		return this.getRuntimeElement().getText();
+	}
+	
+	public String getAttribute(String name) {
+		return this.getRuntimeElement().getAttribute(name);
+	}
 }
