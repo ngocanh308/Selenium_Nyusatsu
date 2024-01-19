@@ -69,49 +69,49 @@ public class TestCase_01_UI_Page extends TestHelper {
 	}
 	
 	@Test
-	public void TC_08_Check_Popup() throws InterruptedException {
+	public void TC_08_Check_Popup_Left_Text_Menu() throws InterruptedException {
 		Assert.assertEquals(budget.getLeftItem(), Constant.LEFT_ITEM);
 	}
 	
 	
 	@Test
-	public void TC_09_UncheckAll_Success() throws InterruptedException {
+	public void TC_09_Popup_UncheckAll_Success() throws InterruptedException {
 		Assert.assertEquals(budget.uncheckAllChecbox(), true);
 	}
 	
 	@Test
-	public void TC_10_CheckAll_Success() throws InterruptedException {
+	public void TC_10_Popup_CheckAll_Success() throws InterruptedException {
 		Assert.assertEquals(budget.checkAllChecbox(), true);
 	}
 	
 	@Test
-	public void TC_11_Check_Scroll_LeftMenu1() throws InterruptedException {
+	public void TC_11_Popup_Check_Scroll_LeftMenu1() throws InterruptedException {
 		Assert.assertEquals(budget.checkScroll_1(), true);
 	}
 
 	
 	@Test
-	public void TC_12_Check_Scroll_LeftMenu2() throws InterruptedException {
+	public void TC_12_Popup_Check_Scroll_LeftMenu2() throws InterruptedException {
 		Assert.assertEquals(budget.checkScroll_2(), true);
 	}
 	
 	@Test
-	public void TC_13_Check_Scroll_LeftMenu3() throws InterruptedException {
+	public void TC_13_Popup_Check_Scroll_LeftMenu3() throws InterruptedException {
 		Assert.assertEquals(budget.checkScroll_3(), true);
 	}
 	
 	@Test
-	public void TC_14_Check_Text_List_1() throws InterruptedException {
+	public void TC_14_Check_Textbox_Area_Display_When_click_Menu_Left_1_In_Popup() throws InterruptedException {
 		Assert.assertEquals(budget.getTextList1(), Constant.TEXT_LIST_1);
 	}
 	
 	@Test
-	public void TC_15_Check_Text_List_2() throws InterruptedException {
+	public void TC_15_Check_Textbox_Area_Display_When_click_Menu_Left_2_In_Popup() throws InterruptedException {
 		Assert.assertEquals(budget.getTextList2(), Constant.TEXT_LIST_2);
 	}
 	
 	@Test
-	public void TC_16_Check_Text_List_3() throws InterruptedException {
+	public void TC_16_Check_Textbox_Area_Display_When_click_Menu_Left_3_In_Popup() throws InterruptedException {
 		Assert.assertEquals(budget.getTextList3(), Constant.TEXT_LIST_3);
 	}
 }

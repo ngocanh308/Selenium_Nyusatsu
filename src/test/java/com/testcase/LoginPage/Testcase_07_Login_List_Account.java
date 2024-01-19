@@ -8,7 +8,7 @@ import com.page.Login_Page;
 import com.page.Logout;
 import com.testcase.TestHelper;
 
-public class Testcase_03_Login_List_Account extends TestHelper {
+public class Testcase_07_Login_List_Account extends TestHelper {
 
 	Login_Page login = new Login_Page();
 	Logout logout = new Logout();

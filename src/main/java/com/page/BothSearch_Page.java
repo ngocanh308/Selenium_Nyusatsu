@@ -10,15 +10,28 @@ import com.common.Button;
 import com.common.DriverUtils;
 
 public class BothSearch_Page extends Common_Page {
-	Button btnArea = new Button(By.id("block_open_button"));
-	String leftList = "#js-block__large-list ul.block__large-list li";
+	Button btnOpenArea = new Button(By.id("block_open_button"));
+	Button btnCloseArea = new Button(By.xpath("//*[@id=\"default_block\"]//label[@for='js-block']"));
+	String leftListArea = "#js-block__large-list ul.block__large-list li";
 	Button allCheckboxsOFF = new Button(By.id("js-block-off"));
 	Button allCheckboxsON = new Button(By.id("js-block-on"));
+	
 
+	
+	public void openPopupArea()
+	{
+		btnOpenArea.click();
+	}
+	
+	public void closePopupArea()
+	{
+		btnCloseArea.click();
+	}
+	
 	public boolean getListLeftPopup(String[] expectList) throws InterruptedException {
-		btnArea.click();
+		openPopupArea();
 		Thread.sleep(3000);
-		List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.cssSelector(String.format(leftList)));
+		List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.cssSelector(String.format(leftListArea)));
 		List<String> foo = new ArrayList<String>();
 		for (WebElement item : allOptions) {
 			foo.add(item.getText());

@@ -1,6 +1,5 @@
 package com.page;
 
-import java.awt.Checkbox;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +11,10 @@ import org.openqa.selenium.support.ui.Select;
 import com.common.Button;
 import com.common.Constant;
 import com.common.DriverUtils;
-import com.common.LinkText;
-import com.common.Textbox;
 import com.common.Label;
+import com.common.LinkText;
 import com.common.Listbox;
+import com.common.Textbox;
 
 public class BudgetSearch_Page extends Common_Page {
 	Button btnfavorite = new Button(By.id("bt_favorite"));
@@ -237,7 +236,7 @@ public class BudgetSearch_Page extends Common_Page {
 	{
 		String actualText;
 		uncheckAll.click();
-		scrollToElement(checkUncheck1.getRuntimeElement());
+		scrollToElementTop(checkUncheck1.getRuntimeElement());
 		checkUncheck1.click();
 		selectPopup.click();
 		actualText = txtList_Area.getAttribute("value");
@@ -250,7 +249,7 @@ public class BudgetSearch_Page extends Common_Page {
 		btnpopup_Area.click();
 		String actualText;
 		uncheckAll.click();
-		scrollToElement(checkUncheck2.getRuntimeElement());
+		scrollToElementTop(checkUncheck2.getRuntimeElement());
 		checkUncheck2.click();
 		selectPopup.click();
 		actualText = txtList_Area.getAttribute("value");
@@ -263,7 +262,7 @@ public class BudgetSearch_Page extends Common_Page {
 		btnpopup_Area.click();
 		String actualText;
 		uncheckAll.click();
-		scrollToElement(checkUncheck3.getRuntimeElement());
+		scrollToElementTop(checkUncheck3.getRuntimeElement());
 		checkUncheck3.click();
 		selectPopup.click();
 		actualText = txtList_Area.getAttribute("value");

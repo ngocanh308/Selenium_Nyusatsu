@@ -21,6 +21,10 @@ public class Constant {
 	public static final String[] LIST_PASSWORD = { "test0101", "TqMMJH$g", "aL4A7$@d", "YLnrA$E:", "xPSkgRNe", "eMAzMux#", "kU7B99tk", "2r&b8@zn", "uwg4SXX#", "test1010" };
 //	public static final String[] LIST_PASSWORD = { "3r==2jCS", "M3;Xu:g&", "Qgsb86XH", "7Ep:v4Q8", "C@nPWeb:", "CczKvQsQ", "kuK3JH=x", "2CKzyY@P", "uwg4SXX#", "q1w2e3r4" };
 
+	//Common Search
+	public static final String TEXT_23 = "まんがは、にほんのぶんかのとくちょちょうです。";
+	public static final String TEXT_20 = "まんがは、にほんのぶんかのとくちょちょう";
+	
 	// Budget Search page
 	public static final String TITLE_BUDGET = "予算書情報検索 | ［入札王］官公庁・自治体の入札・落札情報提供サービス";
 	public static final String[] LIST_BUDGET_YEAR_FULL = { "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024" };
@@ -47,6 +51,15 @@ public class Constant {
 	
 	//Yotei Search
 	public static final String ERROR_DOWNLOAD_CSV = "トライアル会員のお客様はダウンロード（CSV保存）できません。サンプルを作成してお渡しができますので、ご希望の方はご連絡をください。※正会員にお申し込みいただければダウンロード可能となります。";
+	public static final String TITLE_YOTEI = "入札予定情報検索 | ［入札王］官公庁・自治体の入札・落札情報提供サービス"; 
+	public static final String[] LEFT_KWSUGEST = {"食品","衣料・繊維製品","文房具事務用品・図書","家具・寝具・什器・備品等","厨房・給食機器及び業務","家電・カメラ・映像関連の機器・用品及び業務","事務機器及び業務",
+			"通信機器・システム及び業務","情報処理機器・ソフト及び業務","工作・産業・農業・建設用機械器具類","理化学機械器具類","薬品・防疫剤等","医療用機器・システム、医療・介護用品及び業務","各種車両・船舶・航空機",
+			"鉄鋼・非鉄・鋳鉄製品、コンクリート・セメント","燃料・ガス・油脂及び工事","警察・消防・防災関連の機器・システム及び業務","防衛等装備品類","デザイン・印刷・広告","調査・研究業務","翻訳・通訳・速記","運送・発送業務",
+			"電力供給","電気・電源設備及び工事","電話・通信設備及び工事","空調・換気・給排水・衛生機器及び工事","エレベーター設備及び業務","建物等の維持管理（清掃・警備・受付等）","建物等の解体・撤去","廃棄物の収集・運搬・処理等",
+			"建築工事","建築資材・プレハブ","内装工事","塗装・防水用品及び工事","土木工事","道路関連工事","道路等の維持管理","橋りょう関連工事","しゅんせつ（埋立）・潜かん","防音壁・しゃ音壁及び工事","水処理関連施設及び工事",
+			"造園・公園等整備","設計・測量","その他の物品","その他の業務委託","ＰＦＩ（指定管理者）"};
+	public static final String TEXT_COLOR = "rgba(0, 0, 0, 1)";
+	public static final String BACKGROUND_COLOR = "rgba(221, 221, 221, 1)";
 	
 	
 	// Anken
@@ -57,8 +70,8 @@ public class Constant {
 	
 	//URL_ALL_Page
 	public static final String URL_HOME = "https://www.nyusatsu-king.com/";
-//	public static final String URL_HOME = "https://nyusatsu-o-neo-dev-8085.zuno.vc/";
-	public static final String URL_HOME_AUTHEN = "https://zuno:g1@nyusatsu-o-neo-dev-8085.zuno.vc/";
+//	public static final String URL_HOME = "https://nyusatsu-o-neo-dev-8083.zuno.vc/";
+	public static final String URL_HOME_AUTHEN = "https://zuno:g1@nyusatsu-o-neo-dev-8083.zuno.vc/";
 	//public static final String URL_HOME = "http://54.250.184.6/";
 	public static final String URL_BOTH = "usermenu/both_item_search/";
 	public static final String URL_YOTEI = "usermenu/yotei_search/";

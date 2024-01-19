@@ -1,6 +1,5 @@
 package com.common;
 
-import java.awt.Desktop.Action;
 import java.time.Duration;
 
 import org.openqa.selenium.By;

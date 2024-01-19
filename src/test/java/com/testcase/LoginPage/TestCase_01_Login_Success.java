@@ -9,13 +9,13 @@ import com.page.Login_Page;
 import com.testcase.TestHelper;
 
 public class TestCase_01_Login_Success extends TestHelper {
-	
-	Login_Page  login = new Login_Page();
+
+	Login_Page login = new Login_Page();
 
 	@Test
 	public void TC_01_Login_Sucess() throws InterruptedException {
-			login.login(Constant.USERNAME,Constant.PASSWORD);
-			Thread.sleep(3000);
-			Assert.assertEquals( DriverUtils.getDriver().getCurrentUrl(),Constant.URL_HOME+ Constant.URL_BOTH);
+		login.login(Constant.USERNAME, Constant.PASSWORD);
+		Thread.sleep(3000);
+		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BOTH);
 	}
 }

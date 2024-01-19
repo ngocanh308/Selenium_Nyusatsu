@@ -4,13 +4,13 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import com.common.Listbox;
+
 import com.common.Button;
 import com.common.Checkbox;
 import com.common.DriverUtils;
 import com.common.Label;
+import com.common.Listbox;
 
 public class Anken_Page extends Common_Page {
 	private final String tabMenuAnken = ".nk-tab-menu__item:nth-child(%s)"; // Tab menu Anken 1=yotei, 2= both_item, 3 = nyusatsu ,4 = raku,
