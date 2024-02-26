@@ -12,5 +12,9 @@ public class Button extends PageObject {
 	public void click() {
 		this.getRuntimeElement().click();
 	}
+	
+	public String getTextButton() {
+		return this.getRuntimeElement().getText();
+	}
 
 }

@@ -13,8 +13,6 @@ public class BothSearch_Page extends Common_Page {
 	Button btnOpenArea = new Button(By.id("block_open_button"));
 	Button btnCloseArea = new Button(By.xpath("//*[@id=\"default_block\"]//label[@for='js-block']"));
 	String leftListArea = "#js-block__large-list ul.block__large-list li";
-	Button allCheckboxsOFF = new Button(By.id("js-block-off"));
-	Button allCheckboxsON = new Button(By.id("js-block-on"));
 	
 
 	
@@ -79,25 +77,5 @@ public class BothSearch_Page extends Common_Page {
 
 	}
 
-	public boolean checkAllChecbox() {
-		allCheckboxsOFF.click();
-		List<WebElement> checkboxs = DriverUtils.getDriver().findElements(By.cssSelector(".block__medium div>ul>li>label>input.js-block-m-check"));
-		for (int i = 0; i < checkboxs.size(); i++) {
-			if (!checkboxs.get(i).isSelected()) {
-				return true;
-			}
-		}
-		return false;
-	}
 
-	public boolean uncheckAllChecbox() {
-		allCheckboxsON.click();
-		List<WebElement> checkboxs = DriverUtils.getDriver().findElements(By.cssSelector(".block__medium div>ul>li>label>input.js-block-m-check"));
-		for (int i = 0; i < checkboxs.size(); i++) {
-			if (checkboxs.get(i).isSelected()) {
-				return true;
-			}
-		}
-		return false;
-	}
 }

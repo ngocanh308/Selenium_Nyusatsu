@@ -113,7 +113,7 @@ public class TestCase_01_UI_Input_Object_And_Suggest extends TestHelper {
 
 	@Test
 	public void TC_12_Show_Right_Item_When_Click_Popup_Suggest_KW() throws InterruptedException {
-		Assert.assertEquals(yotei.isFocusWhenClick(leftListSuggest,childLeftListSuggest,rightItem), true);
+		Assert.assertEquals(yotei.isFocusWhenClickLeftItem(leftListSuggest,childLeftListSuggest,rightItem), true);
 		yotei.closePopupSuggest();
 	}
 

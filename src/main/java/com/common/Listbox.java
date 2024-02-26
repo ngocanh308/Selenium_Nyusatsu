@@ -1,6 +1,7 @@
 package com.common;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class Listbox extends PageObject {
@@ -29,5 +30,19 @@ public class Listbox extends PageObject {
 		return this.getRuntimeElement().getText();
 
 	}
-
+	public boolean isMultiple() {
+		Select list = new Select(this.getRuntimeElement());
+		return list.isMultiple();
+	}
+	
+	public String getTextDisplay()
+	{
+		Select list = new Select(this.getRuntimeElement());
+//		return ((WebElement) list).getAttribute("value");
+		String text = list.getFirstSelectedOption().getText();
+		System.out.println("Text_____________"+text);
+		return text;
+		
+	}
+	
 }

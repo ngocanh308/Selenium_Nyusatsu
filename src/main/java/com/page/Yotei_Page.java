@@ -8,36 +8,42 @@ import org.openqa.selenium.WebElement;
 
 import com.common.Button;
 import com.common.DriverUtils;
+import com.common.Listbox;
+import com.common.Textbox;
 
 public class Yotei_Page extends Common_Page {
 	// HomeSearch
-	Button btnSugestKW = new Button(By.cssSelector(".nk-btn.yotei-search__btn--kw.js-kw-open"));
+	Button openPopupKW = new Button(By.cssSelector(".nk-btn.yotei-search__btn--kw.js-kw-open"));
 	Button btnAddKWAND = new Button(By.id("workKindANDInput"));
-
-	// popup KW sugest
-	String leftList = "#js-workkind-list li.workkind-item";
+	String leftList = "#js-workkind-list li.workkind-item"; // popup KW sugest
 	Button btnSelectKW = new Button(By.id("js-kw-btn"));
 	Button closePopupKW = new Button(By.xpath("//label[@class='nk-modal__close js-modal-close'][@for='js-kw']"));
+	Listbox startYear = new Listbox(By.id("reg_Syear")); // List Year
+	Listbox startMonth = new Listbox(By.id("reg_Smonth"));
+	Listbox endYear = new Listbox(By.id("reg_Eyear"));
+	Listbox endMonth = new Listbox(By.id("reg_Emonth"));
 
 	// FUNCTION
-
-
-	public void closePopupSuggest()
-	{
+	// 1 SUGGEST KW
+	public void closePopupSuggest() {
 		closePopupKW.click();
 	}
 
-	// 4 Check Fill text KW suggest into Textbox
+	public void openPopupSuggest() {
+		openPopupKW.click();
+	}
+
+	// Check Fill text KW suggest into Textbox
 	public boolean fillTextKWSuggest() throws InterruptedException {
 		boolean is_fill = false;
 		Thread.sleep(500);
-		btnSugestKW.click();
+		openPopupSuggest();
 		Thread.sleep(2000);
 		List<WebElement> all_Leftitem = DriverUtils.getDriver().findElements(By.cssSelector(String.format(leftList)));
 		for (int i = 2; i <= all_Leftitem.size(); i++) {
 			if (i > 2 && i != 19) {
 				is_fill = false;
-				btnSugestKW.click();
+				openPopupSuggest();
 //				System.out.println("Click button popup_____________"+i);
 			}
 			List<String> foo = new ArrayList<String>();
@@ -72,5 +78,8 @@ public class Yotei_Page extends Common_Page {
 		}
 		return is_fill;
 	}
+
+ //  2. popup Place  発注地域選択
+
 
 }

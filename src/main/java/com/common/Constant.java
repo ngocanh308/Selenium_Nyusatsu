@@ -60,6 +60,7 @@ public class Constant {
 			"造園・公園等整備","設計・測量","その他の物品","その他の業務委託","ＰＦＩ（指定管理者）"};
 	public static final String TEXT_COLOR = "rgba(0, 0, 0, 1)";
 	public static final String BACKGROUND_COLOR = "rgba(221, 221, 221, 1)";
+	public static final String NOTE_YEAR = "※2020年度分から収集を開始していますが、2019年度分も一部収集をしています";
 	
 	
 	// Anken

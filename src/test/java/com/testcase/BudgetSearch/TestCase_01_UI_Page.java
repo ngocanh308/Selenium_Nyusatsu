@@ -40,22 +40,22 @@ public class TestCase_01_UI_Page extends TestHelper {
 	}
 
 	@Test
-	public void TC_03_List_Item_Start_Year() throws InterruptedException {
+	public void TC_04_List_Item_Start_Year() throws InterruptedException {
 		Assert.assertEquals(budget.sizeYear("DATE_S.year") == 11, true);
 	}
 
 	@Test
-	public void TC_04_List_Item_End_Year() throws InterruptedException {
+	public void TC_05_List_Item_End_Year() throws InterruptedException {
 		Assert.assertEquals(budget.sizeYear("DATE_E.year") == 11, true);
 	}
 
 	@Test
-	public void TC_05_List_Value_Droplist_Start_Year() throws InterruptedException {
+	public void TC_06_List_Value_Droplist_Start_Year() throws InterruptedException {
 		Assert.assertEquals(budget.validateValueListDropDown("DATE_S.year", Constant.LIST_BUDGET_YEAR_FULL), true);
 	}
 
 	@Test
-	public void TC_06_List_Value_Droplist_End_Year() throws InterruptedException {
+	public void TC_07_List_Value_Droplist_End_Year() throws InterruptedException {
 		try {
 			Assert.assertTrue(budget.validateValueListDropDown("DATE_E.year", Constant.LIST_BUDGET_YEAR_FULL));
 		} catch (AssertionError e) {
@@ -100,7 +100,7 @@ public class TestCase_01_UI_Page extends TestHelper {
 		Assert.assertEquals(budget.checkScroll_3(), true);
 	}
 	
-	@Test
+	@Test // Display correct text into input search 機関選択 when selected leftmenu in popup
 	public void TC_14_Check_Textbox_Area_Display_When_click_Menu_Left_1_In_Popup() throws InterruptedException {
 		Assert.assertEquals(budget.getTextList1(), Constant.TEXT_LIST_1);
 	}
