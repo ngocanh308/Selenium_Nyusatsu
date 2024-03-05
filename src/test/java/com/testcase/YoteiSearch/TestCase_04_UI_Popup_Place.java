@@ -36,7 +36,7 @@ public class TestCase_04_UI_Popup_Place extends TestHelper { //発注地域
 	}
 	
 	@Test
-	public void TC_04_UnCheck_All_Item_When_Click_Button_UncheckAll_Popup_Place() throws InterruptedException {
+	public void TC_04_Fill_Corect_Text_Popup_Place_Into_Textbox_After_Seleted() throws InterruptedException {
 		yotei.openPopupPlace();
 		Assert.assertEquals(yotei.isSelectedPlace(), true);
 	}

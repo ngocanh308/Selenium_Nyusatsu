@@ -61,49 +61,49 @@ public class TestCase_01_UI_Input_Object_And_Suggest extends TestHelper {
 	@Test // input subject
 	public void TC_03_Input_Max_Number_Textboxs_Subjec_OR() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.inputMaxNumTextbox(20, 8, btnAddSubjectOR, childsubjectOR, false), true);
+		Assert.assertEquals(yotei.inputMaxNumTextbox(20, 8, btnAddSubjectOR, childsubjectOR, 20, false, false), true);
 	}
 
 	@Test
 	public void TC_04_Input_Max_Lenght_Textbox_Subject_OR() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.maxLenghtTextbox(txtSubjectOR), true);
+		Assert.assertEquals(yotei.maxLenghtTextbox20(txtSubjectOR), true);
 	}
 
 	@Test
 	public void TC_05_Input_Max_Number_Textboxs_Subjec_AND() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.inputMaxNumTextbox(6, 5, btnAddSubjectAND, childsubjectAND, true), true);
+		Assert.assertEquals(yotei.inputMaxNumTextbox(6, 5, btnAddSubjectAND, childsubjectAND,20, true, false), true);
 	}
 
 	@Test
 	public void TC_06_Input_Max_Lenght_Textbox_Subject_AND() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.maxLenghtTextbox(txtSubjectAND), true);
+		Assert.assertEquals(yotei.maxLenghtTextbox20(txtSubjectAND), true);
 	}
 
 	@Test
 	public void TC_07_Input_Max_Number_Textboxs_Subjec_NOT() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.inputMaxNumTextbox(20, 19, btnAddSubjectNOT, childsubjectNOT, false), true);
+		Assert.assertEquals(yotei.inputMaxNumTextbox(20, 19, btnAddSubjectNOT, childsubjectNOT,20, false, false), true);
 	}
 
 	@Test
 	public void TC_08_Input_Max_Lenght_Textbox_Subject_NOT() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.maxLenghtTextbox(txtSubjectNOT), true);
+		Assert.assertEquals(yotei.maxLenghtTextbox20(txtSubjectNOT), true);
 	}
 
 	@Test // input suggest
 	public void TC_09_Input_Max_Number_Textboxs_KW_Suggest_OR() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.inputMaxNumTextbox(120, 58, btnAddSuggestOR, childSuggestOR, false), true);
+		Assert.assertEquals(yotei.inputMaxNumTextbox(120, 58, btnAddSuggestOR, childSuggestOR,20, false, false), true);
 	}
 
 	@Test
 	public void TC_10_Input_Max_Lenght_Textbox_KW_Suggest_OR() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.maxLenghtTextbox(txtSuggestOR), true);
+		Assert.assertEquals(yotei.maxLenghtTextbox20(txtSuggestOR), true);
 	}
 
 	@Test
@@ -125,25 +125,25 @@ public class TestCase_01_UI_Input_Object_And_Suggest extends TestHelper {
 	@Test
 	public void TC_14_Input_Max_Number_Textboxs_KW_Suggest_AND() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.inputMaxNumTextbox(6, 5, btnAddKWAND, childSuggestAND, true), true);
+		Assert.assertEquals(yotei.inputMaxNumTextbox(6, 5, btnAddKWAND, childSuggestAND,20, true, false), true);
 	}
 
 	@Test
 	public void TC_15_Input_Max_Lenght_Textbox_KW_Suggest_AND() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.maxLenghtTextbox(txtKWSuggestAnd), true);
+		Assert.assertEquals(yotei.maxLenghtTextbox20(txtKWSuggestAnd), true);
 	}
 
 	@Test
 	public void TC_16_Input_Max_Textboxs_KW_Suggest_NOT() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.inputMaxNumTextbox(20, 19, btnAddNOT, childSuggestNOT, false), true);
+		Assert.assertEquals(yotei.inputMaxNumTextbox(20, 19, btnAddNOT, childSuggestNOT, 20,false, false), true);
 	}
 
 	@Test
 	public void TC_17_Input_Max_Lenght_Textbox_KW_Suggest_NOT() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.maxLenghtTextbox(txtKWSuggestNot), true);
+		Assert.assertEquals(yotei.maxLenghtTextbox20(txtKWSuggestNot), true);
 	}
 
 }

@@ -248,6 +248,11 @@ public class Common_Page {
 		executor.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
+	public void scrollToElementTop1(WebElement element) {
+		JavascriptExecutor executor = (JavascriptExecutor) DriverUtils.getDriver();
+		executor.executeScript("arguments[0].scrollIntoView(false);", element);
+	}
+	
 	public boolean is_Visible_IMG(WebElement img) {
 		boolean foo = false;
 		Boolean is_visibleIMG = (Boolean) ((JavascriptExecutor) DriverUtils.getDriver()).executeScript("return arguments[0].complete " + "&& typeof arguments[0].naturalWidth != \"undefined\" " + "&& arguments[0].naturalWidth > 0", img);
@@ -295,8 +300,13 @@ public class Common_Page {
 		}
 	}
 
+	public String getPlaceHolder (Textbox element)
+	{
+		String text = element.getAttribute("placeholder");		
+		return text;
+	}
 	// 2. TEXTBOX check input max number textbox define
-	public boolean inputMaxNumTextbox(int maxTextbox, int maxAdd, Button btnAdd, String txtFind, boolean popup) throws InterruptedException {
+	public boolean inputMaxNumTextbox(int maxTextbox, int maxAdd, Button btnAdd, String txtFind, int maxlenghText, boolean popup, boolean mail) throws InterruptedException {
 		boolean isInput = false;
 		for (int j = 1; j <= maxAdd; j++) {
 			btnAdd.click();
@@ -307,7 +317,15 @@ public class Common_Page {
 			WebElement textbox = DriverUtils.getDriver().findElement(By.cssSelector(txtFind + i + ")"));
 
 			String uuid = UUID.randomUUID().toString();
-			uuid = uuid.substring(0, Math.min(uuid.length(), 20));
+			if(mail== true)
+			{
+				uuid = uuid.substring(0, Math.min(uuid.length(), maxlenghText)) + "@zuno.vc";
+			}
+			else
+			{
+				uuid = uuid.substring(0, Math.min(uuid.length(), maxlenghText));
+			}
+			
 			text_input.add(uuid);
 			if (popup == true && i == 2) {
 				textbox.click();
@@ -329,7 +347,7 @@ public class Common_Page {
 	}
 
 	// 3. Textbox: Check max lenght 1 textbox 
-	public boolean maxLenghtTextbox(Textbox txt) throws InterruptedException {
+	public boolean maxLenghtTextbox20(Textbox txt) throws InterruptedException {
 		boolean isMax = false;
 		txt.type(Constant.TEXT_23);
 		String text = txt.getAttribute("value");
@@ -340,6 +358,16 @@ public class Common_Page {
 		return isMax;
 	}
 	
+	public boolean maxLenghtTextbox100(Textbox txt) throws InterruptedException {
+		boolean isMax = false;
+		txt.type(Constant.TEXT_110);
+		String text = txt.getAttribute("value");
+		if (text.equals(Constant.TEXT_100))
+			isMax = true;
+		else
+			isMax = false;
+		return isMax;
+	}
 	
 	//POPUP AREA 発注機関選択
 	//1. Highlight leftItem when click
@@ -537,4 +565,6 @@ public class Common_Page {
 		}
 		return isShow;
 	}
+	
+
 }

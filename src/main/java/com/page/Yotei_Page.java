@@ -1,5 +1,6 @@
 package com.page;
 
+import com.common.Checkbox;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,8 @@ public class Yotei_Page extends Common_Page {
 	Listbox startMonth = new Listbox(By.id("reg_Smonth"));
 	Listbox endYear = new Listbox(By.id("reg_Eyear"));
 	Listbox endMonth = new Listbox(By.id("reg_Emonth"));
-
+	Checkbox sendMail = new Checkbox(By.xpath("//*[@id=\"yotei-mail-form\"]/div[1]/label/span"));// Mail
+	Button closePopupMail = new Button(By.xpath("//*[@id=\"stopSearchNotice\"]/div/div/label"));
 	// FUNCTION
 	// 1 SUGGEST KW
 	public void closePopupSuggest() {
@@ -79,7 +81,56 @@ public class Yotei_Page extends Common_Page {
 		return is_fill;
 	}
 
- //  2. popup Place  発注地域選択
-
+	// 2.Checkbox 発注地域選択
+	public String getTextListCheckbox()
+	{
+		WebElement listChk = DriverUtils.getDriver().findElement(By.cssSelector("div.yotei-search__bid"));
+		String listText = listChk.getText().replace("\n", "").replace(" ", "");
+		return listText;
+	}
+	public boolean ischeckUncheckListCheckbox() {
+		boolean ischeck = false;
+		List<WebElement> listChk = DriverUtils.getDriver().findElements(By.xpath("//div[@class=\"yotei-search__f-box-r\"]/div[@class=\"yotei-search__bid\"]//input"));
+		for (int i = 1; i <= listChk.size(); i++) {
+			WebElement chk = DriverUtils.getDriver().findElement(By.xpath("//div[@class=\"yotei-search__f-box-r\"]/div[@class=\"yotei-search__bid\"]/label["+i+"]//span"));
+			WebElement chkInput = DriverUtils.getDriver().findElement(By.xpath("//div[@class=\"yotei-search__f-box-r\"]/div[@class=\"yotei-search__bid\"]/label["+i+"]//input"));
+			chk.click();
+			if (!chkInput.isSelected()) {
+				ischeck = true;
+			}
+			else
+			{
+				ischeck = false;
+			}
+			chk.click();
+			if (chkInput.isSelected()) {
+				ischeck = true;
+			}
+			else
+			{
+				ischeck = false;
+			}
+		}
+		return ischeck;
+	}
+	
+	// 3. Mail 
+	public boolean showPopupSendMail() throws InterruptedException
+	{
+		boolean is_Show = false;
+		sendMail.click();
+		if(!DriverUtils.getDriver().findElements(By.xpath("//div[@id=\"stopSearchNotice\"]//div[@class=\"form-type-full \"]")).isEmpty())
+		{
+			is_Show = true;
+		}
+		else
+		{
+			is_Show = false;
+		}
+		closePopupMail.click();
+		return is_Show;
+		
+		
+	}
 
 }

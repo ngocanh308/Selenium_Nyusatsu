@@ -26,6 +26,7 @@ public class TestCase_01_List_URL_Web_Page extends TestHelper {
 	Label txt_title_entry = new Label(By.cssSelector("div.sec-inner h2.ttl-type_003"));
 	Label txt_title_category = new Label(By.cssSelector(".title-red"));	
 	Label txt_title_entry2 = new Label(By.cssSelector("div.flow-entry__step h3.ttl-type_005 > span"));
+	Label lbl_title_remainder = new Label(By.cssSelector(".ttl-type_003.text-center"));
 			
 	@Test 
 	public void TC_01_Open_URL_Service_01_Success() throws InterruptedException {
@@ -370,6 +371,26 @@ public class TestCase_01_List_URL_Web_Page extends TestHelper {
 		DriverUtils.getDriver().get(Constant.URL_HOME + Constant.URL_RULE_BOOK);
 		try {
 			Assert.assertTrue(linkPage.is_Visible_Text_BR(txt_title_menu.getRuntimeElement(), "会員利用規約"));
+		} catch (AbstractMethodError e) {
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void TC_36_Open_Page_Remainder_URL_Success()throws InterruptedException {
+		DriverUtils.getDriver().get(Constant.URL_HOME + Constant.URL_LOGIN_REMAINDER);
+		try {
+			Assert.assertTrue(linkPage.is_Visible_URL(Constant.URL_HOME + Constant.URL_LOGIN_REMAINDER));
+		} catch (AbstractMethodError e) {
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void TC_35_Open_Page_Remainder_Text_Success()throws InterruptedException {
+		DriverUtils.getDriver().get(Constant.URL_HOME + Constant.URL_RULE_BOOK);
+		try {
+			Assert.assertTrue(linkPage.is_Visible_Text_BR(lbl_title_remainder.getRuntimeElement(), "パスワードをお忘れになった方へ"));
 		} catch (AbstractMethodError e) {
 			Assert.fail();
 		}
