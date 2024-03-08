@@ -119,22 +119,17 @@ public class BudgetSearch_Page extends Common_Page {
 	public boolean isFavoriteSucess() throws InterruptedException {
 		btnfavorite.click();
 		Thread.sleep(5000);
-		// boomarkItemBoth(numItem);
-		boolean isValid = false;
 		List<String> listIDFavorite = new ArrayList<String>();
 		List<WebElement> listItems = DriverUtils.getDriver().findElements(By.cssSelector("div#searchResult>div"));
-		for (int i = 1; i < listItems.size(); i++) {
+		for (int i = 1; i <= listItems.size(); i++) {
 			listIDFavorite.add(DriverUtils.getDriver().findElement(By.cssSelector("div#searchResult>div:nth-child(" + i + ") div.nk-item__inner span.item_id")).getText());
 
 		}
 		for (int j = 0; j < listIDFavorite.size(); j++) {
-			if (listIDFavorite.get(j).contains(Constant.listIDFavorite.get(j))) {
-				isValid = true;
-			} else {
-				isValid = false;
-			}
+			if(listIDFavorite.get(j).equals(Constant.listIDFavorite.get(j)))
+				return true;
 		}
-		return isValid;
+		return false;
 	}
 
 	public void unFavorite() throws InterruptedException {
