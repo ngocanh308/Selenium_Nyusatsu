@@ -16,5 +16,13 @@ public class Button extends PageObject {
 	public String getTextButton() {
 		return this.getRuntimeElement().getText();
 	}
+	
+//	public Boolean isDisable() {
+//	    return this.getRuntimeElement().getAttribute("class").matches(".+disabled");
+//	}
+	
+	public Boolean isEnable() {
+		return this.getRuntimeElement().isEnabled();
+	}
 
 }

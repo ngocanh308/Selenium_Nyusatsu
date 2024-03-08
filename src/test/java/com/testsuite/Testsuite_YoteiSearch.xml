@@ -3,7 +3,13 @@
 <suite name="Yotei_Page">
 	<test name="Yotei_page">
 		<classes>
-			<class name="com.testcase.BothSearch.TestCase_01_Popup" ></class>
+			<class name="com.testcase.YoteiSearch.TestCase_01_UI_Input_Object_And_Suggest" ></class>
+			<class name="com.testcase.YoteiSearch.TestCase_02_UI_Popup_Area" ></class>
+			<class name="com.testcase.YoteiSearch.TestCase_03_UI_Drop_List_Year" ></class>
+			<class name="com.testcase.YoteiSearch.TestCase_04_UI_Popup_Place" ></class>
+			<class name="com.testcase.YoteiSearch.Testcase_05_UI_List_Checkbox_Type_Bidking" ></class>
+			<class name="com.testcase.YoteiSearch.TestCase_06_UI_Send_Mail" ></class>
+			<class name="com.testcase.YoteiSearch.TestCase_07_UI_Button_Bookmark" ></class>
 		</classes>
 	</test>
 </suite>

@@ -387,8 +387,8 @@ public class TestCase_01_List_URL_Web_Page extends TestHelper {
 	}
 	
 	@Test
-	public void TC_35_Open_Page_Remainder_Text_Success()throws InterruptedException {
-		DriverUtils.getDriver().get(Constant.URL_HOME + Constant.URL_RULE_BOOK);
+	public void TC_37_Open_Page_Remainder_Text_Success()throws InterruptedException {
+		DriverUtils.getDriver().get(Constant.URL_HOME + Constant.URL_LOGIN_REMAINDER);
 		try {
 			Assert.assertTrue(linkPage.is_Visible_Text_BR(lbl_title_remainder.getRuntimeElement(), "パスワードをお忘れになった方へ"));
 		} catch (AbstractMethodError e) {

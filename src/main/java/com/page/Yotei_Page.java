@@ -25,7 +25,10 @@ public class Yotei_Page extends Common_Page {
 	Listbox endMonth = new Listbox(By.id("reg_Emonth"));
 	Checkbox sendMail = new Checkbox(By.xpath("//*[@id=\"yotei-mail-form\"]/div[1]/label/span"));// Mail
 	Button closePopupMail = new Button(By.xpath("//*[@id=\"stopSearchNotice\"]/div/div/label"));
+	Button btnNewBookmark = new Button(By.cssSelector("div#predictSearchForm a.yotei-search__submit-btn.fire_show_pop_add"));
+	Button btnUpdateBookmark = new Button(By.cssSelector("div#predictSearchForm a.yotei-search__submit-btn.fire_show_pop_update"));
 	// FUNCTION
+	
 	// 1 SUGGEST KW
 	public void closePopupSuggest() {
 		closePopupKW.click();
@@ -133,4 +136,16 @@ public class Yotei_Page extends Common_Page {
 		
 	}
 
+	//4. Bookmark ( xem lai)
+	public boolean isEnableButtonNewBookmark()
+	{
+		return btnUpdateBookmark.isEnable();
+	}
+	
+	public boolean isDisableButtonUpdateBookmark()
+	{
+		String text = DriverUtils.getDriver().findElement(By.cssSelector("div#predictSearchForm a.yotei-search__submit-btn.fire_show_pop_update")).getAttribute("class");
+		return text.matches(".+disabled");
+	}
+	
 }

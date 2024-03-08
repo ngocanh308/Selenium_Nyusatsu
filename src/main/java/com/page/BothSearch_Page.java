@@ -77,5 +77,35 @@ public class BothSearch_Page extends Common_Page {
 
 	}
 
+	// UI CHECK
+	// 1. Check highlight sub menu when click
+	public boolean isHighlightWhenClickSubmenu(String textColor, String backgroundColor) throws InterruptedException {
+		boolean isHighlight = false;
+		List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.cssSelector("section.nk-tab-menu__wrap > ul > li"));
+		for (WebElement item : allOptions) {
+			item.click();
+			String clText = item.getCssValue("color");
+			System.out.println("color text 1________________________"+clText);
+			String clBack = item.getCssValue("background-color");
+			System.out.println("background text 2________________________"+clBack);
+			if (clText.equals(textColor) && clBack.equals(backgroundColor)) {
+				isHighlight = true;
+			} else {
+				isHighlight = false;
+			}
+		}
+		return isHighlight;
+	}
+
+	// 1. Check highlight sub menu when click
+		public String[] getTextSubmenu() {
+			List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.cssSelector("section.nk-tab-menu__wrap > ul > li"));
+			List<String> foo = new ArrayList<String>();
+			for (WebElement item : allOptions) {
+				foo.add(item.getText().replace("\n", ""));
+			}
+			
+			return convertListToArray(foo);
+		}
 
 }

@@ -300,11 +300,14 @@ public class Common_Page {
 		}
 	}
 
+	// Text Placehoder element
 	public String getPlaceHolder (Textbox element)
 	{
 		String text = element.getAttribute("placeholder");		
 		return text;
 	}
+	
+
 	// 2. TEXTBOX check input max number textbox define
 	public boolean inputMaxNumTextbox(int maxTextbox, int maxAdd, Button btnAdd, String txtFind, int maxlenghText, boolean popup, boolean mail) throws InterruptedException {
 		boolean isInput = false;

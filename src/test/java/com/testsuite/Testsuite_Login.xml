@@ -3,9 +3,9 @@
 <suite name="Login_Page">
 	<test name="Test_Login">
 		<classes>
-			<class name="com.testcase.LoginPage.Testcase_02_Login_Failed" ></class>
+			<class name="com.testcase.LoginPage.Testcase_02_03_04_05_06_Login_Failed" ></class>
 			<class name="com.testcase.LoginPage.TestCase_01_Login_Success" ></class>
-			<class name="com.testcase.LoginPage.Testcase_03_Login_List_Account" ></class>
+			<class name="com.testcase.LoginPage.Testcase_07_Login_List_Account" ></class>
 		</classes>
 	</test>
 </suite>

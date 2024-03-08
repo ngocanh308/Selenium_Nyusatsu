@@ -18,8 +18,8 @@ public class Constant {
 	public static final String ERROR_LOGIN = "※登録したメールアドレス・パスワードをご確認ください。";
 	public static final String[] LIST_USERNAME = { "nyusatsu-king-test1@zuno.vc", "nyusatsu-king-test2@zuno.vc", "nyusatsu-king-test3@zuno.vc", "nyusatsu-king-test4@zuno.vc", "nyusatsu-king-test5@zuno.vc", "nyusatsu-king-test6@zuno.vc",
 			"nyusatsu-king-test7@zuno.vc", "nyusatsu-king-test8@zuno.vc", "nyusatsu-king-test9@zuno.vc", "nyusatsu-king-test10@zuno.vc" };
-//	public static final String[] LIST_PASSWORD = { "test0101", "TqMMJH$g", "aL4A7$@d", "YLnrA$E:", "xPSkgRNe", "eMAzMux#", "kU7B99tk", "2r&b8@zn", "uwg4SXX#", "test1010" };
-	public static final String[] LIST_PASSWORD = { "3r==2jCS", "M3;Xu:g&", "Qgsb86XH", "7Ep:v4Q8", "C@nPWeb:", "CczKvQsQ", "kuK3JH=x", "2CKzyY@P", "uwg4SXX#", "q1w2e3r4" };
+	public static final String[] LIST_PASSWORD = { "test0101", "TqMMJH$g", "aL4A7$@d", "YLnrA$E:", "xPSkgRNe", "eMAzMux#", "kU7B99tk", "2r&b8@zn", "uwg4SXX#", "test1010" };
+//	public static final String[] LIST_PASSWORD = { "3r==2jCS", "M3;Xu:g&", "Qgsb86XH", "7Ep:v4Q8", "C@nPWeb:", "CczKvQsQ", "kuK3JH=x", "2CKzyY@P", "uwg4SXX#", "q1w2e3r4" };
 
 	//Common Search
 	public static final String TEXT_23 = "まんがは、にほんのぶんかのとくちょちょうです。";
@@ -66,6 +66,11 @@ public class Constant {
 	public static final String TEXT_CHECKBOXS = "競争・公募指名随意不明";
 	public static final String TEXT_PLACEHOLDER_MAIL = "(例)abc@nyusatsu-king.com";
 	
+	//Both Search
+	public static final String TITLE_BOTH = "入札・落札情報検索 | ［入札王］官公庁・自治体の入札・落札情報提供サービス"; 
+	public static final String TEXT_COLOR_SUB = "rgba(255, 255, 255, 1)";
+	public static final String BACKGROUND_COLOR_SUB = "rgba(7, 120, 11, 1)";
+	public static final String TEXT_SUBMENU[] = {"入札・落札同時検索（入札メール配信設定）（関連落札メール配信案件指定）","入札情報のみ検索（入札メール配信設定）（関連落札メール配信案件指定）","落札情報のみ検索"};
 	
 	// Anken
 	public static List<String> listIDBookMark;
@@ -74,8 +79,8 @@ public class Constant {
 	
 	
 	//URL_ALL_Page
-//	public static final String URL_HOME = "https://www.nyusatsu-king.com/";
-	public static final String URL_HOME = "https://nyusatsu-o-neo-dev-8083.zuno.vc/";
+	public static final String URL_HOME = "https://www.nyusatsu-king.com/";
+//	public static final String URL_HOME = "https://nyusatsu-o-neo-dev-8083.zuno.vc/";
 	public static final String URL_HOME_AUTHEN = "https://zuno:g1@nyusatsu-o-neo-dev-8083.zuno.vc/";
 	//public static final String URL_HOME = "http://54.250.184.6/";
 	public static final String URL_BOTH = "usermenu/both_item_search/";
