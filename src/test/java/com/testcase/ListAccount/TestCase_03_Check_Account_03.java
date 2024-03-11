@@ -123,11 +123,13 @@ public class TestCase_03_Check_Account_03 extends TestHelper {
 	@Test
 	public void TC_12_Anken_Yotei_Empty() throws InterruptedException {
 		anken.selectValueYearYotei(Constant.SELECT_YEAR_ANKEN_YOTEI);
-		try {
-			Assert.assertTrue(!anken.isDisplayResult());
-		} catch (AbstractMethodError e) {
-			Assert.fail();
-		}
+//		try {
+//			Assert.assertTrue(!anken.isDisplayResult());
+//		} catch (AbstractMethodError e) {
+//			Assert.fail();
+//		}
+		
+		Assert.assertEquals(anken.isDisplayResult(), false);
 	}
 
 	@Test

@@ -144,12 +144,12 @@ public class Common_Page {
 	}
 
 	public boolean isDisplayResult() throws InterruptedException {
+		Thread.sleep(1000);
 		WebElement result = DriverUtils.getDriver().findElement(By.xpath("//*[@id=\"searchResult\"]"));
 		if (StringUtils.isNoneBlank(result.getText())) {
 			return true;
-		} else {
-			return false;
-		}
+		} 
+		return false;
 	}
 
 	public boolean isElementPresent(By locatorKey) {
