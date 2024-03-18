@@ -1,5 +1,6 @@
 package com.common;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -26,6 +27,10 @@ public class Constant {
 	public static final String TEXT_20 = "まんがは、にほんのぶんかのとくちょちょう";
 	public static final String TEXT_110 = "まんがは、にほんのぶんかのとくちょちょうです。まんがは、にほんのぶんかのとくちょちょうです。まんがは、にほんのぶんかのとくちょちょうです。まんがは、にほんのぶんかのとくちょちょうですが@zuno.vcにほんのぶ";
 	public static final String TEXT_100 = "まんがは、にほんのぶんかのとくちょちょうです。まんがは、にほんのぶんかのとくちょちょうです。まんがは、にほんのぶんかのとくちょちょうです。まんがは、にほんのぶんかのとくちょちょうですが@zuno.vc";
+	public static final String TEXT_BOOKMARK[] = {"工事","単","6"};
+	public static final String NAME_BOOKMARK = "Bookmark Test";
+	public static final List<String> LIST_TEXT_ADD_BOOKMARK_YOTEI= Arrays.asList("工事"," 単"," 独立行政法人駐留軍等労働者労務管理機構","防衛省その他関係機関"," 茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県");
+	public static  List<String> LIST_TEXT_ADD_BOOKMARK_UI_YOTEI ;
 	
 	// Budget Search page
 	public static final String TITLE_BUDGET = "予算書情報検索 | ［入札王］官公庁・自治体の入札・落札情報提供サービス";
@@ -80,8 +85,8 @@ public class Constant {
 	
 	//URL_ALL_Page
 	public static final String URL_HOME = "https://www.nyusatsu-king.com/";
-//	public static final String URL_HOME = "https://nyusatsu-o-neo-dev-8083.zuno.vc/";
-	public static final String URL_HOME_AUTHEN = "https://zuno:g1@nyusatsu-o-neo-dev-8083.zuno.vc/";
+//	public static final String URL_HOME = "https://nyusatsu-o-neo-dev-8085.zuno.vc/";
+	public static final String URL_HOME_AUTHEN = "https://zuno:g1@nyusatsu-o-neo-dev-8085.zuno.vc/";
 	//public static final String URL_HOME = "http://54.250.184.6/";
 	public static final String URL_BOTH = "usermenu/both_item_search/";
 	public static final String URL_YOTEI = "usermenu/yotei_search/";

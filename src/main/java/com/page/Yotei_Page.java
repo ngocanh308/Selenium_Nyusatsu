@@ -9,8 +9,10 @@ import org.openqa.selenium.WebElement;
 
 import com.common.Button;
 import com.common.DriverUtils;
+import com.common.LinkText;
 import com.common.Listbox;
 import com.common.Textbox;
+import com.github.dockerjava.api.model.Driver;
 
 public class Yotei_Page extends Common_Page {
 	// HomeSearch
@@ -25,10 +27,11 @@ public class Yotei_Page extends Common_Page {
 	Listbox endMonth = new Listbox(By.id("reg_Emonth"));
 	Checkbox sendMail = new Checkbox(By.xpath("//*[@id=\"yotei-mail-form\"]/div[1]/label/span"));// Mail
 	Button closePopupMail = new Button(By.xpath("//*[@id=\"stopSearchNotice\"]/div/div/label"));
-	Button btnNewBookmark = new Button(By.cssSelector("div#predictSearchForm a.yotei-search__submit-btn.fire_show_pop_add"));
-	Button btnUpdateBookmark = new Button(By.cssSelector("div#predictSearchForm a.yotei-search__submit-btn.fire_show_pop_update"));
+	Button btnNewBookmark = new Button(By.cssSelector("div#predictSearchForm a.yotei-search__submit-btn.fire_show_pop_add")); // Button new
+	Button btnUpdateBookmark = new Button(By.cssSelector("div#predictSearchForm a.yotei-search__submit-btn.fire_show_pop_update")); // Button update
+	LinkText leftItemSuggest = new LinkText(By.cssSelector("#js-workkind-list li.workkind-item:nth-child(3)"));;
 	// FUNCTION
-	
+
 	// 1 SUGGEST KW
 	public void closePopupSuggest() {
 		closePopupKW.click();
@@ -85,67 +88,67 @@ public class Yotei_Page extends Common_Page {
 	}
 
 	// 2.Checkbox 発注地域選択
-	public String getTextListCheckbox()
-	{
+	public String getTextListCheckbox() {
 		WebElement listChk = DriverUtils.getDriver().findElement(By.cssSelector("div.yotei-search__bid"));
 		String listText = listChk.getText().replace("\n", "").replace(" ", "");
 		return listText;
 	}
+
 	public boolean ischeckUncheckListCheckbox() {
 		boolean ischeck = false;
 		List<WebElement> listChk = DriverUtils.getDriver().findElements(By.xpath("//div[@class=\"yotei-search__f-box-r\"]/div[@class=\"yotei-search__bid\"]//input"));
 		for (int i = 1; i <= listChk.size(); i++) {
-			WebElement chk = DriverUtils.getDriver().findElement(By.xpath("//div[@class=\"yotei-search__f-box-r\"]/div[@class=\"yotei-search__bid\"]/label["+i+"]//span"));
-			WebElement chkInput = DriverUtils.getDriver().findElement(By.xpath("//div[@class=\"yotei-search__f-box-r\"]/div[@class=\"yotei-search__bid\"]/label["+i+"]//input"));
+			WebElement chk = DriverUtils.getDriver().findElement(By.xpath("//div[@class=\"yotei-search__f-box-r\"]/div[@class=\"yotei-search__bid\"]/label[" + i + "]//span"));
+			WebElement chkInput = DriverUtils.getDriver().findElement(By.xpath("//div[@class=\"yotei-search__f-box-r\"]/div[@class=\"yotei-search__bid\"]/label[" + i + "]//input"));
 			chk.click();
 			if (!chkInput.isSelected()) {
 				ischeck = true;
-			}
-			else
-			{
+			} else {
 				ischeck = false;
 			}
 			chk.click();
 			if (chkInput.isSelected()) {
 				ischeck = true;
-			}
-			else
-			{
+			} else {
 				ischeck = false;
 			}
 		}
 		return ischeck;
 	}
-	
-	// 3. Mail 
-	public boolean showPopupSendMail() throws InterruptedException
-	{
+
+	// 3. Mail
+	public boolean showPopupSendMail() throws InterruptedException {
 		boolean is_Show = false;
 		sendMail.click();
-		if(!DriverUtils.getDriver().findElements(By.xpath("//div[@id=\"stopSearchNotice\"]//div[@class=\"form-type-full \"]")).isEmpty())
-		{
+		if (!DriverUtils.getDriver().findElements(By.xpath("//div[@id=\"stopSearchNotice\"]//div[@class=\"form-type-full \"]")).isEmpty()) {
 			is_Show = true;
-		}
-		else
-		{
+		} else {
 			is_Show = false;
 		}
 		closePopupMail.click();
 		return is_Show;
-		
-		
+
 	}
 
-	//4. Bookmark ( xem lai)
-	public boolean isEnableButtonNewBookmark()
-	{
+	// 4. Bookmark ( xem lai)
+	public boolean isEnableButtonNewBookmark() {
 		return btnUpdateBookmark.isEnable();
 	}
-	
-	public boolean isDisableButtonUpdateBookmark()
-	{
+
+	public boolean isDisableButtonUpdateBookmark() {
 		String text = DriverUtils.getDriver().findElement(By.cssSelector("div#predictSearchForm a.yotei-search__submit-btn.fire_show_pop_update")).getAttribute("class");
 		return text.matches(".+disabled");
 	}
-	
+
+	public void addNewBookmarkYotei()
+	{
+		addNewBookmarkCommon();
+		openPopupSuggest();
+		leftItemSuggest.clickLinkText();
+		btnSelectKW.click();
+		btnNewBookmark.click();
+		inputNameBookmark();
+	}
+
+
 }

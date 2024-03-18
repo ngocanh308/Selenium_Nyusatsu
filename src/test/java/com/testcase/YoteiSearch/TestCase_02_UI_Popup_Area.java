@@ -33,14 +33,14 @@ public class TestCase_02_UI_Popup_Area extends TestHelper { //発注機関選択
 	
 	@Test 
 	public void TC_02_Check_All_Item_When_Click_Button_CheckAll_Popup_Area() throws InterruptedException {
-		both.openPopupArea();
+		yotei.openPopupArea();
 		Assert.assertEquals(yotei.checkAllChecbox(), true);
 	}
 
 	@Test
 	public void TC_03_UnCheck_All_Item_When_Click_Button_UncheckAll_Popup_Area() throws InterruptedException {
 		Assert.assertEquals(yotei.uncheckAllChecbox(), true);
-		both.closePopupArea();
+		yotei.closePopupArea();
 	}
 	
 	@Test

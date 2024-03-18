@@ -26,5 +26,8 @@ public class Textbox extends PageObject {
 		return this.getRuntimeElement().getAttribute(name);
 	}
 	
+	public String getTextValue(String value) {
+		return this.getRuntimeElement().getAttribute(value).trim().replace("  ", "").replace(" ", "");
+	}
 
 }

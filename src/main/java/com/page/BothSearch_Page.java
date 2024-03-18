@@ -10,21 +10,11 @@ import com.common.Button;
 import com.common.DriverUtils;
 
 public class BothSearch_Page extends Common_Page {
-	Button btnOpenArea = new Button(By.id("block_open_button"));
-	Button btnCloseArea = new Button(By.xpath("//*[@id=\"default_block\"]//label[@for='js-block']"));
 	String leftListArea = "#js-block__large-list ul.block__large-list li";
 	
 
 	
-	public void openPopupArea()
-	{
-		btnOpenArea.click();
-	}
-	
-	public void closePopupArea()
-	{
-		btnCloseArea.click();
-	}
+
 	
 	public boolean getListLeftPopup(String[] expectList) throws InterruptedException {
 		openPopupArea();
