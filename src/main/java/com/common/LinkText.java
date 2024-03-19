@@ -12,5 +12,10 @@ public class LinkText extends PageObject{
 		this.getRuntimeElement().click();
 	}
 	
+	
+	public String getTextLink() {
+		return this.getRuntimeElement().getText();
+		 
+	}
 
 }

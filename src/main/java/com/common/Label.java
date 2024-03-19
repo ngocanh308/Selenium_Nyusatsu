@@ -13,5 +13,8 @@ public class Label extends PageObject {
 		return this.getRuntimeElement().getText();
 
 	}
+	public String getAttribute(String value) {
+		return this.getRuntimeElement().getAttribute(value);
+	}
 	
 }

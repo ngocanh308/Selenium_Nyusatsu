@@ -54,7 +54,7 @@ public class Common_Page {
 	Button btnChoosePlace = new Button(By.cssSelector(".regist-input__pref-info .nk-btn-inner"));
 
 	Button btnOpenBookmark = new Button(By.cssSelector(".nk-btn.js-saved-open")); // bookmark popup
-	Button btnRedDeleteBookmarkItem = new Button(By.cssSelector(".condition__form-btn-update.js-condition-delete-submit"));
+	Button btnRedDeleteBookmarkItem = new Button(By.xpath("//span[text()=\"削除\"][@class=\"condition__form-btn-update js-condition-delete-submit\"]"));
 	Button btnGrayDeleteBookmarkItem = new Button(By.cssSelector("li.saved-item:nth-child(2) a.saved-item-delete"));
 	Button btnCloseDeleteBookmark = new Button(By.xpath("//*[@id=\"dataSearch\"]//label[@for='js-condition-delete-result']"));
 	Label lblNameBookmark = new Label(By.cssSelector("li.saved-item:nth-child(2) span.saved-item-name"));
@@ -651,12 +651,20 @@ public class Common_Page {
 	
 	public boolean isShowCorrectBookmark()
 	{
+		boolean result = true;
 		btnOpenItemBookmark.click();
-		for(int i = 0; i<Constant.LIST_TEXT_ADD_BOOKMARK_UI_YOTEI.size(); i++ )
+		if(lblNameBookmarkTop.getTextLabel().equals(Constant.NAME_BOOKMARK))
 		{
-		if((Constant.LIST_TEXT_ADD_BOOKMARK_UI_YOTEI.get(i).equals(Constant.LIST_TEXT_ADD_BOOKMARK_YOTEI.get(i)) ) && (lblNameBookmarkTop.getTextLabel().equals(Constant.NAME_BOOKMARK) ))
-			return true;
+			for(int i = 0; i<Constant.LIST_TEXT_ADD_BOOKMARK_UI_YOTEI.size(); i++ )
+			{
+			if(!Constant.LIST_TEXT_ADD_BOOKMARK_UI_YOTEI.get(i).equals(Constant.LIST_TEXT_ADD_BOOKMARK_YOTEI.get(i)) )  
+				result = false;
+				break;
+			}
 		}
-		return false;
+		return result;
 	}
+	
+	// Detail Anken
+
 }

@@ -17,6 +17,7 @@ public class BothSearch_Page extends Common_Page {
 
 	
 	public boolean getListLeftPopup(String[] expectList) throws InterruptedException {
+		boolean result = true;
 		openPopupArea();
 		Thread.sleep(3000);
 		List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.cssSelector(String.format(leftListArea)));
@@ -25,14 +26,16 @@ public class BothSearch_Page extends Common_Page {
 			foo.add(item.getText());
 		}
 		for (int i = 0; i < foo.size(); i++) {
-			if (foo.get(i).equals(expectList[i])) {
-				return true;
+			if (!foo.get(i).equals(expectList[i])) {
+				result = false;
+				break;
 			}
 		}
-		return false;
+		return result;
 	}
 
 	public boolean checkRightItemPopup(int left, String[] right) {
+		boolean result = true;
 		WebElement itemLeft = DriverUtils.getDriver().findElement(By.cssSelector("#js-block__large-list ul.block__large-list li:nth-child(" + left + ")"));
 		itemLeft.click();
 		String index;
@@ -42,14 +45,15 @@ public class BothSearch_Page extends Common_Page {
 		for (WebElement item : list_itemRight) {
 			foo.add(item.getText());
 			for (int i = 0; i < foo.size(); i++) {
-				if (foo.get(i).equals(right[i])) {
-					return true;
+				if (!foo.get(i).equals(right[i])) {
+					result = false;
+					break;
 
 				}
 			}
 
 		}
-		return false;
+		return result;
 
 	}
 

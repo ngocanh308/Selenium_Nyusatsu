@@ -24,12 +24,7 @@ public class TestCase_01_Popup extends TestHelper {
 
 	@Test
 	public void TC_02_Open_Page_Yotei_Success() throws InterruptedException {
-
-		try {
-			Assert.assertTrue(both.getListLeftPopup(Constant.LIST_LEFT_AREA));
-		} catch (AssertionError e) {
-			Assert.fail();
-		}
+		Assert.assertEquals(both.getListLeftPopup(Constant.LIST_LEFT_AREA), true);
 	}
 
 	@Test

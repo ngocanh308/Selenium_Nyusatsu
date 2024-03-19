@@ -2,13 +2,17 @@ package com.page;
 
 import com.common.Checkbox;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import com.common.Button;
 import com.common.DriverUtils;
+import com.common.Label;
 import com.common.LinkText;
 import com.common.Listbox;
 import com.common.Textbox;
@@ -30,6 +34,10 @@ public class Yotei_Page extends Common_Page {
 	Button btnNewBookmark = new Button(By.cssSelector("div#predictSearchForm a.yotei-search__submit-btn.fire_show_pop_add")); // Button new
 	Button btnUpdateBookmark = new Button(By.cssSelector("div#predictSearchForm a.yotei-search__submit-btn.fire_show_pop_update")); // Button update
 	LinkText leftItemSuggest = new LinkText(By.cssSelector("#js-workkind-list li.workkind-item:nth-child(3)"));;
+	LinkText itemNameResult0 = new LinkText(By.cssSelector("#data_row0"));
+	LinkText itemIDResult0 = new LinkText(By.cssSelector("#searchResult > div:nth-child(1) span.nk-item__status-no"));
+	LinkText itemNameDetail = new LinkText(By.cssSelector("#yotei-detail > div > h4"));
+	Label itemIDDetail = new Label(By.cssSelector("#yotei-detail input.anken_id"));
 	// FUNCTION
 
 	// 1 SUGGEST KW
@@ -151,4 +159,48 @@ public class Yotei_Page extends Common_Page {
 	}
 
 
+	//5.Open Detail Yotei
+
+	public boolean isOpenNewWindownAnkenDetail() throws InterruptedException
+	{
+		boolean isResult = true;
+		List<String> expectItem  = new ArrayList<String>();
+		List<String> actualItem  = new ArrayList<String>();
+		btnSearch.click();
+		Thread.sleep(1000);
+		expectItem.add(itemNameResult0.getTextLink());
+		expectItem.add(itemIDResult0.getTextLink());
+		itemNameResult0.clickLinkText();
+		
+		String winHandleBefore = DriverUtils.getDriver().getWindowHandle(); //save current windown
+		for(String winHandle : DriverUtils.getDriver().getWindowHandles()){ // switch new windown
+			DriverUtils.getDriver().switchTo().window(winHandle);
+		}
+		// Perform the actions on new window
+		actualItem.add(itemNameDetail.getTextLink());
+		
+		//Make hidden element visible and then get value
+		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
+		WebElement element = DriverUtils.getDriver().findElement(By.cssSelector("#yotei-detail input.anken_id"));
+
+		js.executeScript("arguments[0].setAttribute('type', '')",element);
+		
+		actualItem.add(element.getAttribute("value"));
+		for(int i =0 ; i < expectItem.size(); i++)
+		{
+			if(!expectItem.get(i).equals(actualItem.get(i)))
+			{
+				isResult = false;
+			}
+		}
+		DriverUtils.getDriver().close();
+
+		// Switch back to original browser (first window)
+		DriverUtils.getDriver().switchTo().window(winHandleBefore);
+		return isResult;
+
+		
+		
+		
+	}
 }
