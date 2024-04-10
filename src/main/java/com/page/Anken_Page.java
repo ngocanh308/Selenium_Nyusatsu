@@ -77,7 +77,7 @@ public class Anken_Page extends Common_Page {
 		 String childId = (String) it.next();
 		 Thread.sleep(2000);
 		 DriverUtils.getDriver().switchTo().window(childId);
-		 String errorMessage =  errorDownloadAnken.getTextLabel().replace("\n", "");
+		 String errorMessage = errorDownloadAnken.getTextLabel().replace("\n", "");
 		 return errorMessage;
 		 
 	 }

@@ -3,20 +3,27 @@ package com.page;
 import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.hc.core5.util.TextUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.devtools.v117.headlessexperimental.model.ScreenshotParams.Format;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.common.Button;
 import com.common.Constant;
 import com.common.DriverUtils;
 import com.common.Label;
+import com.common.LinkText;
 import com.common.Listbox;
 import com.common.Message;
 import com.common.Textbox;
@@ -34,6 +41,9 @@ public class Common_Page {
 	Button closePopupError = new Button(By.xpath("//p[@class=\"condition__text-result flex-warn\"]/preceding::label[@for=\"js-message\"]"));
 	Listbox numPage = new Listbox(By.cssSelector("#frmPagesize"));
 	Label listResult = new Label(By.xpath("//*[@id=\"searchResult\"]"));
+	
+	private final String btnClosePopup = "label.nk-modal__close.js-modal-close[for='%s']";// Common  close popup
+	
 
 	Button allCheckboxsOFF = new Button(By.id("js-block-off"));// Popup Area
 	Button allCheckboxsON = new Button(By.id("js-block-on"));
@@ -47,24 +57,34 @@ public class Common_Page {
 	Button allChkPlaceOFF = new Button(By.id("js-area-off"));
 	Button allChkPlaceON = new Button(By.id("js-area-on"));
 
-	Button btnOpenPopupPlace = new Button(By.cssSelector(".nk-btn.yotei-search__btn--area .nk-btn-inner")); // popup place 発注地域
-	Button btnClosePopupPlace = new Button(By.cssSelector("label.nk-modal__close.js-modal-close[for='js-area']"));
+	Button btnOpenPopupPlaceYotei = new Button(By.cssSelector(".nk-btn.yotei-search__btn--area .nk-btn-inner")); // popup place 発注地域
+	Button btnClosePopupPlaceYotei = new Button(By.cssSelector("label.nk-modal__close.js-modal-close[for='js-area']"));
+	String btnOpenPopupPlaceBoth = "//label[@data-mode='%s']";
+	Button btnOpenPopupPlaceRaku = new Button(By.xpath("//label[@data-mode=\"rakusatsu\"]"));
 	Checkbox ckbItemmainArea = new Checkbox(By.xpath("//*[@id=\"js-area-list\"]/dl[3]/dt/label/span"));
-	Textbox txtPlace = new Textbox(By.id("frmAREA_NAME"));
+	Textbox txtPlaceYotei = new Textbox(By.id("frmAREA_NAME"));
+	Textbox txtPlaceNyu = new Textbox(By.id("nyusatsuFrmAREA_NAME"));
+	Textbox txtPlaceRaku = new Textbox(By.id("rakusatsuFrmAREA_NAME"));
 	Button btnChoosePlace = new Button(By.cssSelector(".regist-input__pref-info .nk-btn-inner"));
+	
+	private final String listCkbTypeBid = "div.%s";
 
 	Button btnOpenBookmark = new Button(By.cssSelector(".nk-btn.js-saved-open")); // bookmark popup
-	Button btnRedDeleteBookmarkItem = new Button(By.xpath("//span[text()=\"削除\"][@class=\"condition__form-btn-update js-condition-delete-submit\"]"));
+//	Button btnRedDeleteBookmarkItem = new Button(By.xpath("//span[text()=\"削除\"][@class=\"condition__form-btn-update js-condition-delete-submit\"]"));
+	Button btnRedDeleteBookmarkItem = new Button(By.cssSelector(".condition__form-btn-update.js-condition-delete-submit"));
 	Button btnGrayDeleteBookmarkItem = new Button(By.cssSelector("li.saved-item:nth-child(2) a.saved-item-delete"));
 	Button btnCloseDeleteBookmark = new Button(By.xpath("//*[@id=\"dataSearch\"]//label[@for='js-condition-delete-result']"));
 	Label lblNameBookmark = new Label(By.cssSelector("li.saved-item:nth-child(2) span.saved-item-name"));
 	Button btnOpenItemBookmark = new Button(By.cssSelector("#list_search_notice > ul > li:nth-child(2) > a.saved-item-call"));
-	Label lblNameBookmarkTop = new Label(By.cssSelector("#predictSearchForm div.ttl-cnt--label"));
+	Label lblNameBookmarkTop = new Label(By.cssSelector("div.ttl-cnt--label"));
+//	Label lblNameBookmarkTop = new Label(By.cssSelector("#list_search_notice li:nth-child(2) > span.saved-item-name"));
 	String leftArea = "#js-block__large-list > ul > li:nth-child(3) > a";
 	Button btnClosePopupBookmark = new Button(By.cssSelector("#callSearchCondition label.nk-modal__close"));
 	Textbox txtNameBookmark = new Textbox(By.id("inputSerchNoticeName"));
 	Button btnYesAddBookmark = new Button(By.cssSelector("div.condition__form-btn-wrap span.condition__form-btn-add.js-condition-add-submit"));
 	Button btnClosePopupConfirm = new Button(By.xpath("//*[@id=\"dataSearch\"]//label[@for=\"js-condition-add-result\"]"));
+	
+	Checkbox ckbStopMail = new Checkbox(By.xpath("//input[@id='search_flg']//following-sibling::span[@class='check-parts']"));
 
 	// Variable public
 	String defaultWindow = "";
@@ -158,9 +178,42 @@ public class Common_Page {
 		return msPopupError.getTextMessage().replace("\n", "");
 	}
 
-	public void closePopup() {
+	public void closePopupFaild() {
 		closePopupError.click();
 
+	}
+	
+	
+	public void closePopup(String jsType) { // popup area = js-block, popup place = js-area, popup type = js-category, popup kw suggest = js-kw, require select 1 checkbox = js-message 
+		String forText = "";
+		if(jsType.equals("Area")) 
+		{
+			forText = "js-block";
+		}
+		else if (jsType.equals("Place"))
+		{
+			forText = "js-area";
+		}
+		else if (jsType.equals("Type"))
+		{
+			forText = "js-category";
+		}
+		else if (jsType.equals("KWSuggest"))
+		{
+			forText = "js-kw";
+		}
+		else if (jsType.equals("Choose"))
+		{
+			forText = "js-message";
+		}
+		else if(jsType.equals("Mail"))
+		{
+			forText = "js-stop-search-notice";
+		}
+			
+		WebElement item = DriverUtils.getDriver().findElement(By.cssSelector(String.format(btnClosePopup, forText)));
+		item.click();
+		
 	}
 
 	public boolean isDisplayResult() throws InterruptedException {
@@ -184,6 +237,174 @@ public class Common_Page {
 	public void selectPaging(String value) throws InterruptedException {
 		numPage.selectValue(value);
 	}
+	
+	// 2.Checkbox 入札種別 , checkbox 資格ランク
+	public String getTextListCheckboxTypeBid(String page) {
+		String forText = "";
+		if(page.equals("Both_Type")) 
+		{
+			forText = "both-item-search__bid";
+		}
+		if(page.equals("Yotei_Type")) 
+		{
+			forText = "yotei-search__bid";
+		}
+		if(page.equals("Both_Rank")) 
+		{
+			forText = "both-item-search__rank";
+		}
+		if(page.equals("Both_Search_In")) 
+		{
+			forText = "both-item-search__kw-type";
+		}
+		WebElement listChk = DriverUtils.getDriver().findElement(By.cssSelector(String.format(listCkbTypeBid, forText)));
+		String listText = listChk.getText().replace("\n", "").replace(" ", "");
+		return listText;
+	}
+
+	public boolean ischeckUncheckListCheckbox(String page) {
+		boolean ischeck = false;
+		String forText = "";
+		if(page.equals("Both_Type")) 
+		{
+			forText = "both-item-search__bid";
+		}
+		else if(page.equals("Yotei_Type")) 
+		{
+			forText = "yotei-search__bid";
+		}
+		else if(page.equals("Both_Rank")) 
+		{
+			forText = "both-item-search__rank";
+		}
+		String list = "//div[@class='%s']//input";
+		List<WebElement> listChk = DriverUtils.getDriver().findElements(By.xpath(String.format(list, forText)));
+		for (int i = 1; i <= listChk.size(); i++) {
+			String chks = "//div[@class='%s']/label[" + i + "]//span";
+			WebElement chkSpan = DriverUtils.getDriver().findElement(By.xpath(String.format(chks, forText)));
+			String chki = "//div[@class='%s']/label[" + i + "]//input";
+			WebElement chkInput = DriverUtils.getDriver().findElement(By.xpath(String.format(chki, forText)));
+			chkSpan.click();
+			if (!chkInput.isSelected()) {
+				ischeck = true;
+			} else {
+				ischeck = false;
+			}
+			chkSpan.click();
+			if (chkInput.isSelected()) {
+				ischeck = true;
+			} else {
+				ischeck = false;
+			}
+		}
+		return ischeck;
+	} // END 2.Checkbox 入札種別 , checkbox 資格ランク
+	
+	// 3. Mail
+	public boolean showPopupSendMail() throws InterruptedException {
+
+		boolean result = false;
+		ckbStopMail.click();
+		if (!DriverUtils.getDriver().findElements(By.xpath("//div[@id='stopSearchNotice']//div[@class='form-type-full ']")).isEmpty()) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
+
+	}
+	// 4. Select correct listbox common
+	public boolean selectValueListbox(Listbox list, String[] expectText)
+	{
+		boolean result = true;
+		List<String> actualText = new ArrayList<String>();
+	
+		for (int i = 1; i < list.size(); i++)
+		{
+			list.selectIndex(i);
+			actualText.add(list.getTextDisplay());
+			if(!actualText.get(i-1).equals(expectText[i-1]))
+			{
+				result = false;
+			}
+			
+		}
+		
+		return result;
+	}
+
+
+	public String getValueListYear(Listbox list1, Listbox list2, Listbox list3, String join )
+	{
+		List<String>  text = new ArrayList<String>();
+		text.add(list1.getTextDisplay());
+		text.add(list2.getTextDisplay());
+		text.add(list3.getTextDisplay());
+		for (int i = 0; i < text.size(); i++)
+		{
+			if(text.get(i).length() == 1)
+			{
+				text.set(i, "0" + text.get(i));
+			}
+		}
+		String actualText = String.join(join, text);
+		return actualText;
+	}
+	
+	
+	// Open detail item ( Yotei, Nyusatsu, Rakusatsu )
+	public boolean isOpenDetailItem(String page, LinkText SubjectSearch, LinkText IDSearch, LinkText SubjectDetail, Label IDDetail) throws InterruptedException
+	{
+		boolean isResult = true;
+		List<String> expectItem  = new ArrayList<String>();
+		List<String> actualItem  = new ArrayList<String>();
+		btnSearch.click();
+		Thread.sleep(2000);
+		expectItem.add(SubjectSearch.getTextLink());
+		expectItem.add(IDSearch.getTextLink());
+		SubjectSearch.clickLinkText();
+		
+		String winHandleBefore = DriverUtils.getDriver().getWindowHandle(); //save current windown
+		for(String winHandle : DriverUtils.getDriver().getWindowHandles()){ // switch new windown
+			DriverUtils.getDriver().switchTo().window(winHandle);
+		}
+		// Perform the actions on new window
+		actualItem.add(SubjectDetail.getTextLink());
+		
+		//Make hidden element visible and then get value
+		
+		if(page.equals("Yotei"))
+		{
+			JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
+			WebElement element = DriverUtils.getDriver().findElement(By.cssSelector("#yotei-detail input.anken_id"));
+			js.executeScript("arguments[0].setAttribute('type', '')",element);
+			actualItem.add(IDDetail.getAttribute("value"));
+		}
+		else
+		{
+			actualItem.add(IDDetail.getTextLabel().trim());
+		}
+		for(int i =0 ; i < expectItem.size(); i++)
+		{
+			if(!expectItem.get(i).equals(actualItem.get(i)))
+			{
+				isResult = false;
+			}
+		}
+		DriverUtils.getDriver().close();
+
+		// Switch back to original browser (first window)
+		DriverUtils.getDriver().switchTo().window(winHandleBefore);
+		return isResult;
+
+		
+		
+		
+	}
+	
+	
+	
+	// II . FUNCTION
 
 	public boolean isBookmarkSuccess(String tab) {
 		// boomarkItemBoth(numItem);
@@ -310,7 +531,7 @@ public class Common_Page {
 	}
 
 	// II. UI DEFINE
-	// 1. Alert
+	// 1. Common Alert 
 	public boolean isAlertPresent() {
 		try {
 			DriverUtils.getDriver().switchTo().alert();
@@ -320,13 +541,13 @@ public class Common_Page {
 		}
 	}
 
-	// Text Placehoder element
+	// 2. Common Placehoder element
 	public String getPlaceHolder(Textbox element) {
 		String text = element.getAttribute("placeholder");
 		return text;
 	}
 
-	// 2. TEXTBOX check input max number textbox define
+	// 3. TEXTBOX check input max number textboxs define
 	public boolean inputMaxNumTextbox(int maxTextbox, int maxAdd, Button btnAdd, String txtFind, int maxlenghText, boolean popup, boolean mail) throws InterruptedException {
 		boolean isInput = false;
 		for (int j = 1; j <= maxAdd; j++) {
@@ -364,43 +585,26 @@ public class Common_Page {
 
 	}
 
-	// 3. Textbox: Check max lenght 1 textbox
-	public boolean maxLenghtTextbox20(Textbox txt) throws InterruptedException {
-		boolean isMax = false;
-		txt.type(Constant.TEXT_23);
+	// 4. Check max lenght 1 textbox
+	
+	public boolean maxLenghtTextbox(Textbox txt, String inputLength, String max)
+	{
+		boolean result = true;
+		txt.type(inputLength);
 		String text = txt.getAttribute("value");
-		if (text.equals(Constant.TEXT_20))
-			isMax = true;
-		else
-			isMax = false;
-		return isMax;
+		if (!text.equals(max))
+			result = false;		
+		return result;
 	}
 
-	public boolean maxLenghtTextbox100(Textbox txt) throws InterruptedException {
-		boolean isMax = false;
-		txt.type(Constant.TEXT_110);
-		String text = txt.getAttribute("value");
-		if (text.equals(Constant.TEXT_100))
-			isMax = true;
-		else
-			isMax = false;
-		return isMax;
-	}
-
-	// POPUP AREA 発注機関選択
-
+	// 5. POPUP AREA 発注機関選択
 	public void openPopupArea() {
 		btnOpenArea.click();
 	}
 
-	public void closePopupArea() {
-		btnCloseArea.click();
-	}
-
-	// 1. Highlight leftItem when click
 	public boolean isHighlightWhenClickLeftItem(Button popup, String leftItem, String textColor, String backgroundColor) throws InterruptedException {
 		popup.click();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		boolean isHighlight = false;
 		List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.cssSelector(String.format(leftItem)));
 		List<String> foo = new ArrayList<String>();
@@ -418,7 +622,6 @@ public class Common_Page {
 		return isHighlight;
 	}
 
-	// 2. Focus correct RightItem when click leftItem in popup
 	public boolean isFocusWhenClickLeftItem(String listLeft, String itemLeft, String itemRight) throws InterruptedException {
 		List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.cssSelector(String.format(listLeft)));
 		List<String> foo = new ArrayList<String>();
@@ -438,10 +641,9 @@ public class Common_Page {
 			}
 		}
 		return isShow;
-	}
+	} // END 5. POPUP AREA 発注機関選択
 
-	// 3 Check_Uncheck right item when select 1 left item in popup Area (ONLY EXIST
-	// AREA POPUP)
+	// 6. Check_Uncheck right item when select 1 left item in popup Area (ONLY EXIST	// AREA POPUP)
 	public boolean isCheckUncheckListItemPopupArea(String listLeft, String itemLeft, String itemRight) throws InterruptedException {
 		allCheckboxsOFF.click();
 		List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.cssSelector(String.format(listLeft)));
@@ -496,7 +698,7 @@ public class Common_Page {
 		return false;
 	}
 
-	// Header page
+	// 7. Header page
 	public boolean clickHeaderMenu(int numItem, String expectURLNavigate) {
 		boolean correctURL = false;
 		WebElement item = DriverUtils.getDriver().findElement(By.cssSelector("#global > ul > li:nth-child(" + numItem + ") > a"));
@@ -513,15 +715,24 @@ public class Common_Page {
 
 	}
 
-	// POPUP PLACE 発注地域
-	public void openPopupPlace() {
-		btnOpenPopupPlace.click();
+	// 8. POPUP PLACE 発注地域
+	public void openPopupPlaceYotei() {
+		btnOpenPopupPlaceYotei.click();
 	}
 
-	public void closePopupPlace() {
-		btnClosePopupPlace.click();
+	public void closePopupPlaceTmp() {
+		btnClosePopupPlaceYotei.click();
 	}
 
+	public void openPopupPlaceBoth(String add) {
+		WebElement item = DriverUtils.getDriver().findElement(By.xpath(String.format(btnOpenPopupPlaceBoth, add)));
+		item.click();
+	}
+
+	public void openPopupPlaceRaku() {
+		btnOpenPopupPlaceRaku.click();
+	} 
+	
 	public boolean uncheckAllChkPlace() {
 		allChkPlaceOFF.click();
 		List<WebElement> checkboxs = DriverUtils.getDriver().findElements(By.cssSelector("#js-area-list input[type='checkbox']"));
@@ -544,15 +755,31 @@ public class Common_Page {
 		return false;
 	}
 
-	public boolean isSelectedPlace() throws InterruptedException {
+	public boolean isSelectedPlace(String name) throws InterruptedException {
 
 		List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.cssSelector("#js-area-list dt")); // number row = 9
 
 		boolean isShow = false;
 		for (int i = 1; i <= allOptions.size(); i++) {
 			List<String> foo = new ArrayList<String>();
-			if (i > 1) {
-				openPopupPlace();
+			if ((i > 1)) 
+			{
+				if(name.equals("Yotei"))
+				{
+					openPopupPlaceYotei();
+				}
+				else if(name.equals("Nyusatsu"))
+				{
+					openPopupPlaceBoth("nyusatsu");
+				}
+				else if(name.equals("Rakusatsu"))
+				{
+					openPopupPlaceBoth("rakusatsu");
+				}
+				else
+				{
+					openPopupPlaceRaku();
+				}
 			}
 
 			allChkPlaceOFF.click();
@@ -566,10 +793,24 @@ public class Common_Page {
 			}
 			String expectText2 = String.join(",", foo);
 			btnChoosePlace.click();
-			String currenttext = txtPlace.getAttribute("value");
+			String currenttext = new String();
+			if(name.equals("Yotei"))
+			{
+				 currenttext = txtPlaceYotei.getAttribute("value");
+			}
+			else if(name.equals("Nyusatsu"))
+			{
+				currenttext = txtPlaceNyu.getAttribute("value");
+			}
+			else
+			{
+				currenttext = txtPlaceRaku.getAttribute("value");
+			}
 			if (currenttext.equals(expectText2)) {
 				isShow = true;
-			} else {
+			} 
+			else
+			{
 				isShow = false;
 			}
 		}
@@ -609,25 +850,52 @@ public class Common_Page {
 	
 
 
-	public void addNewBookmarkCommon() {
+	public void addNewBookmarkCommon(String page) {
 		List<String> temnpList = new ArrayList<String>();
-		txtOR.type(Constant.TEXT_BOOKMARK[0]);
-		txtAND.type(Constant.TEXT_BOOKMARK[1]);
+		txtOR.type(Constant.TEXT_BOOKMARK_YOTEI[0]);
+		if(page.equals("Yotei"))
+		{
+			txtAND.type(Constant.TEXT_BOOKMARK_YOTEI[1]);
+		}
 		openPopupArea();
 		allCheckboxsOFF.click();
 		WebElement leftItem = DriverUtils.getDriver().findElement(By.cssSelector(leftArea));
 		leftItem.click();
 		checkUncheckArea.click();
 		btnSearchArea.click();
-		openPopupPlace();
+		if(page.equals("Yotei"))
+		{
+			openPopupPlaceYotei();
+		}
+		else
+		{
+			openPopupPlaceBoth("nyusatsu");
+		}
 		allChkPlaceOFF.click();
 		ckbItemmainArea.click();
 		btnChoosePlace.click();
 		temnpList.add(txtOR.getTextValue("value"));
-		temnpList.add(txtAND.getTextValue("value"));
+		if(page.equals("Yotei"))
+		{
+			temnpList.add(txtAND.getTextValue("value"));
+		}
 		temnpList.add(txtArea.getTextValue("value"));
-		temnpList.add(txtPlace.getTextValue("value"));
-		Constant.LIST_TEXT_ADD_BOOKMARK_UI_YOTEI = temnpList;
+		if(page.equals("Yotei"))
+		{
+			temnpList.add(txtPlaceYotei.getTextValue("value"));
+		}
+		else
+		{
+			temnpList.add(txtPlaceNyu.getTextValue("value"));
+		}
+		if(page.equals("Yotei"))
+		{
+			Constant.LIST_TEXT_ADD_BOOKMARK_UI_YOTEI = temnpList;
+		}
+		else
+		{
+			Constant.LIST_TEXT_ADD_BOOKMARK_UI_BOTH = temnpList;
+		}
 	}
 
 	public void inputNameBookmark() {
@@ -649,20 +917,37 @@ public class Common_Page {
 		return isValid;
 	}
 	
-	public boolean isShowCorrectBookmark()
+	public boolean isShowCorrectBookmark(String page)
 	{
 		boolean result = true;
 		btnOpenItemBookmark.click();
-		if(lblNameBookmarkTop.getTextLabel().equals(Constant.NAME_BOOKMARK))
+		if(lblNameBookmarkTop.getTextLabel().equals(Constant.NAME_BOOKMARK))   //check label on top page  search display correct name bookmark slected
 		{
-			for(int i = 0; i<Constant.LIST_TEXT_ADD_BOOKMARK_UI_YOTEI.size(); i++ )
+			if(page.equals("Yotei"))
 			{
-			if(!Constant.LIST_TEXT_ADD_BOOKMARK_UI_YOTEI.get(i).equals(Constant.LIST_TEXT_ADD_BOOKMARK_YOTEI.get(i)) )  
-				result = false;
-				break;
+				for(int i = 0; i<Constant.LIST_TEXT_ADD_BOOKMARK_UI_YOTEI.size(); i++ )
+				{
+				if(!Constant.LIST_TEXT_ADD_BOOKMARK_UI_YOTEI.get(i).equals(Constant.LIST_TEXT_ADD_BOOKMARK_YOTEI.get(i)) )  
+					result = false;
+					break;
+				}
+			}
+			else
+			{
+				for(int i = 0; i<Constant.LIST_TEXT_ADD_BOOKMARK_UI_BOTH.size(); i++ )
+				{
+				if(!Constant.LIST_TEXT_ADD_BOOKMARK_UI_BOTH.get(i).equals(Constant.LIST_TEXT_ADD_BOOKMARK_BOTH.get(i)) )  
+					result = false;
+					break;
+				}
 			}
 		}
 		return result;
+	}
+	
+	public void AddZeroInDate(LocalDate time)
+	{
+		
 	}
 	
 	// Detail Anken

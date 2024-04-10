@@ -41,17 +41,18 @@ public class TestCase_06_UI_Send_Mail extends TestHelper {// Mail 入札案件�
 	@Test
 	public void TC_04_Input_Max_Lenght_Textbox_Mail() throws InterruptedException {
 		login.clickTabMenu("2");
-		Assert.assertEquals(yotei.maxLenghtTextbox100(txtMail), true);
+		Assert.assertEquals(yotei.maxLenghtTextbox(txtMail, Constant.TEXT_110, Constant.TEXT_100), true);
 	}
 
 	@Test
 	public void TC_05_Input_Max_Lenght_Textbox_Mail() throws InterruptedException {
-		Assert.assertEquals(yotei.maxLenghtTextbox100(txtMail), true);
+		Assert.assertEquals(yotei.maxLenghtTextbox(txtMail, Constant.TEXT_110, Constant.TEXT_100), true);
 	}
 
 	@Test
 	public void TC_06_Show_Popup_Warning_When_Click_Checkbox_UnsendMail() throws InterruptedException {
 		Assert.assertEquals(yotei.showPopupSendMail(), true);
+		yotei.closePopup("Mail");
 	}
 
 }

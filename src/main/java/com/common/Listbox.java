@@ -30,19 +30,20 @@ public class Listbox extends PageObject {
 		return this.getRuntimeElement().getText();
 
 	}
+
 	public boolean isMultiple() {
 		Select list = new Select(this.getRuntimeElement());
 		return list.isMultiple();
 	}
-	
-	public String getTextDisplay()
-	{
+
+	public String getTextDisplay() {
 		Select list = new Select(this.getRuntimeElement());
-//		return ((WebElement) list).getAttribute("value");
-		String text = list.getFirstSelectedOption().getText();
-		System.out.println("Text_____________"+text);
-		return text;
-		
+		return list.getFirstSelectedOption().getText();
+
 	}
 	
+	public int size() {
+		Select list = new Select(this.getRuntimeElement());
+		return list.getOptions().size();
+	}
 }

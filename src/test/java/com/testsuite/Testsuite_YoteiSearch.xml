@@ -10,6 +10,9 @@
 			<class name="com.testcase.YoteiSearch.Testcase_05_UI_List_Checkbox_Type_Bidking" ></class>
 			<class name="com.testcase.YoteiSearch.TestCase_06_UI_Send_Mail" ></class>
 			<class name="com.testcase.YoteiSearch.TestCase_07_UI_Button_Bookmark" ></class>
+			<class name="com.testcase.YoteiSearch.TestCase_08_UI_Delete_All_Bookmark" ></class>
+			<class name="com.testcase.YoteiSearch.TestCase_09_UI_Add_Bookmark_Succsess" ></class>
+			<class name="com.testcase.YoteiSearch.TestCase_10_UI_Open_Yotei_Detail_Successfully" ></class>
 		</classes>
 	</test>
 </suite>

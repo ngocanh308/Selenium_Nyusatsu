@@ -162,14 +162,14 @@ public class TestCase_06_Check_Account_06 extends TestHelper {
 
 	@Test
 	public void TC_16_Show_Popup_Download_Faile() throws InterruptedException {
-		yotei.downloadCSV("o");
+		yotei.downloadCSV(Constant.TEXT_DOWNLOAD);
 		Assert.assertEquals(yotei.getErrorMessagePopup(), Constant.ERROR_DOWNLOAD_CSV);
 
 	}
 
 	@Test
 	public void TC_17_Close_Popup_Download_Faile() throws InterruptedException {
-		yotei.closePopup();
+		yotei.closePopupFaild();
 
 	}
 
@@ -197,10 +197,10 @@ public class TestCase_06_Check_Account_06 extends TestHelper {
 	@Test
 	public void TC_20_Download_File_CSV_Both_Success() throws InterruptedException, IOException {
 		both.delete_File();
-		both.downloadCSV("o");
+		both.downloadCSV(Constant.TEXT_DOWNLOAD);
 		Thread.sleep(2000);
 		try {
-			Assert.assertTrue(both.isFileDownloaded(Constant.FILE_NAME_BOTH, "csv", 5000));
+			Assert.assertTrue(both.isFileDownloaded(Constant.FILE_NAME_BOTH, "csv", Constant.TIME_WAIT));
 		} catch (AbstractMethodError e) {
 			Assert.fail();
 		}
@@ -229,7 +229,7 @@ public class TestCase_06_Check_Account_06 extends TestHelper {
 		anken.selectValueYearYotei(Constant.SELECT_YEAR_ANKEN_YOTEI);
 		anken.downloadAnken();
 		try {
-			Assert.assertTrue(anken.isFileDownloaded(Constant.FILE_NAME_BOTH, "csv", 5000));
+			Assert.assertTrue(anken.isFileDownloaded(Constant.FILE_NAME_BOTH, "csv", Constant.TIME_WAIT));
 		} catch (AbstractMethodError e) {
 			Assert.fail();
 		}
@@ -242,7 +242,7 @@ public class TestCase_06_Check_Account_06 extends TestHelper {
 		anken.selectValueYearBoth(Constant.SELECT_YEAR_ANKEN_BOTH);
 		anken.downloadAnken();
 		try {
-			Assert.assertTrue(anken.isFileDownloaded(Constant.FILE_NAME_BOTH, "csv", 5000));
+			Assert.assertTrue(anken.isFileDownloaded(Constant.FILE_NAME_BOTH, "csv", Constant.TIME_WAIT));
 		} catch (AbstractMethodError e) {
 			Assert.fail();
 		}

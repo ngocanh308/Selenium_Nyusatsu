@@ -3,7 +3,7 @@
 <suite name="Budget_Page">
 	<test name="Budget_page">
 		<classes>
-			<class name="com.testcase.BudgetSearch.TestCase_01_UI_Page" ></class>
+			<class name="com.testcase.BudgetSearch.TestCase_01_UI_Input_Object" ></class>
 		</classes>
 	</test>
 </suite>

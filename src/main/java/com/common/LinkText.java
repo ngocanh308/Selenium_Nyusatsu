@@ -14,7 +14,7 @@ public class LinkText extends PageObject{
 	
 	
 	public String getTextLink() {
-		return this.getRuntimeElement().getText();
+		return this.getRuntimeElement().getText().trim();
 		 
 	}
 

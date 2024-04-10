@@ -10,10 +10,14 @@ public class Constant {
 	// Common page
 	public static final String TEXT_SEARCH = "検索する";
 	public static String folderName ="";
+	public static String TEXT_DOWNLOAD = "令和６";
+	public static int TIME_WAIT = 15000;
 
 	// Login page
 	public static final String USERNAME = "nyusatsu-king-test9@zuno.vc";
+//	public static final String USERNAME = "nyusatsu-king-test7@zuno.vc";
 	public static final String PASSWORD = "uwg4SXX#";
+//	public static final String PASSWORD = "kU7B99tk";
 	public static final String[] ARRAY_INVALID_PASSWORD = { "12345", "123456", "2345", "32145", "34354" };
 	public static final String[] ARRAY_INVALID_USERNAME = { "nyusatsu@zuno.vc", "nyusat922@zuno.vc", "nyu@zuno.vc" };
 	public static final String ERROR_LOGIN = "※登録したメールアドレス・パスワードをご確認ください。";
@@ -27,10 +31,12 @@ public class Constant {
 	public static final String TEXT_20 = "まんがは、にほんのぶんかのとくちょちょう";
 	public static final String TEXT_110 = "まんがは、にほんのぶんかのとくちょちょうです。まんがは、にほんのぶんかのとくちょちょうです。まんがは、にほんのぶんかのとくちょちょうです。まんがは、にほんのぶんかのとくちょちょうですが@zuno.vcにほんのぶ";
 	public static final String TEXT_100 = "まんがは、にほんのぶんかのとくちょちょうです。まんがは、にほんのぶんかのとくちょちょうです。まんがは、にほんのぶんかのとくちょちょうです。まんがは、にほんのぶんかのとくちょちょうですが@zuno.vc";
-	public static final String TEXT_BOOKMARK[] = {"工事","単","6"};
+	public static final String TEXT_BOOKMARK_YOTEI[] = {"あ","単","6"};
 	public static final String NAME_BOOKMARK = "Bookmark Test";
-	public static final List<String> LIST_TEXT_ADD_BOOKMARK_YOTEI= Arrays.asList("工事"," 単"," 独立行政法人駐留軍等労働者労務管理機構","防衛省その他関係機関"," 茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県");
+	public static final List<String> LIST_TEXT_ADD_BOOKMARK_YOTEI= Arrays.asList("あ"," 単"," 独立行政法人駐留軍等労働者労務管理機構","防衛省その他関係機関"," 茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県");
+	public static final List<String> LIST_TEXT_ADD_BOOKMARK_BOTH= Arrays.asList("あ"," 独立行政法人駐留軍等労働者労務管理機構","防衛省その他関係機関"," 茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県");
 	public static  List<String> LIST_TEXT_ADD_BOOKMARK_UI_YOTEI ;
+	public static  List<String> LIST_TEXT_ADD_BOOKMARK_UI_BOTH ;
 	
 	// Budget Search page
 	public static final String TITLE_BUDGET = "予算書情報検索 | ［入札王］官公庁・自治体の入札・落札情報提供サービス";
@@ -68,7 +74,10 @@ public class Constant {
 	public static final String TEXT_COLOR = "rgba(0, 0, 0, 1)";
 	public static final String BACKGROUND_COLOR = "rgba(221, 221, 221, 1)";
 	public static final String NOTE_YEAR = "※2020年度分から収集を開始していますが、2019年度分も一部収集をしています";
-	public static final String TEXT_CHECKBOXS = "競争・公募指名随意不明";
+	public static final String TEXT_CHECKBOXS = "競争・公募指名随意";
+	public static final String TEXT_CHECKBOXS_YOTEI = "競争・公募指名随意不明";
+	public static final String TEXT_CHECKBOXS_RANK = "ABCDE";
+	public static final String TEXT_ADIO_SEARCH_IN= "件名一致検索全文一致検索";
 	public static final String TEXT_PLACEHOLDER_MAIL = "(例)abc@nyusatsu-king.com";
 	
 	//Both Search
@@ -76,6 +85,12 @@ public class Constant {
 	public static final String TEXT_COLOR_SUB = "rgba(255, 255, 255, 1)";
 	public static final String BACKGROUND_COLOR_SUB = "rgba(7, 120, 11, 1)";
 	public static final String TEXT_SUBMENU[] = {"入札・落札同時検索（入札メール配信設定）（関連落札メール配信案件指定）","入札情報のみ検索（入札メール配信設定）（関連落札メール配信案件指定）","落札情報のみ検索"};
+	public static final String ERROR_MESSAGE_PLACE = "業種カテゴリを1つ以上選択して下さい。";
+	public static final String TEXT_ALL_TYPE = "全て選択中";
+	public static final String TEXT_DEFAULT_BID_DATE = "指定なし";
+	public static final String[] LIST_YEAR_BID_DATE = {"2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024" , "2025", "2026", "2027"};
+	public static final String[] LIST_MONTH_BID_DATE = {"1", "2", "3", "4", "5", "6", "7", "8" , "9", "10", "11", "12"};
+	public static final String[] LIST_DATE_BID_DATE = {"1", "2", "3", "4", "5", "6", "7", "8" , "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" , "19","20", "21", "22", "23", "24", "25", "26", "27", "28" , "29", "30" , "31"};
 	
 	// Anken
 	public static List<String> listIDBookMark;
@@ -125,10 +140,15 @@ public class Constant {
 	public static final String URL_CHANGE_MAIL = "usermenu/mail_change/";
 	public static final String URL_INFOR_CHANGE = "usermenu/info_change/";
 	public static final String URL_LOGIN_REMAINDER = "info/login_remainder/";
+	public static final String URL_REGISTER_TRIAL_ACCOUNT = "/info/flow_trial/easy/";
+
 	
 	// Text PagE
 	public static final String SELECT_YEAR_ANKEN_YOTEI = "2025-2023";
 	public static final String SELECT_YEAR_ANKEN_BOTH = "2024-2021";
 	public static final String FILE_NAME_BOTH = "nyusatsu_king_2024";
 	public static final String FILE_NAME_YOTEI = "nyusatsu_king_yotei_2024";
+	
+	// Register trial page
+	public static final String TEXT_HEADER_TRIAL = "無料トライアルについて";
 }

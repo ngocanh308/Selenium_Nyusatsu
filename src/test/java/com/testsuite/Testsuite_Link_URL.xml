@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <suite name="Link_Page">
-	<test name="Link_Login">
+	<test name="LinkPage">
 		<classes>
 			<class name="com.testcase.LinkPage.TestCase_01_List_URL_Web_Page" ></class>
 		</classes>

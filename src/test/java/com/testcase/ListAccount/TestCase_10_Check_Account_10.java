@@ -162,14 +162,14 @@ public class TestCase_10_Check_Account_10 extends TestHelper {
 
 	@Test
 	public void TC_16_Show_Popup_Download_Faile() throws InterruptedException {
-		yotei.downloadCSV("o");
+		yotei.downloadCSV(Constant.TEXT_DOWNLOAD);
 		Assert.assertEquals(yotei.getErrorMessagePopup(), Constant.ERROR_DOWNLOAD_CSV);
 
 	}
 
 	@Test
 	public void TC_17_Close_Popup_Download_Faile() throws InterruptedException {
-		yotei.closePopup();
+		yotei.closePopupFaild();
 
 	}
 
@@ -196,13 +196,13 @@ public class TestCase_10_Check_Account_10 extends TestHelper {
 
 	@Test
 	public void TC_20_Show_Popup_Download_Faile() throws InterruptedException, IOException {
-		both.downloadCSV("o");
+		both.downloadCSV(Constant.TEXT_DOWNLOAD);
 		Assert.assertEquals(both.getErrorMessagePopup(), Constant.ERROR_DOWNLOAD_CSV);
 	}
 
 	@Test
 	public void TC_21_Close_Popup_Download_Faile() throws InterruptedException, IOException {
-		both.closePopup();
+		both.closePopupFaild();
 	}
 
 	//DOWNLOAD_ANKEN

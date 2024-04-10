@@ -32,10 +32,10 @@ public class TestCase_07_UI_Button_Bookmark extends TestHelper {// Mail 入札�
 	public void TC_02_Check_Button_New_Bookmark_Enable() throws InterruptedException {
 		Assert.assertEquals(yotei.isEnableButtonNewBookmark(), true);
 	}
-	
+
 	@Test
 	public void TC_03_Check_Button_Update_Bookmark_Disable() throws InterruptedException {
 		Assert.assertEquals(yotei.isDisableButtonUpdateBookmark(), true);
 	}
-	
+
 }

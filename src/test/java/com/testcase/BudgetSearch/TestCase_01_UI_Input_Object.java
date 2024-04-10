@@ -9,7 +9,7 @@ import com.page.Login_Page;
 import com.page.BudgetSearch_Page;
 import com.testcase.TestHelper;
 
-public class TestCase_01_UI_Page extends TestHelper {
+public class TestCase_01_UI_Input_Object extends TestHelper {
 
 	Login_Page login = new Login_Page();
 	BudgetSearch_Page budget = new BudgetSearch_Page();

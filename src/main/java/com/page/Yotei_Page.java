@@ -34,16 +34,12 @@ public class Yotei_Page extends Common_Page {
 	Button btnNewBookmark = new Button(By.cssSelector("div#predictSearchForm a.yotei-search__submit-btn.fire_show_pop_add")); // Button new
 	Button btnUpdateBookmark = new Button(By.cssSelector("div#predictSearchForm a.yotei-search__submit-btn.fire_show_pop_update")); // Button update
 	LinkText leftItemSuggest = new LinkText(By.cssSelector("#js-workkind-list li.workkind-item:nth-child(3)"));;
-	LinkText itemNameResult0 = new LinkText(By.cssSelector("#data_row0"));
-	LinkText itemIDResult0 = new LinkText(By.cssSelector("#searchResult > div:nth-child(1) span.nk-item__status-no"));
-	LinkText itemNameDetail = new LinkText(By.cssSelector("#yotei-detail > div > h4"));
-	Label itemIDDetail = new Label(By.cssSelector("#yotei-detail input.anken_id"));
 	// FUNCTION
 
 	// 1 SUGGEST KW
-	public void closePopupSuggest() {
-		closePopupKW.click();
-	}
+//	public void closePopupSuggestTmp() {
+//		closePopupKW.click();
+//	}
 
 	public void openPopupSuggest() {
 		openPopupKW.click();
@@ -95,48 +91,8 @@ public class Yotei_Page extends Common_Page {
 		return is_fill;
 	}
 
-	// 2.Checkbox 発注地域選択
-	public String getTextListCheckbox() {
-		WebElement listChk = DriverUtils.getDriver().findElement(By.cssSelector("div.yotei-search__bid"));
-		String listText = listChk.getText().replace("\n", "").replace(" ", "");
-		return listText;
-	}
 
-	public boolean ischeckUncheckListCheckbox() {
-		boolean ischeck = false;
-		List<WebElement> listChk = DriverUtils.getDriver().findElements(By.xpath("//div[@class=\"yotei-search__f-box-r\"]/div[@class=\"yotei-search__bid\"]//input"));
-		for (int i = 1; i <= listChk.size(); i++) {
-			WebElement chk = DriverUtils.getDriver().findElement(By.xpath("//div[@class=\"yotei-search__f-box-r\"]/div[@class=\"yotei-search__bid\"]/label[" + i + "]//span"));
-			WebElement chkInput = DriverUtils.getDriver().findElement(By.xpath("//div[@class=\"yotei-search__f-box-r\"]/div[@class=\"yotei-search__bid\"]/label[" + i + "]//input"));
-			chk.click();
-			if (!chkInput.isSelected()) {
-				ischeck = true;
-			} else {
-				ischeck = false;
-			}
-			chk.click();
-			if (chkInput.isSelected()) {
-				ischeck = true;
-			} else {
-				ischeck = false;
-			}
-		}
-		return ischeck;
-	}
 
-	// 3. Mail
-	public boolean showPopupSendMail() throws InterruptedException {
-		boolean is_Show = false;
-		sendMail.click();
-		if (!DriverUtils.getDriver().findElements(By.xpath("//div[@id=\"stopSearchNotice\"]//div[@class=\"form-type-full \"]")).isEmpty()) {
-			is_Show = true;
-		} else {
-			is_Show = false;
-		}
-		closePopupMail.click();
-		return is_Show;
-
-	}
 
 	// 4. Bookmark ( xem lai)
 	public boolean isEnableButtonNewBookmark() {
@@ -150,7 +106,7 @@ public class Yotei_Page extends Common_Page {
 
 	public void addNewBookmarkYotei()
 	{
-		addNewBookmarkCommon();
+		addNewBookmarkCommon("Yotei");
 		openPopupSuggest();
 		leftItemSuggest.clickLinkText();
 		btnSelectKW.click();
@@ -158,49 +114,4 @@ public class Yotei_Page extends Common_Page {
 		inputNameBookmark();
 	}
 
-
-	//5.Open Detail Yotei
-
-	public boolean isOpenNewWindownAnkenDetail() throws InterruptedException
-	{
-		boolean isResult = true;
-		List<String> expectItem  = new ArrayList<String>();
-		List<String> actualItem  = new ArrayList<String>();
-		btnSearch.click();
-		Thread.sleep(1000);
-		expectItem.add(itemNameResult0.getTextLink());
-		expectItem.add(itemIDResult0.getTextLink());
-		itemNameResult0.clickLinkText();
-		
-		String winHandleBefore = DriverUtils.getDriver().getWindowHandle(); //save current windown
-		for(String winHandle : DriverUtils.getDriver().getWindowHandles()){ // switch new windown
-			DriverUtils.getDriver().switchTo().window(winHandle);
-		}
-		// Perform the actions on new window
-		actualItem.add(itemNameDetail.getTextLink());
-		
-		//Make hidden element visible and then get value
-		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
-		WebElement element = DriverUtils.getDriver().findElement(By.cssSelector("#yotei-detail input.anken_id"));
-
-		js.executeScript("arguments[0].setAttribute('type', '')",element);
-		
-		actualItem.add(element.getAttribute("value"));
-		for(int i =0 ; i < expectItem.size(); i++)
-		{
-			if(!expectItem.get(i).equals(actualItem.get(i)))
-			{
-				isResult = false;
-			}
-		}
-		DriverUtils.getDriver().close();
-
-		// Switch back to original browser (first window)
-		DriverUtils.getDriver().switchTo().window(winHandleBefore);
-		return isResult;
-
-		
-		
-		
-	}
 }
