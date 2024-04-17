@@ -1,6 +1,8 @@
 package com.page;
 
 import com.common.Checkbox;
+import com.common.Constant;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -50,7 +52,7 @@ public class Yotei_Page extends Common_Page {
 		boolean is_fill = false;
 		Thread.sleep(500);
 		openPopupSuggest();
-		Thread.sleep(2000);
+		Thread.sleep(Constant.SORT_TIME);
 		List<WebElement> all_Leftitem = DriverUtils.getDriver().findElements(By.cssSelector(String.format(leftList)));
 		for (int i = 2; i <= all_Leftitem.size(); i++) {
 			if (i > 2 && i != 19) {
@@ -60,7 +62,7 @@ public class Yotei_Page extends Common_Page {
 			}
 			List<String> foo = new ArrayList<String>();
 			WebElement leftItem = DriverUtils.getDriver().findElement(By.cssSelector("#js-workkind-list li.workkind-item:nth-child(" + i + ")"));
-			Thread.sleep(1000);
+			Thread.sleep(Constant.MIN_TIME);
 			scrollElementToTop(leftItem);
 			leftItem.click();
 			String index = leftItem.getAttribute("data-index");

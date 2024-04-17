@@ -23,7 +23,7 @@ public class TestCase_08_UI_Delete_All_Bookmark extends TestHelper {// Delete Al
 	@Test
 	public void TC_01_Open_Page_Yotei_Success() throws InterruptedException {
 		login.login(Constant.LIST_USERNAME[6], Constant.LIST_PASSWORD[6]);
-		Thread.sleep(3000);
+		Thread.sleep(Constant.BET_TIME);
 		login.clickTabMenu("2");
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_YOTEI);
 	}

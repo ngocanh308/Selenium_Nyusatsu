@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <suite name="Budget_Page">
+	<listeners>
+		<listener class-name="com.testcase.ListenerClass"></listener>
+	</listeners>
 	<test name="Budget_page">
 		<classes>
 			<class name="com.testcase.BudgetSearch.TestCase_01_UI_Input_Object" ></class>

@@ -23,7 +23,7 @@ public class DriverUtils {
 		ChromeOptions option = new ChromeOptions();
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 		chromePrefs.put("profile.default_content_settings.popups", 0);
-		Constant.folderName = System.getProperty("user.dir") + File.separator + "Downloads"; // save in project đang run với folder Dơnloads
+		Constant.folderName = System.getProperty("user.dir") + File.separator + "Downloads"; // save in project đang run với folder Download
 		chromePrefs.put("download.default_directory", Constant.folderName);
 		option.setExperimentalOption("prefs", chromePrefs);
 

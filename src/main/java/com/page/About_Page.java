@@ -3,6 +3,7 @@ package com.page;
 import org.openqa.selenium.By;
 
 import com.common.Button;
+import com.common.Constant;
 import com.common.Image;
 import com.common.Label;
 
@@ -19,7 +20,7 @@ public class About_Page extends Common_Page {
 	{
 		boolean isView = false;
 		abstruct.click();
-		Thread.sleep(1000);
+		Thread.sleep(Constant.MIN_TIME);
 		if(isVisibleInViewport(view_Abstruct.getRuntimeElement()))
 			isView =  true;
 		else
@@ -33,21 +34,21 @@ public class About_Page extends Common_Page {
 		if(text.equals("abstruct"))
 		{
 			abstruct.click();
-			Thread.sleep(1000);
+			Thread.sleep(Constant.MIN_TIME);
 			if(isVisibleInViewport(view_Abstruct.getRuntimeElement()))
 				isView =  true;
 		}
 		else if(text.equals("subsidy"))
 		{
 			subsidy.click();
-			Thread.sleep(1000);
+			Thread.sleep(Constant.MIN_TIME);
 			if(isVisibleInViewport(view_Subsidy.getRuntimeElement()))
 				isView =  true;
 		}
 		else if(text.equals("land"))
 		{
 			land.click();
-			Thread.sleep(1000);
+			Thread.sleep(Constant.MIN_TIME);
 			if(isVisibleInViewport(view_Land.getRuntimeElement()))
 				isView =  true;
 		}

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 
 import com.common.Button;
 import com.common.Checkbox;
+import com.common.Constant;
 import com.common.DriverUtils;
 import com.common.Label;
 import com.common.Listbox;
@@ -54,7 +55,7 @@ public class Anken_Page extends Common_Page {
 			} else {
 				checkAll.click();
 				delete.click();
-				Thread.sleep(2000);
+				Thread.sleep(Constant.SORT_TIME);
 			}
 		}
 
@@ -75,7 +76,7 @@ public class Anken_Page extends Common_Page {
 		 Iterator it = allHandle.iterator();
 		 String parentId = (String) it.next();
 		 String childId = (String) it.next();
-		 Thread.sleep(2000);
+		 Thread.sleep(Constant.SORT_TIME);
 		 DriverUtils.getDriver().switchTo().window(childId);
 		 String errorMessage = errorDownloadAnken.getTextLabel().replace("\n", "");
 		 return errorMessage;

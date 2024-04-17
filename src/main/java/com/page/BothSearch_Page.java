@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import com.common.Button;
+import com.common.Constant;
 import com.common.DriverUtils;
 import com.common.Label;
 import com.common.LinkText;
@@ -27,16 +28,17 @@ public class BothSearch_Page extends Common_Page {
 	Label lblErrorMessage = new Label(By.cssSelector("p.condition__text-result.flex-warn > span"));
 	Button btnCurrentDate = new Button(By.id("open_date_enable"));
 	Button btnNewBookmark = new Button(By.cssSelector("div.both-item-search__inner a.both-item-search__submit-btn.fire_show_pop_add")); // Button new
+	LinkText txtSubject0 = new LinkText(By.cssSelector("#searchResult > div:nth-child(1) h4"));
 	
 	public void clickTabSubMenu(String text) throws InterruptedException {
 		DriverUtils.getDriver().findElement(By.cssSelector(String.format(tabSubMenu, text))).click();
-		Thread.sleep(1000);
+		Thread.sleep(Constant.MIN_TIME);
 	}
 	
 	public boolean getListLeftPopup(String[] expectList) throws InterruptedException {
 		boolean result = true;
 		openPopupArea();
-		Thread.sleep(3000);
+		Thread.sleep(Constant.BET_TIME);
 		List<WebElement> allOptions = DriverUtils.getDriver().findElements(By.cssSelector(String.format(leftListArea)));
 		List<String> foo = new ArrayList<String>();
 		for (WebElement item : allOptions) {
@@ -224,6 +226,15 @@ public class BothSearch_Page extends Common_Page {
 			addNewBookmarkCommon("Both");
 			btnNewBookmark.click();
 			inputNameBookmark();
+		}
+		
+		
+		public  String getTextSearchBoth() {
+			String expectText = "";
+			btnSearch.click();
+			expectText = txtSubject0.getTextLink().substring(0, 2);
+			System.out.println("Text search_______________"+expectText);
+			return expectText;
 		}
 		
 

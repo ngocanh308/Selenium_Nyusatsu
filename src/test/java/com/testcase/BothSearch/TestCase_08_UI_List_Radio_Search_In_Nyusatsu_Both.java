@@ -16,7 +16,7 @@ public class TestCase_08_UI_List_Radio_Search_In_Nyusatsu_Both extends TestHelpe
 	@Test
 	public void TC_01_Open_Page_Yotei_Success() throws InterruptedException {
 		login.login(Constant.USERNAME, Constant.PASSWORD);
-		Thread.sleep(3000);
+		Thread.sleep(Constant.BET_TIME);
 		login.clickTabMenu("3");
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BOTH);
 	}

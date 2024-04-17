@@ -15,7 +15,7 @@ public class TestCase_01_Check_Account_01 extends TestHelper {
 	@Test
 	public void TC_01_Login_Sucess() throws InterruptedException {
 		login.login(Constant.LIST_USERNAME[0], Constant.LIST_PASSWORD[0]);
-		Thread.sleep(3000);
+		Thread.sleep(Constant.BET_TIME);
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BOTH);
 	}
 

@@ -24,7 +24,7 @@ public class TestCase_15_UI_Open_Nyusatsu_Both_Successfully extends TestHelper {
 	@Test
 	public void TC_01_Open_Page_Yotei_Success() throws InterruptedException {
 		login.login(Constant.USERNAME, Constant.PASSWORD);
-		Thread.sleep(3000);
+		Thread.sleep(Constant.BET_TIME);
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BOTH);
 	}
 

@@ -23,7 +23,7 @@ public class TestCase_06_UI_Send_Mail extends TestHelper {// Mail 入札案件�
 	@Test
 	public void TC_01_Open_Page_Yotei_Success() throws InterruptedException {
 		login.login(Constant.USERNAME, Constant.PASSWORD);
-		Thread.sleep(3000);
+		Thread.sleep(Constant.BET_TIME);
 		login.clickTabMenu("2");
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_YOTEI);
 	}

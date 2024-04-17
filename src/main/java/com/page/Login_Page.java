@@ -4,6 +4,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 
 import com.common.Button;
+import com.common.Constant;
 import com.common.DriverUtils;
 import com.common.LinkText;
 import com.common.Message;
@@ -40,7 +41,7 @@ public class Login_Page {
 
 	public void clickTabMenu(String text) throws InterruptedException {
 		DriverUtils.getDriver().findElement(By.cssSelector(String.format(tabMenu, text))).click();
-		Thread.sleep(1000);
+		Thread.sleep(Constant.MIN_TIME);
 	}
 
 }

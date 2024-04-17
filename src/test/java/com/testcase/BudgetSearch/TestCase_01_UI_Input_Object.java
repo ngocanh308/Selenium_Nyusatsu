@@ -17,7 +17,7 @@ public class TestCase_01_UI_Input_Object extends TestHelper {
 	@Test
 	public void TC_01_Open_Page_Budget_Success() throws InterruptedException {
 		login.login(Constant.USERNAME, Constant.PASSWORD);
-		Thread.sleep(3000);
+		Thread.sleep(Constant.BET_TIME);
 		login.clickTabMenu("1");
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_BUDGET);
 	}
@@ -45,17 +45,17 @@ public class TestCase_01_UI_Input_Object extends TestHelper {
 	}
 
 	@Test
-	public void TC_05_List_Item_End_Year() throws InterruptedException {
+	public void TC_05_Time_Search_End_Year_Budget() throws InterruptedException {
 		Assert.assertEquals(budget.sizeYear("DATE_E.year") == 11, true);
 	}
 
 	@Test
-	public void TC_06_List_Value_Droplist_Start_Year() throws InterruptedException {
+	public void TC_06_Value_Droplist_Time_Search_Start_Year_Budget() throws InterruptedException {
 		Assert.assertEquals(budget.validateValueListDropDown("DATE_S.year", Constant.LIST_BUDGET_YEAR_FULL), true);
 	}
 
 	@Test
-	public void TC_07_List_Value_Droplist_End_Year() throws InterruptedException {
+	public void TC_07_Value_Droplist_Time_Search_End_Year_Budget() throws InterruptedException {
 		try {
 			Assert.assertTrue(budget.validateValueListDropDown("DATE_E.year", Constant.LIST_BUDGET_YEAR_FULL));
 		} catch (AssertionError e) {

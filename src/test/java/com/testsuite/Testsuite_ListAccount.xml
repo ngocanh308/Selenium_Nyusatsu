@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <suite name="List_Account">
+	<listeners>
+		<listener class-name="com.testcase.ListenerClass"></listener>
+	</listeners>
 	<test name="List_Account">
 		<classes>
 			<class name="com.testcase.ListAccount.TestCase_01_Check_Account_01" ></class>

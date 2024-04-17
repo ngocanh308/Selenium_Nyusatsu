@@ -17,7 +17,7 @@ public class TestCase_04_UI_Popup_Place extends TestHelper { // 発注地域
 	@Test
 	public void TC_01_Open_Page_Yotei_Success() throws InterruptedException {
 		login.login(Constant.USERNAME, Constant.PASSWORD);
-		Thread.sleep(3000);
+		Thread.sleep(Constant.BET_TIME);
 		login.clickTabMenu("2");
 		Assert.assertEquals(DriverUtils.getDriver().getCurrentUrl(), Constant.URL_HOME + Constant.URL_YOTEI);
 	}

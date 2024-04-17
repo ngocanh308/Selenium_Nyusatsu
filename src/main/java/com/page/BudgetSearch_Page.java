@@ -80,6 +80,7 @@ public class BudgetSearch_Page extends Common_Page {
 	}
 
 	public void searchKWBudget(String text, String yearStart, String yearEnd) throws InterruptedException {
+		Thread.sleep(Constant.SORT_TIME);
 		DriverUtils.getDriver().get(Constant.URL_HOME + Constant.URL_BUDGET);
 		selectType("DATE_S.year", yearStart);
 		selectType("DATE_E.year", yearEnd);
@@ -118,7 +119,7 @@ public class BudgetSearch_Page extends Common_Page {
 
 	public boolean isFavoriteSucess() throws InterruptedException {
 		btnfavorite.click();
-		Thread.sleep(5000);
+		Thread.sleep(Constant.LONG_TIME);
 		List<String> listIDFavorite = new ArrayList<String>();
 		List<WebElement> listItems = DriverUtils.getDriver().findElements(By.cssSelector("div#searchResult>div"));
 		for (int i = 1; i <= listItems.size(); i++) {
@@ -126,7 +127,7 @@ public class BudgetSearch_Page extends Common_Page {
 
 		}
 		for (int j = 0; j < listIDFavorite.size(); j++) {
-			if(listIDFavorite.get(j).equals(Constant.listIDFavorite.get(j)))
+			if (listIDFavorite.get(j).equals(Constant.listIDFavorite.get(j)))
 				return true;
 		}
 		return false;
@@ -134,7 +135,7 @@ public class BudgetSearch_Page extends Common_Page {
 
 	public void unFavorite() throws InterruptedException {
 		btnfavorite.click();
-		Thread.sleep(3000);
+		Thread.sleep(Constant.BET_TIME);
 		if (!isAlertPresent()) {
 			List<WebElement> listItems = DriverUtils.getDriver().findElements(By.cssSelector("#searchResult > div"));
 			for (int i = 1; i <= listItems.size(); i++) {
@@ -147,8 +148,18 @@ public class BudgetSearch_Page extends Common_Page {
 
 	}
 
+	public boolean isEmptyFavorite() throws InterruptedException {
+		boolean result = false;
+		btnfavorite.click();
+		Thread.sleep(Constant.BET_TIME);
+		if (isAlertPresent()) {
+			result = true;
+		}
+		return result;
+	}
+
 	public boolean isDisplayResultBudget() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(Constant.LONG_TIME);
 		WebElement result = DriverUtils.getDriver().findElement(By.xpath("//*[@id=\"searchResult\"]"));
 		if (StringUtils.isNoneBlank(result.getText())) {
 			return true;
@@ -226,9 +237,8 @@ public class BudgetSearch_Page extends Common_Page {
 			isScroll = false;
 		return isScroll;
 	}
-	
-	public String getTextList1() throws InterruptedException
-	{
+
+	public String getTextList1() throws InterruptedException {
 		String actualText;
 		uncheckAll.click();
 		scrollToElementTop1(checkUncheck1.getRuntimeElement());
@@ -236,11 +246,10 @@ public class BudgetSearch_Page extends Common_Page {
 		selectPopup.click();
 		actualText = txtList_Area.getAttribute("value");
 		return actualText;
-		
+
 	}
-	
-	public String getTextList2() throws InterruptedException
-	{
+
+	public String getTextList2() throws InterruptedException {
 		btnpopup_Area.click();
 		String actualText;
 		uncheckAll.click();
@@ -249,11 +258,10 @@ public class BudgetSearch_Page extends Common_Page {
 		selectPopup.click();
 		actualText = txtList_Area.getAttribute("value");
 		return actualText;
-		
+
 	}
-	
-	public String getTextList3() throws InterruptedException
-	{
+
+	public String getTextList3() throws InterruptedException {
 		btnpopup_Area.click();
 		String actualText;
 		uncheckAll.click();
@@ -262,6 +270,6 @@ public class BudgetSearch_Page extends Common_Page {
 		selectPopup.click();
 		actualText = txtList_Area.getAttribute("value");
 		return actualText;
-		
+
 	}
 }

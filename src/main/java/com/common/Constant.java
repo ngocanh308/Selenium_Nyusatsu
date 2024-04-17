@@ -10,8 +10,13 @@ public class Constant {
 	// Common page
 	public static final String TEXT_SEARCH = "検索する";
 	public static String folderName ="";
+	public static String folderFaile ="";
 	public static String TEXT_DOWNLOAD = "令和６";
 	public static int TIME_WAIT = 15000;
+	public static int LONG_TIME = 5000;
+	public static int SORT_TIME = 2000;
+	public static int MIN_TIME = 1000;
+	public static int BET_TIME = 3000;
 
 	// Login page
 	public static final String USERNAME = "nyusatsu-king-test9@zuno.vc";
@@ -23,8 +28,8 @@ public class Constant {
 	public static final String ERROR_LOGIN = "※登録したメールアドレス・パスワードをご確認ください。";
 	public static final String[] LIST_USERNAME = { "nyusatsu-king-test1@zuno.vc", "nyusatsu-king-test2@zuno.vc", "nyusatsu-king-test3@zuno.vc", "nyusatsu-king-test4@zuno.vc", "nyusatsu-king-test5@zuno.vc", "nyusatsu-king-test6@zuno.vc",
 			"nyusatsu-king-test7@zuno.vc", "nyusatsu-king-test8@zuno.vc", "nyusatsu-king-test9@zuno.vc", "nyusatsu-king-test10@zuno.vc" };
-	public static final String[] LIST_PASSWORD = { "test0101", "TqMMJH$g", "aL4A7$@d", "YLnrA$E:", "xPSkgRNe", "eMAzMux#", "kU7B99tk", "2r&b8@zn", "uwg4SXX#", "test1010" };
-//	public static final String[] LIST_PASSWORD = { "3r==2jCS", "M3;Xu:g&", "Qgsb86XH", "7Ep:v4Q8", "C@nPWeb:", "CczKvQsQ", "kuK3JH=x", "2CKzyY@P", "uwg4SXX#", "q1w2e3r4" };
+//	public static final String[] LIST_PASSWORD = { "test0101", "TqMMJH$g", "aL4A7$@d", "YLnrA$E:", "xPSkgRNe", "eMAzMux#", "kU7B99tk", "2r&b8@zn", "uwg4SXX#", "test1010" };
+	public static final String[] LIST_PASSWORD = { "3r==2jCS", "M3;Xu:g&", "Qgsb86XH", "7Ep:v4Q8", "C@nPWeb:", "CczKvQsQ", "kuK3JH=x", "2CKzyY@P", "uwg4SXX#", "q1w2e3r4" };
 
 	//Common Search
 	public static final String TEXT_23 = "まんがは、にほんのぶんかのとくちょちょうです。";
@@ -60,6 +65,7 @@ public class Constant {
 	public static final String TEXT_LIST_1 = "設定あり (51機関)";
 	public static final String TEXT_LIST_2 = "設定あり (47機関)";
 	public static final String TEXT_LIST_3 = "設定あり (1710機関)";
+	public static final String TEXT_SEARCH_BUDGET = "anken";
 	
 	
 	//Yotei Search
@@ -99,8 +105,7 @@ public class Constant {
 	
 	
 	//URL_ALL_Page
-	public static final String URL_HOME = "https://www.nyusatsu-king.com/";
-//	public static final String URL_HOME = "https://nyusatsu-o-neo-dev-8085.zuno.vc/";
+	public static final String URL_HOME = "https://nyusatsu-o-neo-dev-8085.zuno.vc/";
 	public static final String URL_HOME_AUTHEN = "https://zuno:g1@nyusatsu-o-neo-dev-8085.zuno.vc/";
 	//public static final String URL_HOME = "http://54.250.184.6/";
 	public static final String URL_BOTH = "usermenu/both_item_search/";
@@ -140,7 +145,8 @@ public class Constant {
 	public static final String URL_CHANGE_MAIL = "usermenu/mail_change/";
 	public static final String URL_INFOR_CHANGE = "usermenu/info_change/";
 	public static final String URL_LOGIN_REMAINDER = "info/login_remainder/";
-	public static final String URL_REGISTER_TRIAL_ACCOUNT = "/info/flow_trial/easy/";
+	public static final String URL_REGISTER_TRIAL_ACCOUNT = "info/flow_trial/easy/";
+	public static final String URL_REGISTER_TRIAL_FIN = "info/flow_trial/easy/mail_fin/";
 
 	
 	// Text PagE
@@ -150,5 +156,27 @@ public class Constant {
 	public static final String FILE_NAME_YOTEI = "nyusatsu_king_yotei_2024";
 	
 	// Register trial page
+	public static final String TITLE_TRIAL = "10日間無料トライアルのお申し込み【入力】 | ［入札王］官公庁・自治体の入札・落札情報提供サービス";
 	public static final String TEXT_HEADER_TRIAL = "無料トライアルについて";
+	public static final String MESSAGE_ERROR_ALL = "ご契約担当者名を入力してください。メールアドレスを入力してください。電話番号の桁数が正しくありません。パスワードを入力してください。";
+	public static final String MESSAGE_ERROR_CD = "代理店CDは10文字以下で入力してください。";
+	public static final String MESSAGE_ERROR_NAME = "ご契約担当者名は50文字以下で入力してください。";
+	public static final String MESSAGE_ERROR_MAIL_EXIST = "既に登録されているメールアドレスです。";
+	public static final String MESSAGE_ERROR_MAIL_FORMAT = "メールアドレスが正しくありません。";
+	public static final String MESSAGE_ERROR_PHONE = "電話番号の桁数が正しくありません。";
+	public static final String MESSAGE_ERROR_PASSWORD = "パスワードは半角英数字と記号（@、#、$、:、;、&、=）8文字以上15文字以下で記入して下さい。";
+	public static final String MESSAGE_ERROR_PASSWORD2 = "パスワードが一致しません。もう一度お試しください";
+	public static final String[] TEXT_CD_INVALID_10 = {"Hello World 2024", "WELCOME WORLD 2024"};
+	public static final String TEXT_CD_VALID = "Test Auto" ;
+	public static final String[] TEXT_NAME_INVALID_50 = {"ご契約担当者名ご契約担当者名ご契約担当者名ご契約担当者名ご契約担当者名ごご契約担当者名ご契約担当者名ご" , "WELCOME WORLD 2024WELCOME WORLD 2024WELCOME WORLD 2"};
+	public static final String TEXT_NAME_VALID_50 = "Anh tester Auto";
+	public static final String[] TEXT_NAME_INVALID_MAIL = {"lethingocanh308@zuno.vc", "lethingocanh123456"};
+	public static final String TEXT_PHONE1_VALID = "0988";
+	public static final String[] TEXT_PHONE_INVALID = {"0988435435","hello"};
+	public static final String TEXT_PHONE2_VALID = "164";
+	public static final String TEXT_PHONE3_VALID = "8940";
+	public static final String TEXT_PASSWORD_VALID = "Ngocanh123@";
+	public static final String[] TEXT_PASSWORD_INVALID = {"123@!","ngocanh123"};
+	public static  String TEXT_MAIL ;
+	public static  String TEXT_HEADER_POLICY = "プライバシーポリシー" ;
 }
