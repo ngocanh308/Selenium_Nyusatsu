@@ -1,15 +1,9 @@
 package com.common;
 
-import java.io.File;
-import java.io.IOException;
-import java.sql.Date;
 import java.time.Duration;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,7 +14,7 @@ public class PageObject {
 	private WebElement runtimeElement;
 	private By locator;
 
-	public PageObject(By locator) { 
+	public PageObject(By locator) {
 		this.locator = locator;
 	}
 
@@ -33,14 +27,14 @@ public class PageObject {
 	public boolean isDisplay() {
 		return this.getRuntimeElement().isDisplayed();
 	}
-	
+
 	public boolean isElementPresent(By locator) {
-	    try {
-	    	DriverUtils.getDriver().findElement(locator);
-	        return true;
-	    } catch (org.openqa.selenium.NoSuchElementException e) {
-	        return false;
-	    }
+		try {
+			DriverUtils.getDriver().findElement(locator);
+			return true;
+		} catch (org.openqa.selenium.NoSuchElementException e) {
+			return false;
+		}
 	}
 
 	public void waitToElementVisible(int second, By locator) {
@@ -52,12 +46,10 @@ public class PageObject {
 		JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
 		js.executeScript("window.scrollBy(0,1000)");
 	}
-	
-    public void moveMouseToElement(WebElement element) {
-    	Actions ac = new Actions(DriverUtils.getDriver());
-    	ac.moveToElement(element).build().perform();
-    }
-    
 
+	public void moveMouseToElement(WebElement element) {
+		Actions ac = new Actions(DriverUtils.getDriver());
+		ac.moveToElement(element).build().perform();
+	}
 
 }

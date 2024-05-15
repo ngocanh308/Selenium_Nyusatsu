@@ -10,6 +10,7 @@ public class Constant {
 	// Common page
 	public static final String TEXT_SEARCH = "検索する";
 	public static String folderName ="";
+	public static String folderImage ="";
 	public static String folderFaile ="";
 	public static String TEXT_DOWNLOAD = "令和６";
 	public static int TIME_WAIT = 15000;
@@ -17,6 +18,7 @@ public class Constant {
 	public static int SORT_TIME = 2000;
 	public static int MIN_TIME = 1000;
 	public static int BET_TIME = 3000;
+	public static int LIT_TIME = 200;
 
 	// Login page
 	public static final String USERNAME = "nyusatsu-king-test9@zuno.vc";
@@ -105,8 +107,8 @@ public class Constant {
 	
 	
 	//URL_ALL_Page
-	public static final String URL_HOME = "https://nyusatsu-o-neo-dev-8085.zuno.vc/";
-	public static final String URL_HOME_AUTHEN = "https://zuno:g1@nyusatsu-o-neo-dev-8085.zuno.vc/";
+	public static final String URL_HOME = "https://nyusatsu-o-neo-dev-8084.zuno.vc/";
+	public static final String URL_HOME_AUTHEN = "https://zuno:g1@nyusatsu-o-neo-dev-8084.zuno.vc/";
 	//public static final String URL_HOME = "http://54.250.184.6/";
 	public static final String URL_BOTH = "usermenu/both_item_search/";
 	public static final String URL_YOTEI = "usermenu/yotei_search/";
@@ -147,6 +149,7 @@ public class Constant {
 	public static final String URL_LOGIN_REMAINDER = "info/login_remainder/";
 	public static final String URL_REGISTER_TRIAL_ACCOUNT = "info/flow_trial/easy/";
 	public static final String URL_REGISTER_TRIAL_FIN = "info/flow_trial/easy/mail_fin/";
+	public static final String URL_CONTACT = "info/contact/";
 
 	
 	// Text PagE
@@ -179,4 +182,42 @@ public class Constant {
 	public static final String[] TEXT_PASSWORD_INVALID = {"123@!","ngocanh123"};
 	public static  String TEXT_MAIL ;
 	public static  String TEXT_HEADER_POLICY = "プライバシーポリシー" ;
+	
+	// Contact  page
+	public static final String TITLE_CONTACT = "お問い合わせ・資料請求 | ［入札王］官公庁・自治体の入札・落札情報提供サービス"; // input contact
+	public static final List<String> LIST_TITLE_FIELD = Arrays.asList("現在のご利用状況","お問い合わせ種別","氏名/ご契約担当者名","会社名","電話番号","メールアドレス","内容");
+	public static final List<String> LIST_TYPE_ACCOUNT = Arrays.asList("正会員（有料会員）","トライアル会員","未利用の方");
+	public static final String TEXT_DEFAULT_CHILD = "現在のご利用状況を選択してください";
+	public static final List<String> LIST_CHILD_TYPE_REGULAR= Arrays.asList("下記項目からお選び下さい","サービス全般・利用方法について","ご契約内容について","見積り・資料請求","メール配信について","その他");
+	public static final List<String> LIST_CHILD_TYPE_TRIAL= Arrays.asList("下記項目からお選び下さい","サービス全般・利用方法について","料金・資料に関するお問い合わせ","メール配信について","CSVのサンプル希望","その他");
+	public static final List<String> LIST_CHILD_TYPE_OTHER= Arrays.asList("下記項目からお選び下さい","サービス全般・利用方法について","料金・資料に関するお問い合わせ","案件情報の掲載依頼について（発注元向け）","その他");
+	public static final String TEXT_NOTE_NAME = "※姓と名の間をつめてご入力ください。";
+	public static final String TEXT_PLACEHOLDER_NAME = "例：山田太郎";
+	public static final String TEXT_NOTE_COMPANY = "※法人の場合は、会社名を必ずご入力ください。";
+	public static final String TEXT_PLACEHOLDER_COMPANY = "例：株式会社ズノー";
+	public static final String TEXT_NOTE_PHONE = "※半角数字,半角ハイフンで入力してください。";
+	public static final String TEXT_PLACEHOLDER_PHONE = "例：03-****-****";
+	public static final String TEXT_PLACEHOLDER_MAIL_CONTACT = "例：webmaster@zuno.tv";
+	public static final String TEXT_NOTE_COMMENT = "※1000文字以内でご入力ください。";
+	public static final String[] VALID_CONTACT = {"Auto Name","Auto Comnay Name","0988164111","lethingocanh308@zuno.vc","Note"};
+	public static  List<String> LIST_CONTACT_INPUT ;
+	public static  List<String> LIST_CONTACT_DISPLAY ;
+	public static final String TITLE_CONFIRM_CONTACT ="お問い合わせ・資料請求 | ［入札王］官公庁・自治体の入札・落札情報提供サービス"; // Confirm Contact page
+	public static final String TEXT_HEADER_CONFIRM_CONTACT = "お問い合わせ・資料請求";
+	public static final String TEXT_CHILD_HEADER_CONFIRM_CONTACT = "下記の内容をご確認いただき、再度編集したい時は『戻る』ボタンを、問題がなければ『送信する』ボタンをクリックしてください。";
+	public static final List<String> LIST_TITLE_FIELD_CONFIRM = Arrays.asList("お問い合わせ種別","氏名/ご契約担当者名","会社名","電話番号","メールアドレス","内容");
+	public static final String[] VALID_FIELD_NAME_COMPANY= {"!@#$%^&*()-+='\",;:.,`~{}[]/\\<>","月曜日","まんがは、にほんのぶんかのとくちょうです。","ﾏﾝｶﾞﾊ、ﾆﾎﾝﾉﾌﾞﾝｶﾉﾄｸﾁｮｳﾃﾞｽ。","Ｍａｎｇａ　ｉｓ","０１２３４５６７８９"};
+	public static final String[] VALID_FIELD_PHONE= {"111","000","04-07897","----123454","1------2","3234-2343-4-3-43-5454"};
+	public static final String[] VALID_FIELD_MAIL= {"user@domain.com","user123@email.co.uk","john.doe@company.org","user_name1234@email-provider.net","name@my-email-provider.xyz","_______@domain.com"};
+	public static final String[] INVALID_FIELD_PHONE= {"phone","再度","１２３４－１２","    123","1233-der12323"};
+	public static final String[] INVALID_FIELD_MAIL= {"phone","再度","１２３４－１２","    123","1233-der12323"};
+	public static final String VALID_FIELD_NOTE= "下記項目からお選び下さい下記項目からお選び下さい下記項目からお選び下さい下記項目からお選び下さい下記項目からお選び下さい下記項目からお選び下さい下記項目からお選び下さい下記項目からお選び下さい下記項目からお選び下さい";
+	public static final String TITLE_FINISH_CONTACT ="お問い合わせ・資料請求 | ［入札王］官公庁・自治体の入札・落札情報提供サービス";  // Finish Contact Page
+	public static final String TEXT_FINISH1 = "［登録メールアドレス］ ";
+	public static final String TEXT_FINISH2 = "上記のメールアドレスでお問い合わせを受け付けました。回答にお時間がかかりますことを予めご了承下さい。";
+	public static  String TEXT_FINISH ;
+	public static  String LINK_TEXT_FINISH_TOP  = "トップページへ戻る";
+	public static   List<String> TEXT_ERROR_CONTACT  = Arrays.asList("現在のご利用状況を選択してください。","お問い合わせ種別を選択してください。","氏名/ご契約担当者名を入力してください。","会社名を入力してください。","電話番号を入力してください。","メールアドレスを入力してください。","お問い合わせ内容を入力してください。");
+	public static   List<String> TEXT_ERROR_CONTACT_INVALID  = Arrays.asList("電話番号が正しくありません。","メールアドレスが正しくありません。");
+	
 }

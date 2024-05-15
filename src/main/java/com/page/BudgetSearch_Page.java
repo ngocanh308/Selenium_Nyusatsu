@@ -241,7 +241,7 @@ public class BudgetSearch_Page extends Common_Page {
 	public String getTextList1() throws InterruptedException {
 		String actualText;
 		uncheckAll.click();
-		scrollToElementTop1(checkUncheck1.getRuntimeElement());
+		scrollToElementBottom(checkUncheck1.getRuntimeElement());
 		checkUncheck1.click();
 		selectPopup.click();
 		actualText = txtList_Area.getAttribute("value");
@@ -253,7 +253,7 @@ public class BudgetSearch_Page extends Common_Page {
 		btnpopup_Area.click();
 		String actualText;
 		uncheckAll.click();
-		scrollToElementTop1(checkUncheck2.getRuntimeElement());
+		scrollToElementBottom(checkUncheck2.getRuntimeElement());
 		checkUncheck2.click();
 		selectPopup.click();
 		actualText = txtList_Area.getAttribute("value");
@@ -265,7 +265,7 @@ public class BudgetSearch_Page extends Common_Page {
 		btnpopup_Area.click();
 		String actualText;
 		uncheckAll.click();
-		scrollToElementTop1(checkUncheck3.getRuntimeElement());
+		scrollToElementBottom(checkUncheck3.getRuntimeElement());
 		checkUncheck3.click();
 		selectPopup.click();
 		actualText = txtList_Area.getAttribute("value");

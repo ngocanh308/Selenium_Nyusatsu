@@ -3,18 +3,15 @@ package com.page;
 import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.common.Button;
@@ -102,6 +99,15 @@ public class Common_Page {
 
 	public void delete_File() {
 		File[] listOfFiles = new File(Constant.folderName).listFiles();
+		if (listOfFiles.length > 0) {
+			for (int i = 0; i < listOfFiles.length; i++) {
+				listOfFiles[i].delete();
+			}
+		}
+	}
+	
+	public void delete_Image() {
+		File[] listOfFiles = new File(Constant.folderImage).listFiles();
 		if (listOfFiles.length > 0) {
 			for (int i = 0; i < listOfFiles.length; i++) {
 				listOfFiles[i].delete();
@@ -362,7 +368,12 @@ public class Common_Page {
 		return isResult;
 
 	}
-
+	
+	public void visibleElementHidden(WebElement element)
+	{
+        JavascriptExecutor js = (JavascriptExecutor) DriverUtils.getDriver();
+        js.executeScript("arguments[0].setAttribute('type', '')",element); 
+	}
 
 	// II . FUNCTION
 
@@ -444,17 +455,17 @@ public class Common_Page {
 		((JavascriptExecutor) DriverUtils.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
-	public void scrollToElementTop(WebElement element) {
+	public void scrollToElementTop(WebElement element) { // Scroll element to Top page
 		JavascriptExecutor executor = (JavascriptExecutor) DriverUtils.getDriver();
 		executor.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
-	public void scrollToElementTop1(WebElement element) {
+	public void scrollToElementBottom(WebElement element) {// Scroll element to Bottom page
 		JavascriptExecutor executor = (JavascriptExecutor) DriverUtils.getDriver();
 		executor.executeScript("arguments[0].scrollIntoView(false);", element);
 	}
 
-	public boolean is_Visible_IMG(WebElement img) {
+	public boolean is_Visible_IMG(WebElement img) { 
 		boolean foo = false;
 		Boolean is_visibleIMG = (Boolean) ((JavascriptExecutor) DriverUtils.getDriver()).executeScript("return arguments[0].complete " + "&& typeof arguments[0].naturalWidth != \"undefined\" " + "&& arguments[0].naturalWidth > 0", img);
 		if (is_visibleIMG) {
@@ -870,7 +881,6 @@ public class Common_Page {
 		}
 		return result;
 	}
-
 
 	// Detail Anken
 

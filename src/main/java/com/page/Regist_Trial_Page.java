@@ -42,7 +42,7 @@ public class Regist_Trial_Page extends Common_Page {
 		txtPhone3.type(phone3);
 		txtPassWord.type(pass);
 		txtConfirmPassWord.type(confirmPass);
-		scrollToElementTop1(btnSubmit.getRuntimeElement());
+		scrollToElementBottom(btnSubmit.getRuntimeElement());
 		Thread.sleep(Constant.SORT_TIME);
 		btnSubmit.click();
 	}
@@ -67,7 +67,7 @@ public class Regist_Trial_Page extends Common_Page {
 	}
 
 	public void clickLinkPolicy() throws InterruptedException {
-		scrollToElementTop1(lnkPolicy.getRuntimeElement());
+		scrollToElementBottom(lnkPolicy.getRuntimeElement());
 		Thread.sleep(Constant.SORT_TIME);
 		lnkPolicy.clickLinkText();
 	}

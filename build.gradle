@@ -44,3 +44,9 @@ test {
     systemProperties System.properties
     reports.html.setDestination(file("$projectDir/GradleReports"))
 }
+
+// Import log4j
+dependencies {
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.20.0'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.20.0'
+}

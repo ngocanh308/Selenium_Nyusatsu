@@ -62,4 +62,27 @@
 			<class name="com.testcase.BothSearch.TestCase_16_UI_Open_Rakusatsu_Both_Successfully"></class>
 		</classes>
 	</test>
+	<test name="RegistTrial">
+		<classes>
+			<class name="com.testcase.RegistTrial.TestCase_01_Display_Error_Incase_Empty_All_Fields_And_Submit_Register" ></class>
+			<class name="com.testcase.RegistTrial.TestCase_02_Display_Error_Incase_Invalid_CD" ></class>
+			<class name="com.testcase.RegistTrial.TestCase_03_Display_Error_Incase_Invalid_Name" ></class>
+			<class name="com.testcase.RegistTrial.TestCase_04_Display_Error_Incase_Invalid_Mail" ></class>
+			<class name="com.testcase.RegistTrial.TestCase_05_Display_Error_Incase_Invalid_Phone1" ></class>
+			<class name="com.testcase.RegistTrial.TestCase_06_Display_Error_Incase_Invalid_Phone2" ></class>
+			<class name="com.testcase.RegistTrial.TestCase_07_Display_Error_Incase_Invalid_Phone3" ></class>
+			<class name="com.testcase.RegistTrial.TestCase_08_Display_Error_Incase_Invalid_Password" ></class>
+			<class name="com.testcase.RegistTrial.TestCase_09_Regist_Account_Trial_Success" ></class>
+			<class name="com.testcase.RegistTrial.TestCase_10_Open_Policy_Page_Success_When_Click_Link_Policy" ></class>
+		</classes>
+	</test>
+		<test name="Contact">
+		<classes>
+			<class name="com.testcase.ContactPage.TestCase_01_UI_Check_Open_Page_Contact" ></class>
+			<class name="com.testcase.ContactPage.TestCase_02_UI_Check_Type_Account_Contact" ></class>
+			<class name="com.testcase.ContactPage.TestCase_03_UI_PlaceHolder_And_Note_All_Field_Contact" ></class>
+			<class name="com.testcase.ContactPage.TestCase_04_UI_Check_Submit_Failed_At_Page_Contact" ></class>
+			<class name="com.testcase.ContactPage.TestCase_05_UI_Check_Submit_Success_At_Page_Finish_Contact" ></class>
+		</classes>
+	</test>
 </suite>
